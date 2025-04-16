@@ -1,2 +1,1 @@
-# ContainerCommunication
 # isp-ozmap-challenge
