@@ -1,11 +1,16 @@
 import express from 'express'
+import mongoose from 'mongoose'
 
 import { join, resolve } from 'path'
 import { addAliases } from 'module-alias'
 
+import config from '@/config/database/index'
+
 const app = express()
 
 async function startServer() {
+    await mongoose.connect(config.mongoURI)
+
     const bodyParser = require('body-parser')
 
     const srcDir = join(__dirname, '..')
