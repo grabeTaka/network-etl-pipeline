@@ -4,7 +4,7 @@
     "description": "",
     "main": "src/server/index.ts",
     "scripts": {
-        "dev": "nodemon src/server/index.ts",
+        "dev": "nodemon",
         "start": "nodemon src/server/index.ts",
         "lint": "eslint src/**/*.ts --fix",
         "format": "prettier --write .",
@@ -61,6 +61,7 @@
         "sinon": "^19.0.4",
         "ts-node": "^10.9.1",
         "ts-node-dev": "^2.0.0",
+        "tsconfig-paths": "^4.2.0",
         "typescript": "^5.2.2"
     },
     "config": {
