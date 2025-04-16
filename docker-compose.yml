@@ -2,49 +2,58 @@ version: '3.8'
 name: 'isp-ozmap'
 
 services:
-    api:
-        container_name: api
-        build: .
-        volumes:
-            - ./src:/api/src
-        ports:
-            - ${APPLICATION_PORT}:${APPLICATION_PORT}
-        env_file:
-            - .env
-        depends_on:
-            - database
-        healthcheck:
-            test: ['CMD', 'curl', '--silent', '--fail', 'http://${APPLICATION_HOST}:${APPLICATION_PORT}/health']
-            timeout: 10s
-            retries: 5
-            start_period: 20s
-        restart: 'unless-stopped'
-        networks:
-            - isp-ozmap-network
+  api:
+    container_name: api
+    build: .
+    volumes:
+      - ./src:/api/src
+    ports:
+      - ${APPLICATION_PORT}:${APPLICATION_PORT}
+    env_file:
+      - .env
+    depends_on:
+      - database
+      - redis  # Agora a API também depende do Redis
+    healthcheck:
+      test: ['CMD', 'curl', '--silent', '--fail', 'http://${APPLICATION_HOST}:${APPLICATION_PORT}/health']
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    restart: 'unless-stopped'
+    networks:
+      - isp-ozmap-network
 
-    database:
-        container_name: database
-        image: mongo:latest
-        env_file:
-            - .env
-        ports:
-            - 27017:27017
-        volumes:
-            - mongodb_data_container:/data/db
-        healthcheck:
-            test: ['CMD', 'mongo', '--eval', 'db.runCommand("ping").ok --quiet']
-            timeout: 10s
-            retries: 5
-            start_period: 40s
-        restart: 'always'
-        networks:
-            - isp-ozmap-network
-        command: ["mongod", "--quiet"]
+  database:
+    container_name: database
+    image: mongo:latest
+    env_file:
+      - .env
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+    healthcheck:
+      test: ['CMD', 'mongo', '--eval', 'db.runCommand("ping").ok --quiet']
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+    restart: 'always'
+    networks:
+      - isp-ozmap-network
+    command: ["mongod", "--quiet"]
 
+  redis:
+    container_name: redis
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    restart: always
+    networks:
+      - isp-ozmap-network
 
 volumes:
-    mongodb_data_container:
+  mongodb_data_container:
 
 networks:
-    isp-ozmap-network:
-        driver: bridge
+  isp-ozmap-network:
+    driver: bridge
