@@ -8,6 +8,8 @@ import mongoose from 'mongoose'
 import express from 'express'
 import config from '@/config/database/index'
 import '@/modules/jobs/service/index'
+import { SourceExtractorBoxesQueue } from '@/modules/queue/SourceExtractorBoxesQueue'
+import { SourceExtractorWorker } from '@/modules/worker/SourceExtractorWorker/service'
 
 const app = express()
 
@@ -29,6 +31,12 @@ async function startServer() {
     app.listen(3000, () => {
         console.log(`Server is running on port 3000 🚀`)
     })
+
+    const sourceExtractorBoxesQueue = new SourceExtractorBoxesQueue()
+    sourceExtractorBoxesQueue.scheduleRecurringJob()
+    await sourceExtractorBoxesQueue.checkJobs()
+
+    new SourceExtractorWorker()
 }
 
 startServer()

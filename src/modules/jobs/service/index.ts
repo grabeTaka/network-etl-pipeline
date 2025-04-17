@@ -1,4 +1,4 @@
-import { rateLimiter } from '@/utils/rate-limiter'
+/*import { rateLimiter } from '@/utils/rate-limiter'
 import axios from 'axios'
 import cron from 'node-cron'
 import { IJobService } from './type'
@@ -89,7 +89,7 @@ class JobService implements IJobService {
     }
 
     public startJobScheduler(): void {
-        cron.schedule('*/1 * * * *', async () => {
+        cron.schedule('/1 * * * *', async () => {
             console.log('⏰ Agendamento iniciado...')
             await this.executeJob('boxes', 'extract-boxes')
         })
@@ -107,4 +107,4 @@ jobService.extractDataFromSourceDatabase()
 export default jobService
 
 //TODO refatorar parar separar lógica do redis com o node-cron
-//TODO ao retornar erro da api deve adicionar a request na fila para evitar erros do tipo "time out"
+//TODO ao retornar erro da api deve adicionar a request na fila para evitar erros do tipo "time out"*/
