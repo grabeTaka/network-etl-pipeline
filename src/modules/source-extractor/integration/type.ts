@@ -5,9 +5,9 @@ import {
     DropCableSchema,
 } from '../schema'
 
-export interface ISourceExtractor {
+export interface ISourceExtractorIntegration {
     getBoxes(): Promise<BoxSchema[]>
     getCables(): Promise<CableSchema[]>
     getCustomers(): Promise<CustomerSchema[]>
-    getDropCacles(): Promise<DropCableSchema[]>
+    getDropCables(): Promise<DropCableSchema[]>
 }

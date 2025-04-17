@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
-import { ISourceExtractor } from '@/modules/source-extractor/integration/type'
+import { ISourceExtractorIntegration } from '@/modules/source-extractor/integration/type'
 import {
     BoxSchema,
     CableSchema,
@@ -28,7 +28,7 @@ export class SourceExtractorErrors extends Error {
     }
 }
 
-export class SourceExtractor implements ISourceExtractor {
+export class SourceExtractorIntegration implements ISourceExtractorIntegration {
     private url: string = 'http://json-server:4000'
     private api: AxiosInstance
 
@@ -59,7 +59,7 @@ export class SourceExtractor implements ISourceExtractor {
         return response.data
     }
 
-    getDropCacles = async (): Promise<DropCableSchema[]> => {
+    getDropCables = async (): Promise<DropCableSchema[]> => {
         const response = await this.api.get('/drop_cables')
         return response.data
     }
