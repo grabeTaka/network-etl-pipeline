@@ -1,21 +1,21 @@
 {
-  "compilerOptions": {
-      "target": "ES2022",
-      "module": "commonjs",
-      
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "sourceMap": true,
-      "esModuleInterop": true,
-      "resolveJsonModule": true,
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "commonjs",
 
-      "outDir": "./dist",
-      "moduleResolution": "node",
-      "removeComments": true,
-      "baseUrl": ".",
-      "paths": {
-        "@/*": ["src/*"]
-      }
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+
+        "outDir": "./dist",
+        "moduleResolution": "node",
+        "removeComments": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"]
+        }
     },
     "exclude": ["node_modules", "dist"],
     "include": ["./src", "test", "jest/test"]

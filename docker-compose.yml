@@ -4,7 +4,9 @@ name: 'isp-ozmap'
 services:
   api:
     container_name: api
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - ./src:/api/src
     ports:
@@ -14,12 +16,32 @@ services:
     depends_on:
       - database
       - redis
+      - json-server
     healthcheck:
-      test: ['CMD', 'curl', '--silent', '--fail', 'http://${APPLICATION_HOST}:${APPLICATION_PORT}/health']
+      test:
+        [
+          'CMD',
+          'curl',
+          '--silent',
+          '--fail',
+          'http://${APPLICATION_HOST}:${APPLICATION_PORT}/health',
+        ]
       timeout: 10s
       retries: 5
       start_period: 20s
-    restart: 'unless-stopped'
+    restart: unless-stopped
+    networks:
+      - isp-ozmap-network
+
+  json-server:
+    container_name: json-server
+    build:
+      context: .
+      dockerfile: Dockerfile.json-server
+    ports:
+      - '4000:4000'
+    volumes:
+      - ./db.json:/data/db.json
     networks:
       - isp-ozmap-network
 
@@ -37,16 +59,16 @@ services:
       timeout: 10s
       retries: 5
       start_period: 40s
-    restart: 'always'
+    restart: always
     networks:
       - isp-ozmap-network
-    command: ["mongod", "--quiet"]
+    command: ['mongod', '--quiet']
 
   redis:
     container_name: redis
     image: redis:alpine
     ports:
-      - "6379:6379"
+      - '6379:6379'
     restart: always
     networks:
       - isp-ozmap-network
