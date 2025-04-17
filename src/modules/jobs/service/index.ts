@@ -1,30 +1,48 @@
 import { rateLimiter } from '@/utils/rate-limiter'
 import axios from 'axios'
 import cron from 'node-cron'
-const callEndpoint = rateLimiter.wrap(async () => {
-    try {
-        const response = await axios.get('http://json-server:4000/boxes')
-        console.log('Dados recebidos do endpoint:', response.data)
-    } catch (error) {
-        console.error('Erro ao chamar o endpoint:', error)
-    }
-})
+import { IJobService } from './type'
 
-async function executeJob() {
-    try {
-        if ((await rateLimiter.incrementReservoir(0)) > 0) {
-            console.log('Start job!!!!!!!!!')
-            await callEndpoint()
-        } else {
-            console.log(
-                'Rate limit atingido, enfileirando requisição com redis futuramente hehe TODO!!',
-            )
+class JobService implements IJobService {
+    private async callEndpoint(): Promise<void> {
+        try {
+            const response = await axios.get('http://json-server:4000/boxes')
+            console.log('Dados recebidos do endpoint:', response.data)
+        } catch (error) {
+            console.error('Erro ao chamar o endpoint:', error)
         }
-    } catch (error) {
-        console.error('Erro durante a execução do job:', error)
+    }
+
+    private async executeJob(): Promise<void> {
+        try {
+            const reservoir = await rateLimiter.incrementReservoir(0)
+            if (reservoir > 0) {
+                console.log('Iniciando job...')
+                await this.callEndpoint()
+            } else {
+                console.log(
+                    'Limite de requisições atingido. Enfileirando requisição com Redis futuramente...',
+                )
+                // Aqui você pode adicionar a lógica de enfileiramento no Redis
+            }
+        } catch (error) {
+            console.error('Erro durante a execução do job:', error)
+        }
+    }
+
+    public startJobScheduler(): void {
+        cron.schedule('*/1 * * * *', () => {
+            console.log('Agendamento do job iniciado...')
+            this.executeJob()
+        })
+    }
+
+    public extractDataFromSourceDatabase(): void {
+        this.startJobScheduler()
+        this.executeJob()
     }
 }
 
-cron.schedule('*/1 * * * *', executeJob)
-
-executeJob()
+const jobService = new JobService()
+jobService.extractDataFromSourceDatabase()
+export default jobService
