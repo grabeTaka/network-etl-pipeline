@@ -1,6 +1,6 @@
 import { Queue } from 'bullmq'
 import { redisConnection } from '@/utils/redis-connection'
-import { jobsDefaultOptions } from '@/utils/jobs-default-options'
+import { jobsBoxDefaultOptions } from '@/utils/jobs-default-options'
 import { hashGenerator } from '@/utils/hash-generator'
 
 export class SourceExtractorBoxesQueue {
@@ -21,7 +21,11 @@ export class SourceExtractorBoxesQueue {
         await this.queue.clean(0, 1000, 'delayed')
 
         console.log('Adicionando job recorrente à fila...')
-        this.queue.add('boxes-queue', {}, jobsDefaultOptions)
+        this.queue.add(
+            'boxes-queue',
+            {},
+            { jobId: 'boxes-recurring-job', ...jobsBoxDefaultOptions },
+        )
     }
 
     public async checkJobs() {

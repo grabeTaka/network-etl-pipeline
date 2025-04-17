@@ -9,7 +9,11 @@ import express from 'express'
 import config from '@/config/database/index'
 import '@/modules/jobs/service/index'
 import { SourceExtractorBoxesQueue } from '@/modules/queue/SourceExtractorBoxesQueue'
-import { SourceExtractorWorker } from '@/modules/worker/SourceExtractorWorker/service'
+import { SourceExtractorBoxesWorker } from '@/modules/worker/SourceExtractorBoxesWorker/service'
+import { SourceExtractorCustomersWorker } from '@/modules/worker/SourceExtractorCustomersWorker/service'
+import { SourceExtractorOrchestrator } from '@/modules/worker/SourceExtractorOrchestrator'
+import { SourceExtractorCablesWorker } from '@/modules/worker/SourceExtractorCablesWorker/service'
+import { SourceExtractorDropCablesWorker } from '@/modules/worker/SourceExtractorDropCablesWorker/service'
 
 const app = express()
 
@@ -36,7 +40,11 @@ async function startServer() {
     sourceExtractorBoxesQueue.scheduleRecurringJob()
     await sourceExtractorBoxesQueue.checkJobs()
 
-    new SourceExtractorWorker()
+    new SourceExtractorBoxesWorker()
+    new SourceExtractorCustomersWorker()
+    new SourceExtractorCablesWorker()
+    new SourceExtractorDropCablesWorker()
+    new SourceExtractorOrchestrator()
 }
 
 startServer()

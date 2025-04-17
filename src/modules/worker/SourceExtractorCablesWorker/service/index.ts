@@ -3,7 +3,7 @@ import { redisConnection } from '@/utils/redis-connection/index'
 import { ISourceExtractorService } from '@/modules/source-extractor/service/type'
 import { sourceExtractorService } from '@/modules/source-extractor/service'
 
-export class SourceExtractorWorker {
+export class SourceExtractorCablesWorker {
     private sourceExtractorService: ISourceExtractorService
 
     constructor() {
@@ -13,19 +13,18 @@ export class SourceExtractorWorker {
 
     initWorker = () => {
         new Worker(
-            'source-extractor-boxes-queue',
+            'source-extractor-cables-queue',
             async (job: Job) => {
                 try {
                     console.log(
-                        `Tentativa ${job.attemptsMade + 1} de ${job.opts.attempts}`,
+                        `Tentativa ${job.attemptsMade + 1} de ${job.opts.attempts} para cables`,
                     )
 
                     const results =
-                        await this.sourceExtractorService.getAllBoxes()
-                    console.log(results)
+                        await this.sourceExtractorService.getAllCables()
                 } catch (error) {
                     console.error(
-                        'Erro ao buscar boxes, reprocessando...',
+                        'Erro ao buscar cables, reprocessando...',
                         error,
                     )
                     throw error
