@@ -20,6 +20,15 @@ class ExtractDataJobService {
 
                 const boxes = await extractBoxService.getAll()
                 console.log(boxes);
+                const boxesChildren = boxes.map((box, index) => ({
+                    name: `create-box-${index}-${index}`,
+                    data: { box },
+                    queueName: 'loading-boxes-queue',
+                    opts: {
+                        attempts: 3,
+                        backoff: { type: 'exponential', delay: 2000 }
+                    }
+                }))
                 /*const customersChildren = customers.map((customer, index) => {
                     const relatedBoxes = boxes.filter(box => +box.id === +customer.box_id)
                     
@@ -44,7 +53,7 @@ class ExtractDataJobService {
                         },
                         children: boxChildren
                     }
-                })
+                })*/
 
 
                 const flowProducer = new FlowProducer({ connection: redisConnection });
@@ -55,8 +64,8 @@ class ExtractDataJobService {
                         attempts: 3,
                         backoff: { type: 'fixed', delay: 2000 }
                     },
-                    children: customersChildren,
-                });*/
+                    children: boxesChildren,
+                });
 
                 console.log('Fluxo de jobs iniciado!')
             } catch (err) {
