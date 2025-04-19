@@ -19,7 +19,6 @@ class ExtractDataJobService {
 
 
                 const boxes = await extractBoxService.getAll()
-                console.log(boxes);
                 const boxesChildren = boxes.map((box, index) => ({
                     name: `create-box-${index}-${index}`,
                     data: { box },

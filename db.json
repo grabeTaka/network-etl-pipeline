@@ -38,27 +38,6 @@
             "type": "Nap",
             "lat": -27.597712,
             "lng": -48.547623
-        },
-        {
-            "id": 2,
-            "name": "Box 2",
-            "type": "Nap",
-            "lat": -27.59934,
-            "lng": -48.54718
-        },
-        {
-            "id": 3,
-            "name": "Box 3",
-            "type": "Splitter",
-            "lat": -27.604785,
-            "lng": -48.545678
-        },
-        {
-            "id": 4,
-            "name": "Box 3",
-            "type": "Splitter",
-            "lat": -27.604785,
-            "lng": -48.545678
         }
     ],
     "customers": [

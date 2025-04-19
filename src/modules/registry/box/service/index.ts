@@ -1,4 +1,5 @@
 import { BoxSchema } from "@/modules/registry/box/schema";
+import { BoxSchema as ExtractBoxSchema} from "@/modules/extract/box/schema";
 import { CreateBoxUseCase } from "@/modules/registry/box/use-cases/create-box-use-case";
 import { FindBoxByFilterUseCase } from "@/modules/registry/box/use-cases/find-box-by-filter-use-case";
 import { UpdateBoxUseCase } from "@/modules/registry/box/use-cases/update-box-use-case";

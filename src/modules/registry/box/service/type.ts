@@ -1,4 +1,5 @@
 import { BoxSchema } from "@/modules/registry/box/schema"
+import { BoxSchema as ExtractBoxSchema } from "@/modules/extract/box/schema"
 
 export interface IBoxService {
     create(user: BoxSchema): Promise <BoxSchema>
