@@ -16,8 +16,10 @@ class ExtractDataJobService {
 
             try {
                 const customers = await extractCustomerService.getAll()
+
+
                 const boxes = await extractBoxService.getAll()
-                
+                console.log(boxes);
                 /*const customersChildren = customers.map((customer, index) => {
                     const relatedBoxes = boxes.filter(box => +box.id === +customer.box_id)
                     

@@ -52,6 +52,13 @@
             "type": "Splitter",
             "lat": -27.604785,
             "lng": -48.545678
+        },
+        {
+            "id": 4,
+            "name": "Box 3",
+            "type": "Splitter",
+            "lat": -27.604785,
+            "lng": -48.545678
         }
     ],
     "customers": [
