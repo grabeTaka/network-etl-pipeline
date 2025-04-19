@@ -7,13 +7,8 @@ addAliases({ '@': resolve(srcDir) })
 import mongoose from 'mongoose'
 import express from 'express'
 import config from '@/config/database/index'
-import '@/modules/jobs/service/index'
-import { SourceExtractorBoxesQueue } from '@/modules/queue/SourceExtractorBoxesQueue'
-import { SourceExtractorBoxesWorker } from '@/modules/worker/SourceExtractorBoxesWorker/service'
-import { SourceExtractorCustomersWorker } from '@/modules/worker/SourceExtractorCustomersWorker/service'
-import { SourceExtractorOrchestrator } from '@/modules/worker/SourceExtractorOrchestrator'
-import { SourceExtractorCablesWorker } from '@/modules/worker/SourceExtractorCablesWorker/service'
-import { SourceExtractorDropCablesWorker } from '@/modules/worker/SourceExtractorDropCablesWorker/service'
+import "@/modules/orchestrator/job/service"
+import {WorkerOrchestrator} from "@/modules/orchestrator/worker/worker-orchestrator"
 
 const app = express()
 
@@ -36,15 +31,7 @@ async function startServer() {
         console.log(`Server is running on port 3000 🚀`)
     })
 
-    const sourceExtractorBoxesQueue = new SourceExtractorBoxesQueue()
-    sourceExtractorBoxesQueue.scheduleRecurringJob()
-    await sourceExtractorBoxesQueue.checkJobs()
-
-    new SourceExtractorBoxesWorker()
-    new SourceExtractorCustomersWorker()
-    new SourceExtractorCablesWorker()
-    new SourceExtractorDropCablesWorker()
-    new SourceExtractorOrchestrator()
+    new WorkerOrchestrator()
 }
 
 startServer()
