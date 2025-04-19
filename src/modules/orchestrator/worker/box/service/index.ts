@@ -4,7 +4,6 @@ import { IBoxWorker } from '@/modules/orchestrator/worker/box/service/type'
 import { LoadingBoxesOrchestratorUseCase } from '@/modules/orchestrator/worker/box/use-cases/loading-boxes-orchestrator-use-case'
 
 export class BoxWorker implements IBoxWorker {
-
     constructor() {
         this.initWorker()
     }
@@ -14,9 +13,12 @@ export class BoxWorker implements IBoxWorker {
             'loading-boxes-queue',
             async (job: Job) => {
                 try {
-                    console.log( `Tentativa ${job.attemptsMade + 1} de ${job.opts.attempts} para box ${job.data.box.id}`)
-                    const loadingBOxesOrchestratorUseCase = new LoadingBoxesOrchestratorUseCase()
-                    loadingBOxesOrchestratorUseCase.prepare(job.data.box);
+                    console.log(
+                        `Tentativa ${job.attemptsMade + 1} de ${job.opts.attempts} para box ${job.data.box.id}`,
+                    )
+                    const loadingBOxesOrchestratorUseCase =
+                        new LoadingBoxesOrchestratorUseCase()
+                    loadingBOxesOrchestratorUseCase.prepare(job.data.box)
                     await loadingBOxesOrchestratorUseCase.execute()
                 } catch (error) {
                     console.error(

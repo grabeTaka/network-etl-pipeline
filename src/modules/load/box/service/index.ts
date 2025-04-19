@@ -1,11 +1,13 @@
-import { CreateBoxLoaderUseCase } from "../use-case/create-box-loader-use-case"
-import { IBoxLoaderService } from "@/modules/load/box/service/type"
+import { Box } from '@ozmap/ozmap-sdk'
+import { ILoadBoxService } from '@/modules/load/box/service/type'
+import { LoadCreateBoxUseCase } from '../use-case/load-create-box-use-case'
 
-export class BoxLoaderService implements IBoxLoaderService {
-    create = async () => {
-        const useCase = new CreateBoxLoaderUseCase()
-        await useCase.execute()
+export class LoadBoxService implements ILoadBoxService {
+    create(data: Box): Promise<Box> {
+        const useCase = new LoadCreateBoxUseCase()
+        useCase.prepare(data)
+        return useCase.execute()
     }
 }
 
-export const boxLoaderService = new BoxLoaderService()
+export const loadBoxService = new LoadBoxService()

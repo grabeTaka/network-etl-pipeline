@@ -1,5 +1,4 @@
-import { BoxSchema } from "@/modules/registry/box/schema/index"
-
+import { BoxSchema } from '@/modules/registry/box/schema/index'
 
 export interface IFindBoxByFilterUseCase {
     prepare: (value: string | number, key: string) => void

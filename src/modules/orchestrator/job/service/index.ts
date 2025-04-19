@@ -1,7 +1,7 @@
 import { Queue, FlowProducer } from 'bullmq'
-import { redisConnection } from "@/modules/shared/utils/redis-connection"
-import { extractBoxService } from "@/modules/extract/box/service"
-import { extractCustomerService } from "@/modules/extract/customer/service"
+import { redisConnection } from '@/modules/shared/utils/redis-connection'
+import { extractBoxService } from '@/modules/extract/box/service'
+import { extractCustomerService } from '@/modules/extract/customer/service'
 import cron from 'node-cron'
 import { JobOptions } from 'bull'
 
@@ -17,7 +17,6 @@ class ExtractDataJobService {
             try {
                 const customers = await extractCustomerService.getAll()
 
-
                 const boxes = await extractBoxService.getAll()
                 const boxesChildren = boxes.map((box, index) => ({
                     name: `create-box-${index}-${index}`,
@@ -25,8 +24,8 @@ class ExtractDataJobService {
                     queueName: 'loading-boxes-queue',
                     opts: {
                         attempts: 3,
-                        backoff: { type: 'exponential', delay: 2000 }
-                    }
+                        backoff: { type: 'exponential', delay: 2000 },
+                    },
                 }))
                 /*const customersChildren = customers.map((customer, index) => {
                     const relatedBoxes = boxes.filter(box => +box.id === +customer.box_id)
@@ -54,17 +53,18 @@ class ExtractDataJobService {
                     }
                 })*/
 
-
-                const flowProducer = new FlowProducer({ connection: redisConnection });
+                const flowProducer = new FlowProducer({
+                    connection: redisConnection,
+                })
                 await flowProducer.add({
                     name: 'create-customers-parent',
                     queueName: 'parent',
                     opts: {
                         attempts: 3,
-                        backoff: { type: 'fixed', delay: 2000 }
+                        backoff: { type: 'fixed', delay: 2000 },
                     },
                     children: boxesChildren,
-                });
+                })
 
                 console.log('Fluxo de jobs iniciado!')
             } catch (err) {

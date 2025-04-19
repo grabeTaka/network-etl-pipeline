@@ -1,10 +1,12 @@
-import { BoxSchema } from "@/modules/extract/box/schema";
-import { IBoxesDataJobOrchestratorUseCase } from "./type";
-import { IBoxLoaderService } from "@/modules/load/box/service/type";
-import { boxLoaderService } from "@/modules/load/box/service";
+import { BoxSchema } from '@/modules/extract/box/schema'
+import { IBoxesDataJobOrchestratorUseCase } from './type'
+import { IBoxLoaderService } from '@/modules/load/box/service/type'
+import { boxLoaderService } from '@/modules/load/box/service'
 
-export class BoxesDataJobOrchestratorUseCase implements IBoxesDataJobOrchestratorUseCase {
-    private data: BoxSchema[];
+export class BoxesDataJobOrchestratorUseCase
+    implements IBoxesDataJobOrchestratorUseCase
+{
+    private data: BoxSchema[]
     private boxLoaderService: IBoxLoaderService
 
     constructor() {
@@ -18,5 +20,5 @@ export class BoxesDataJobOrchestratorUseCase implements IBoxesDataJobOrchestrato
         this.data.map((box) => {
             this.boxLoaderService.create(box)
         })
-    }   
+    }
 }

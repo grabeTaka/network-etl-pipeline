@@ -1,6 +1,4 @@
-import { BoxSchema } from "@/modules/extract/box/schema";
-
-
+import { BoxSchema } from '@/modules/extract/box/schema'
 
 export interface IBoxesDataJobOrchestratorUseCase {
     prepare(data: BoxSchema[])

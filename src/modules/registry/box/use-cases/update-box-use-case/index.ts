@@ -1,12 +1,12 @@
-import mongoose from "mongoose";
-import { boxModel } from "@/modules/registry/box/model";
-import { BoxSchema } from "@/modules/registry/box/schema";
-import { IUpdateBoxUseCase } from "@/modules/registry/box/use-cases/update-box-use-case/types";
+import mongoose from 'mongoose'
+import { boxModel } from '@/modules/registry/box/model'
+import { BoxSchema } from '@/modules/registry/box/schema'
+import { IUpdateBoxUseCase } from '@/modules/registry/box/use-cases/update-box-use-case/types'
 
 export class UpdateBoxUseCase implements IUpdateBoxUseCase {
-    id: mongoose.Types.ObjectId;
-    value: Partial<BoxSchema>;
-    userModel = boxModel;
+    id: mongoose.Types.ObjectId
+    value: Partial<BoxSchema>
+    userModel = boxModel
 
     prepare = (id: string, value: Partial<BoxSchema>): void => {
         if (!mongoose.Types.ObjectId.isValid(id)) {

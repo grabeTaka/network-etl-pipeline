@@ -7,8 +7,8 @@ addAliases({ '@': resolve(srcDir) })
 import mongoose from 'mongoose'
 import express from 'express'
 import config from '@/config/database/index'
-import "@/modules/orchestrator/job/service"
-import {WorkerOrchestrator} from "@/modules/orchestrator/worker/worker-orchestrator"
+import '@/modules/orchestrator/job/service'
+import { WorkerOrchestrator } from '@/modules/orchestrator/worker/worker-orchestrator'
 
 const app = express()
 

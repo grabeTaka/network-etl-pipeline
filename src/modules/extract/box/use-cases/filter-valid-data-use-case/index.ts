@@ -13,21 +13,23 @@ export class FilterValidDataUseCase implements IFilterValidDataUseCase {
         const mustExistsBoxSchema = z.object({
             lat: z.number().min(-90).max(90),
             lng: z.number().min(-180).max(180),
-        });
+        })
 
         this.boxes = this.boxes.filter((box) => {
             try {
-                mustExistsBoxSchema.parse(box);
-                return true;
+                mustExistsBoxSchema.parse(box)
+                return true
             } catch (e) {
-                return false;
+                return false
             }
         })
 
-        return this.boxes.filter((value, index, self) =>
-            index === self.findIndex((t) => (
-                t.lat === value.lat && t.lng === value.lng
-            ))
-        );
+        return this.boxes.filter(
+            (value, index, self) =>
+                index ===
+                self.findIndex(
+                    (t) => t.lat === value.lat && t.lng === value.lng,
+                ),
+        )
     }
 }

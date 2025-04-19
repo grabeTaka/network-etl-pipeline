@@ -4,11 +4,10 @@ import { GetAllUseCase } from '@/modules/extract/cable/use-cases/get-all-use-cas
 import { IExtractCableIntegration } from '@/modules/extract/cable/integration/type'
 import { ExtractCableIntegration } from '@/modules/extract/cable/integration'
 
-
 export class ExtractCableService implements IExtractCableService {
     private extractCableIntegration: IExtractCableIntegration
     constructor() {
-        this.extractCableIntegration = new ExtractCableIntegration
+        this.extractCableIntegration = new ExtractCableIntegration()
     }
     getAll(): Promise<CableSchema[]> {
         const getAllCablesUseCase = new GetAllUseCase(

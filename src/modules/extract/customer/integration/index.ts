@@ -23,7 +23,9 @@ export class SourceExtractorErrors extends Error {
     }
 }
 
-export class ExtractCustomerIntegratrion implements IExtractCustomerIntegration {
+export class ExtractCustomerIntegratrion
+    implements IExtractCustomerIntegration
+{
     private url: string = 'http://json-server:4000'
     private api: AxiosInstance
 

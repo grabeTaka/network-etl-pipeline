@@ -1,5 +1,5 @@
-import { BoxSchema } from "@/modules/extract/box/schema";
+import { Box } from '@ozmap/ozmap-sdk'
 
-export interface IBoxLoaderService {
-    create(data: BoxSchema): void
+export interface ILoadBoxService {
+    create(data: Box): Promise<Box>
 }
