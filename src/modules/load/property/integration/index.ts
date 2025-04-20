@@ -41,8 +41,8 @@ export class LoadPropertyIntegration implements ILoadPropertyIntegration {
         throw new Error('Method not implemented.')
     }
 
-    // TODO ADICIONAR PROJECT PARA VERIFICAR HIERARQUIA
-    create(data: CreatePropertyDTO): Promise<Property> {
+    async create(data: CreatePropertyDTO): Promise<Property> {
+        data.project = this.projectId
         return this.sdk.property.create(data)
     }
 

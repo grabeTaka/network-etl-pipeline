@@ -1,24 +1,23 @@
 import { CustomerSchema as ExtractCustomerSchema } from '@/modules/extract/customer/schema'
-import { CreatePropertyDTO } from '@ozmap/ozmap-sdk'
-import { ITransformToCreateDataUseCase } from '@/modules/transform/customer/use-cases/transform-to-create-data-use-case/type'
+import { UpdatePropertyDTO } from '@ozmap/ozmap-sdk'
+import { ITransformToUpdateDataUseCase } from '@/modules/transform/property/use-cases/transform-to-update-data-use-case/type'
 
-export class TransformToCreateDataUseCase
-    implements ITransformToCreateDataUseCase
+export class TransformToUpdateDataUseCase
+    implements ITransformToUpdateDataUseCase
 {
-    private customer: ExtractCustomerSchema
     private externalLoadBoxId: string
+    private customer: ExtractCustomerSchema
 
     prepare(externalLoadBoxId: string, customer: ExtractCustomerSchema): void {
         this.customer = customer
         this.externalLoadBoxId = externalLoadBoxId
     }
 
-    execute(): CreatePropertyDTO {
+    execute(): UpdatePropertyDTO {
         return {
             name: `${this.customer.code} - ${this.customer.name}`,
             box: this.externalLoadBoxId,
             address: this.customer.address,
-            project: '',
         }
     }
 }

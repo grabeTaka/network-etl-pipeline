@@ -5,10 +5,10 @@ import {
     Prop,
 } from '@typegoose/typegoose'
 import ObjectId = mongoose.Types.ObjectId
-import { CustomerSchema } from '@/modules/registry/customer/schema'
+import { PropertySchema } from '@/modules/registry/property/schema'
 
 @modelOptions({ schemaOptions: { validateBeforeSave: true } })
-export class Customer implements CustomerSchema {
+export class Property implements PropertySchema {
     @Prop({ required: true, default: () => new ObjectId().toString() })
     _id: string
 
@@ -25,4 +25,4 @@ export class Customer implements CustomerSchema {
     externalLoadBoxId!: string
 }
 
-export const customerModel = getModelForClass(Customer)
+export const propertyModel = getModelForClass(Property)

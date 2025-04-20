@@ -1,7 +1,7 @@
 import { CustomerSchema as ExtractedCustomerSchema } from '@/modules/extract/customer/schema'
 import { CreatePropertyDTO, UpdatePropertyDTO } from '@ozmap/ozmap-sdk'
 
-export interface ITransformCustomerService {
+export interface ITransformPropertyService {
     transformToCreate(
         externaLoadBoxId: string,
         extractedCustomer: ExtractedCustomerSchema,

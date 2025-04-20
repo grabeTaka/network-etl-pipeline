@@ -1,16 +1,14 @@
 import { CustomerSchema } from '@/modules/extract/customer/schema'
-import { ITransformCustomerService } from '@/modules/transform/customer/service/type'
+import { ITransformPropertyService } from '@/modules/transform/property/service/type'
 import { CreatePropertyDTO, UpdatePropertyDTO } from '@ozmap/ozmap-sdk'
-import { TransformToCreateDataUseCase } from '@/modules/transform/customer/use-cases/transform-to-create-data-use-case'
-import { TransformToUpdateDataUseCase } from '@/modules/transform/customer/use-cases/transform-to-update-data-use-case'
+import { TransformToCreateDataUseCase } from '@/modules/transform/property/use-cases/transform-to-create-data-use-case'
+import { TransformToUpdateDataUseCase } from '@/modules/transform/property/use-cases/transform-to-update-data-use-case'
 
-export class TransformCustomerService implements ITransformCustomerService {
+export class TransformPropertyService implements ITransformPropertyService {
     transformToCreate(
         externaLoadBoxId: string,
         extractedCustomer: CustomerSchema,
     ): CreatePropertyDTO {
-        console.log(externaLoadBoxId)
-        console.log(extractedCustomer)
         const useCase = new TransformToCreateDataUseCase()
         useCase.prepare(externaLoadBoxId, extractedCustomer)
         return useCase.execute()
@@ -26,4 +24,4 @@ export class TransformCustomerService implements ITransformCustomerService {
     }
 }
 
-export const transformCustomerService = new TransformCustomerService()
+export const transformPropertyService = new TransformPropertyService()
