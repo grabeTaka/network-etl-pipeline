@@ -6,7 +6,7 @@ export const customerSchema = z.object({
     externalSourceId: z.number().min(1),
     externalLoadId: z.string().min(1),
     name: z.string().min(1).max(255),
-    externalLoadBoxId: z.string().min(1).max(255)
+    externalLoadBoxId: z.string().min(1).max(255),
 })
 
 export const updateCustomerSchema = z.object({

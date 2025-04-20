@@ -8,12 +8,15 @@ export class CreateCustomerUseCase implements ICreateCustomerUseCase {
     externalLoadBoxId: string
     customerModel = customerModel
 
-    prepare = (extractCustomer: ExtractCustomerSchema, externalLoadBoxId: string): void => {
+    prepare = (
+        extractCustomer: ExtractCustomerSchema,
+        externalLoadBoxId: string,
+    ): void => {
         this.customer = {
             externalSourceId: extractCustomer.id,
             externalLoadId: externalLoadBoxId,
             name: extractCustomer.name,
-            externalLoadBoxId: externalLoadBoxId
+            externalLoadBoxId: externalLoadBoxId,
         }
     }
 

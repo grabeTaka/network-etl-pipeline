@@ -18,6 +18,9 @@ export class UpdateCustomerUseCase implements IUpdateCustomerUseCase {
     }
 
     execute = async (): Promise<void> => {
-        await this.customerModel.updateOne({ _id: this.id }, { $set: this.value })
+        await this.customerModel.updateOne(
+            { _id: this.id },
+            { $set: this.value },
+        )
     }
 }

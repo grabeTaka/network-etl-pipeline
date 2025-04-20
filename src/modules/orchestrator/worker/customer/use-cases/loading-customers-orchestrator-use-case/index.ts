@@ -26,14 +26,16 @@ export class LoadingCustomersOrchestratorUseCase
             this.extractedCustomerData.box_id,
             'externalSourceId',
         )
-        if(!registeredBox) {
-            return;
+        if (!registeredBox) {
+            return
         }
-        const [registeredCustomer] = await this.registryCustomerService.findByFilter(this.extractedCustomerData.id, 'externalSourceId')
-
+        const [registeredCustomer] =
+            await this.registryCustomerService.findByFilter(
+                this.extractedCustomerData.id,
+                'externalSourceId',
+            )
 
         if (!registeredCustomer) {
-
         }
     }
 }
