@@ -34,10 +34,10 @@
     "boxes": [
         {
             "id": 1,
-            "name": "Box 1",
+            "name": "Box 3",
             "type": "Nap",
             "lat": -27.597712,
-            "lng": -48.547623
+            "lng": -48.547624
         }
     ],
     "customers": [

@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import { z } from 'zod'
 
 export const boxSchema = z.object({
+    _id: z.string().optional(),
     externalSourceId: z.number().min(1),
     externalLoadId: z.string().min(1),
     name: z.string().min(1).max(255),

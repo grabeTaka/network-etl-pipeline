@@ -1,6 +1,6 @@
-import { Box } from "@ozmap/ozmap-sdk"
+import { Box, CreateBoxDTO } from '@ozmap/ozmap-sdk'
 
 export interface ILoadCreateBoxUseCase {
-    prepare(data: Box): void
+    prepare(data: CreateBoxDTO): void
     execute(): Promise<Box>
 }

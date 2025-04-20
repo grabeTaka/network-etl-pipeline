@@ -1,5 +1,5 @@
 import { ILoadBoxIntegration } from '@/modules/load/box/integration/type'
-import OZMapSDK, { Box } from '@ozmap/ozmap-sdk'
+import OZMapSDK, { Box, CreateBoxDTO, UpdateBoxDTO } from '@ozmap/ozmap-sdk'
 import { sdkInstace } from '@/modules/shared/utils/sdk-instance'
 
 export class Errors extends Error {
@@ -23,7 +23,7 @@ export class Errors extends Error {
     }
 }
 
-//TODO Add to shared file the errors 
+//TODO Add to shared file the errors
 
 export class LoadBoxIntegration implements ILoadBoxIntegration {
     private sdk: OZMapSDK
@@ -32,23 +32,34 @@ export class LoadBoxIntegration implements ILoadBoxIntegration {
     constructor() {
         this.sdk = sdkInstace.getSdkInstance()
         this.projectId = sdkInstace.getProjectId()
-
     }
     findByFilter(value: string | number, key: string): Promise<Box> {
         throw new Error('Method not implemented.')
     }
 
     // TODO ADICIONAR PROJECT PARA VERIFICAR HIERARQUIA
-    create(data: Box): Promise<Box> {
+    create(data: CreateBoxDTO): Promise<Box> {
         return this.sdk.box.create({
             project: this.projectId,
             coords: data.coords,
             hierarchyLevel: 0,
             boxType: data.boxType as string,
             implanted: false,
-            name: data.name
+            name: data.name,
         })
+    }
+
+    update(data: UpdateBoxDTO, id: string): Promise<void> {
+        const updateBoxData: UpdateBoxDTO = {
+            coords: data.coords,
+            hierarchyLevel: 0,
+            boxType: data.boxType as string,
+            implanted: false,
+            name: data.name,
+        }
+
+        return this.sdk.box.updateById(id, updateBoxData)
     }
 }
 
-export const loadBoxIntegration = new LoadBoxIntegration();
+export const loadBoxIntegration = new LoadBoxIntegration()

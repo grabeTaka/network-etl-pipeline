@@ -6,5 +6,5 @@ export interface IFilterBoxUseCase {
         registryBox: RegistryBoxSchema,
         extractBox: ExtractBoxSchema,
     ) => void
-    execute: () => boolean
+    execute: () => { boxNeedsUpdate: boolean; boxTypeFieldUpdate: boolean }
 }

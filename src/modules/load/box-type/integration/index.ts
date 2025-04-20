@@ -23,13 +23,12 @@ export class Errors extends Error {
     }
 }
 
-//TODO Add to shared file the errors 
+//TODO Add to shared file the errors
 
 export class LoadBoxTypeIntegration implements ILoadBoxTypeIntegration {
     private sdk: OZMapSDK
     constructor() {
         this.sdk = sdkInstace.getSdkInstance()
-
     }
     create(boxTypeCode: string): Promise<BoxType> {
         return this.sdk.boxType.create({
@@ -37,29 +36,32 @@ export class LoadBoxTypeIntegration implements ILoadBoxTypeIntegration {
             default_reserve: 0,
             config: {
                 base: {
-                    color: '#1F2937'
+                    color: '#1F2937',
                 },
                 regular: {
-                    fillColor: '#3B82F6'
+                    fillColor: '#3B82F6',
                 },
                 not_implanted: {
-                    fillColor: '#F87171'
+                    fillColor: '#F87171',
                 },
                 draft: {
-                    fillColor: '#FBBF24'
-                }
-            }
+                    fillColor: '#FBBF24',
+                },
+            },
         })
     }
 
     async findByFilter(value: string | number, key: string): Promise<BoxType> {
-        return await this.sdk.boxType.findOne({filter: [
-            {
-              property: key,
-              operator: FilterOperator.EQUAL,
-              value: value,
-            }]})
+        return await this.sdk.boxType.findOne({
+            filter: [
+                {
+                    property: key,
+                    operator: FilterOperator.EQUAL,
+                    value: value,
+                },
+            ],
+        })
     }
 }
 
-export const loadBoxTypeIntegration = new LoadBoxTypeIntegration();
+export const loadBoxTypeIntegration = new LoadBoxTypeIntegration()

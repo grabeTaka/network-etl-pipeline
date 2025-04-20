@@ -1,4 +1,4 @@
-import { BoxType } from "@ozmap/ozmap-sdk"
+import { BoxType } from '@ozmap/ozmap-sdk'
 
 export interface ICreateBoxTypeUseCase {
     prepare(boxTypeName: string)

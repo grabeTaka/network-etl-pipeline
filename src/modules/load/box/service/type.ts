@@ -1,5 +1,6 @@
-import { Box } from '@ozmap/ozmap-sdk'
+import { Box, CreateBoxDTO, UpdateBoxDTO } from '@ozmap/ozmap-sdk'
 
 export interface ILoadBoxService {
-    create(data: Box): Promise<Box>
+    create(data: CreateBoxDTO): Promise<Box>
+    update(data: UpdateBoxDTO, externalLoadId: string)
 }

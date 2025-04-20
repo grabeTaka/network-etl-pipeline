@@ -14,15 +14,17 @@ export class FilterBoxUseCase implements IFilterBoxUseCase {
         this.extractedBox = extractedBox
     }
 
-    execute = (): boolean => {
+    execute = (): { boxNeedsUpdate: boolean; boxTypeFieldUpdate: boolean } => {
         if (
             this.registeredBox.coordinates[0] !== this.extractedBox.lat ||
             this.registeredBox.coordinates[1] !== this.extractedBox.lng ||
-            this.registeredBox.typeName !== this.extractedBox.type ||
             this.registeredBox.name !== this.extractedBox.name
         )
-            return true
+            return { boxNeedsUpdate: true, boxTypeFieldUpdate: false }
 
-        return false
+        if (this.registeredBox.typeName !== this.extractedBox.type)
+            return { boxNeedsUpdate: true, boxTypeFieldUpdate: true }
+
+        return { boxNeedsUpdate: false, boxTypeFieldUpdate: false }
     }
 }
