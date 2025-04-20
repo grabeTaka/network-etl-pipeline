@@ -16,13 +16,16 @@ export class Property implements PropertySchema {
     name!: string
 
     @Prop({ required: true })
+    code!: string
+
+    @Prop({ required: true })
     externalSourceId!: number
 
     @Prop({ required: true, default: () => new ObjectId().toString() })
     externalLoadId!: string
 
     @Prop({ required: true, default: () => new ObjectId().toString() })
-    externalLoadBoxId!: string
+    boxId!: string
 }
 
 export const propertyModel = getModelForClass(Property)

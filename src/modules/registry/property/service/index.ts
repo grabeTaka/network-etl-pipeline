@@ -4,9 +4,9 @@ import { CreatePropertyUseCase } from '@/modules/registry/property/use-cases/cre
 import { FindPropertyByFilterUseCase } from '@/modules/registry/property/use-cases/find-property-by-filter-use-case'
 import { UpdatePropertyUseCase } from '@/modules/registry/property/use-cases/update-property-use-case'
 
-import { IRegistryCustomerService } from '@/modules/registry/property/service/type'
+import { IRegistryPropertyService } from '@/modules/registry/property/service/type'
 
-class RegistryCustomerService implements IRegistryCustomerService {
+class RegistryPropertyService implements IRegistryPropertyService {
     findByFilter(value: string | number, key: string) {
         const useCase = new FindPropertyByFilterUseCase()
         useCase.prepare(value, key)
@@ -15,19 +15,20 @@ class RegistryCustomerService implements IRegistryCustomerService {
 
     create = (
         property: Partial<ExtractCustomerSchema>,
-        externalLoadCustomerId: string,
+        externalLoadProteryId: string,
+        boxId: string,
     ): Promise<PropertySchema> => {
         const useCase = new CreatePropertyUseCase()
-        useCase.prepare(property, externalLoadCustomerId)
+        useCase.prepare(property, externalLoadProteryId, boxId)
         return useCase.execute()
     }
 
-    update(id: string, value: Partial<PropertySchema>) {
+    update(id: string, value: Partial<PropertySchema>, boxId: string) {
         const useCase = new UpdatePropertyUseCase()
-        useCase.prepare(id, value)
+        useCase.prepare(id, value, boxId)
         return useCase.execute()
     }
 }
 
-const registryCustomerService = new RegistryCustomerService()
-export default registryCustomerService
+const registryPropertyService = new RegistryPropertyService()
+export default registryPropertyService

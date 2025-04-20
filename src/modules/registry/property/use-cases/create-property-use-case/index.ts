@@ -5,18 +5,20 @@ import { ICreatePropertyUseCase } from '@/modules/registry/property/use-cases/cr
 
 export class CreatePropertyUseCase implements ICreatePropertyUseCase {
     property: PropertySchema
-    externalLoadBoxId: string
+    externalLoadPropertyId: string
+    externalLoadCustomerId: string
     propertyModel = propertyModel
 
     prepare = (
         extractProperty: ExtractCustomerSchema,
-        externalLoadBoxId: string,
+        externalLoadPropertyId: string,
+        boxId: string,
     ): void => {
         this.property = {
             externalSourceId: extractProperty.id,
-            externalLoadId: externalLoadBoxId,
+            externalLoadId: externalLoadPropertyId,
             name: extractProperty.name,
-            externalLoadBoxId: externalLoadBoxId,
+            boxId: boxId,
         }
     }
 

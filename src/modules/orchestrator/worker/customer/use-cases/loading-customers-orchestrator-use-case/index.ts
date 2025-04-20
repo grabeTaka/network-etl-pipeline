@@ -5,15 +5,16 @@ import { ILoadingCustomersOrchestratorUseCase } from '@/modules/orchestrator/wor
 import registryBoxService from '@/modules/registry/box/service'
 import { IRegistryBoxService } from '@/modules/registry/box/service/type'
 import registryCustomerService from '@/modules/registry/property/service'
-import { IRegistryCustomerService } from '@/modules/registry/property/service/type'
+import { IRegistryPropertyService } from '@/modules/registry/property/service/type'
 import { transformPropertyService } from '@/modules/transform/property/service'
 import { ITransformPropertyService } from '@/modules/transform/property/service/type'
+import { FilterPropertyUseCase } from '@/modules/orchestrator/worker/customer/use-cases/filter-property-use-case'
 
 export class LoadingCustomersOrchestratorUseCase
     implements ILoadingCustomersOrchestratorUseCase
 {
     private extractedCustomerData: ExtractCustomerSchema
-    private registryPropertyService: IRegistryCustomerService
+    private registryPropertyService: IRegistryPropertyService
     private registryBoxService: IRegistryBoxService
     private transformPropertyService: ITransformPropertyService
     private loadPropertyService: ILoadPropertyService
@@ -54,15 +55,38 @@ export class LoadingCustomersOrchestratorUseCase
                 await this.loadPropertyService.create(transformCustomerDTO)
             await this.registryPropertyService.create(
                 this.extractedCustomerData,
-                registeredBox.externalLoadId,
+                createdLoadProperty.id as string,
+                registeredBox._id,
             )
 
-            console.log(createdLoadProperty)
-        } else {
-            console.log(':D')
+            return
+        }
+
+        const filterPropertyUseCase = new FilterPropertyUseCase()
+        filterPropertyUseCase.prepare(
+            registeredProperty,
+            this.extractedCustomerData,
+            registeredBox,
+        )
+        const { propertyNeedsUpdate } = filterPropertyUseCase.execute()
+
+        if (propertyNeedsUpdate) {
+            const transformPropertyDTO =
+                this.transformPropertyService.transformToUpdate(
+                    registeredBox.externalLoadId,
+                    this.extractedCustomerData,
+                )
+
+            await this.loadPropertyService.update(
+                transformPropertyDTO,
+                registeredProperty.externalLoadId,
+            )
+            await this.registryPropertyService.update(
+                registeredProperty._id,
+                this.extractedCustomerData,
+                registeredBox._id,
+            )
+            console.log(transformPropertyDTO)
         }
     }
 }
-
-//TODO add code a collection customer
-// trocar tudo de customer para property para manter coeso

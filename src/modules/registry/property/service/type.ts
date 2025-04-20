@@ -1,10 +1,11 @@
 import { PropertySchema } from '@/modules/registry/property/schema'
 
-export interface IRegistryCustomerService {
+export interface IRegistryPropertyService {
     create(
         property: PropertySchema,
-        externalLoadBoxId: string,
+        externalLoadProteryId: string,
+        boxId: string,
     ): Promise<PropertySchema>
     findByFilter(value: string | number, key: string): Promise<PropertySchema[]>
-    update(id: string, value: Partial<PropertySchema>)
+    update(id: string, value: Partial<PropertySchema>, boxId: string)
 }
