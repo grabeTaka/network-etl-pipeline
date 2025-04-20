@@ -19,8 +19,6 @@ export class CreateBoxUseCase implements ICreateBoxUseCase {
     }
 
     execute = async (): Promise<BoxSchema> => {
-        console.log('create box!!!!!!!!!!!!!!!!')
-        console.log(this.box)
         return await this.boxModel.create(this.box)
     }
 }

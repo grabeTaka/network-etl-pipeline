@@ -1,33 +1,12 @@
-import { BoxSchema as ExtractBoxSchema } from '@/modules/extract/box/schema'
-import { ILoadingBoxesOrchestratorUseCase } from '@/modules/orchestrator/worker/box/use-cases/loading-boxes-orchestrator-use-case/type'
-import { IRegistryBoxService } from '@/modules/registry/box/service/type'
-import { FilterBoxUseCase } from '../filter-box-use-case'
-import { ILoadBoxTypeService } from '@/modules/load/box-type/service/type'
-import { loadBoxTypeService } from '@/modules/load/box-type/service'
-import { ITransformBoxService } from '@/modules/transform/box/service/type'
-import { transformBoxService } from '@/modules/transform/box/service'
-import { ILoadBoxService } from '@/modules/load/box/service/type'
-import { loadBoxService } from '@/modules/load/box/service'
-import registryBoxService from '@/modules/registry/box/service'
+import { CustomerSchema as ExtractCustomerSchema } from '@/modules/extract/customer/schema'
+import { ILoadingCustomersOrchestratorUseCase } from '@/modules/orchestrator/worker/customer/use-cases/loading-customers-orchestrator-use-case/type'
 
-export class LoadingBoxesOrchestratorUseCase
-    implements ILoadingBoxesOrchestratorUseCase
+export class LoadingCustomersOrchestratorUseCase
+    implements ILoadingCustomersOrchestratorUseCase
 {
-    private extractedBoxData: ExtractBoxSchema
-    private registryBoxService: IRegistryBoxService
-    private loadBoxTypeService: ILoadBoxTypeService
-    private transformBoxService: ITransformBoxService
-    private loadBoxService: ILoadBoxService
-
-    constructor() {
-        this.registryBoxService = registryBoxService
-        this.loadBoxTypeService = loadBoxTypeService
-        this.transformBoxService = transformBoxService
-        this.loadBoxService = loadBoxService
-    }
-
-    prepare(data: ExtractBoxSchema): void {
-        this.extractedBoxData = data
+    private extractedCustomerData: ExtractCustomerSchema
+    prepare(data: ExtractCustomerSchema): void {
+        this.extractedCustomerData = data
     }
 
     async execute(): Promise<void> {
