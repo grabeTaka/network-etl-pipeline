@@ -1,7 +1,7 @@
 import { Worker, Job } from 'bullmq'
 import { redisConnection } from '@/modules/shared/utils/redis-connection/index'
 import { ICustomerWorker } from '@/modules/orchestrator/worker/customer/service/type'
-import { LoadingBoxesOrchestratorUseCase } from '@/modules/orchestrator/worker/box/use-cases/loading-boxes-orchestrator-use-case'
+import { LoadingCustomersOrchestratorUseCase } from '@/modules/orchestrator/worker/customer/use-cases/loading-customers-orchestrator-use-case'
 
 export class CustomerWorker implements ICustomerWorker {
     constructor() {
@@ -14,12 +14,14 @@ export class CustomerWorker implements ICustomerWorker {
             async (job: Job) => {
                 try {
                     console.log(
-                        `Tentativa ${job.attemptsMade + 1} de ${job.opts.attempts} para box ${job.data.box.id}`,
+                        `Tentativa ${job.attemptsMade + 1} de ${job.opts.attempts} para customer ${job.data.customer.id}`,
                     )
-                    const loadingBOxesOrchestratorUseCase =
-                        new LoadingBoxesOrchestratorUseCase()
-                    loadingBOxesOrchestratorUseCase.prepare(job.data.box)
-                    await loadingBOxesOrchestratorUseCase.execute()
+                    const loadingCustomersOrchestratorUseCase =
+                        new LoadingCustomersOrchestratorUseCase()
+                    loadingCustomersOrchestratorUseCase.prepare(
+                        job.data.customer,
+                    )
+                    await loadingCustomersOrchestratorUseCase.execute()
                 } catch (error) {
                     console.error(
                         'Erro ao buscar boxes, reprocessando...',

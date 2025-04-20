@@ -49,7 +49,7 @@ export class LoadBoxIntegration implements ILoadBoxIntegration {
         })
     }
 
-    update(data: UpdateBoxDTO, id: string): Promise<void> {
+    async update(data: UpdateBoxDTO, id: string): Promise<void> {
         const updateBoxData: UpdateBoxDTO = {
             coords: data.coords,
             hierarchyLevel: 0,

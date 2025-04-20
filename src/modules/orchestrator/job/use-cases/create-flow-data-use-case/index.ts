@@ -2,7 +2,7 @@ import { FlowProducer } from 'bullmq'
 import { UnifiedBoxData } from '@/modules/orchestrator/job/use-cases/unify-data-from-extract-use-case/type'
 import { ICreateFlowDataUseCase } from '@/modules/orchestrator/job/use-cases/create-flow-data-use-case/type'
 import { redisConnection } from '@/modules/shared/utils/redis-connection'
-
+import { queueDefaultOptions } from '@/modules/shared/utils/queue-default-options'
 export class CreateFlowDataUseCase implements ICreateFlowDataUseCase {
     private boxesEnriched: UnifiedBoxData[]
 
@@ -14,14 +14,16 @@ export class CreateFlowDataUseCase implements ICreateFlowDataUseCase {
         for (const { box, customers, cables } of this.boxesEnriched) {
             const customerJobs = customers.map((customer) => ({
                 name: `customer-${customer.id}`,
-                queueName: 'customer-queue',
-                data: customer,
+                queueName: 'loading-customers-queue',
+                data: { customer },
+                opts: queueDefaultOptions,
             }))
 
             const cableJobs = cables.map((cable) => ({
                 name: `cable-${cable.id}`,
                 queueName: 'cable-queue',
-                data: cable,
+                data: { cable },
+                opts: queueDefaultOptions,
             }))
 
             const parents = [...customerJobs, ...cableJobs]
@@ -37,10 +39,7 @@ export class CreateFlowDataUseCase implements ICreateFlowDataUseCase {
                             name: `create-box-${box.id}-${box.id}`,
                             data: { box },
                             queueName: 'loading-boxes-queue',
-                            opts: {
-                                attempts: 3,
-                                backoff: { type: 'fixed', delay: 2000 },
-                            },
+                            opts: queueDefaultOptions,
                         },
                     ],
                 })),

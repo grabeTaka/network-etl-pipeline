@@ -73,10 +73,12 @@ export class LoadingBoxesOrchestratorUseCase
                 boxTypeId,
                 this.extractedBoxData,
             )
+
             await this.loadBoxService.update(
                 transformBoxDTO,
                 registeredBox.externalLoadId,
             )
+
             await this.registryBoxService.update(
                 registeredBox._id,
                 this.extractedBoxData,

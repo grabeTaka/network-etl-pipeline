@@ -16,10 +16,10 @@ export class BoxWorker implements IBoxWorker {
                     console.log(
                         `Tentativa ${job.attemptsMade + 1} de ${job.opts.attempts} para box ${job.data.box.id}`,
                     )
-                    const loadingBOxesOrchestratorUseCase =
+                    const loadingBoxesOrchestratorUseCase =
                         new LoadingBoxesOrchestratorUseCase()
-                    loadingBOxesOrchestratorUseCase.prepare(job.data.box)
-                    await loadingBOxesOrchestratorUseCase.execute()
+                    loadingBoxesOrchestratorUseCase.prepare(job.data.box)
+                    await loadingBoxesOrchestratorUseCase.execute()
                 } catch (error) {
                     console.error(
                         'Erro ao buscar boxes, reprocessando...',
@@ -32,3 +32,6 @@ export class BoxWorker implements IBoxWorker {
         )
     }
 }
+
+//TODO não deve reprocessar caso o erro seja 4xx
+//TODO iremos adicionar mais um worker que irá sincronizar os boxes que não possuem cliente associados esse poderá executar ações concorrentes

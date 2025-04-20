@@ -9,5 +9,4 @@ export const queueDefaultOptions = {
             : 3000,
     },
     removeOnComplete: true,
-    removeOnFail: false,
 } as unknown as JobsOptions
