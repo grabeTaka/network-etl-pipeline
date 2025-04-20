@@ -4,6 +4,8 @@ import registryBoxService from '@/modules/registry/box/service'
 import { IRegistryBoxService } from '@/modules/registry/box/service/type'
 import registryCustomerService from '@/modules/registry/customer/service'
 import { IRegistryCustomerService } from '@/modules/registry/customer/service/type'
+import { transformCustomerService } from '@/modules/transform/customer/service'
+import { ITransformCustomerService } from '@/modules/transform/customer/service/type'
 
 export class LoadingCustomersOrchestratorUseCase
     implements ILoadingCustomersOrchestratorUseCase
@@ -11,10 +13,12 @@ export class LoadingCustomersOrchestratorUseCase
     private extractedCustomerData: ExtractCustomerSchema
     private registryCustomerService: IRegistryCustomerService
     private registryBoxService: IRegistryBoxService
+    private transformCustomerService: ITransformCustomerService
 
     constructor() {
         this.registryCustomerService = registryCustomerService
         this.registryBoxService = registryBoxService
+        this.transformCustomerService = transformCustomerService
     }
 
     prepare(data: ExtractCustomerSchema): void {
@@ -36,6 +40,11 @@ export class LoadingCustomersOrchestratorUseCase
             )
 
         if (!registeredCustomer) {
+            const transformCustomerDTO =
+                this.transformCustomerService.transformToCreate(
+                    registeredBox._id,
+                    this.extractedCustomerData,
+                )
         }
     }
 }

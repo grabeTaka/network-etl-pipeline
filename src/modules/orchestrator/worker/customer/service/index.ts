@@ -24,7 +24,7 @@ export class CustomerWorker implements ICustomerWorker {
                     await loadingCustomersOrchestratorUseCase.execute()
                 } catch (error) {
                     console.error(
-                        'Erro ao buscar boxes, reprocessando...',
+                        'Erro ao buscar customers, reprocessando...',
                         error,
                     )
                     throw error

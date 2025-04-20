@@ -9,6 +9,8 @@ export class TransformCustomerService implements ITransformCustomerService {
         externaLoadBoxId: string,
         extractedCustomer: CustomerSchema,
     ): CreatePropertyDTO {
+        console.log(externaLoadBoxId)
+        console.log(extractedCustomer)
         const useCase = new TransformToCreateDataUseCase()
         useCase.prepare(externaLoadBoxId, extractedCustomer)
         return useCase.execute()
