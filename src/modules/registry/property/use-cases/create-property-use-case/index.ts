@@ -19,6 +19,7 @@ export class CreatePropertyUseCase implements ICreatePropertyUseCase {
             externalLoadId: externalLoadPropertyId,
             name: extractProperty.name,
             boxId: boxId,
+            code: extractProperty.code,
         }
     }
 

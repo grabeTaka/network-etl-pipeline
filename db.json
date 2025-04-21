@@ -49,13 +49,6 @@
             "box_id": 10
         },
         {
-            "id": 2,
-            "code": "CUST-002",
-            "name": "Alice Johnson",
-            "address": "456 Ocean Ave",
-            "box_id": 3
-        },
-        {
             "id": 3,
             "code": "CUST-003",
             "name": "Bob Smith",

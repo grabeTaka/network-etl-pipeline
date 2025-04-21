@@ -1,12 +1,13 @@
-import { PropertySchema as RegistryPropertySchema } from '@/modules/registry/property/schema/index'
+import { CableSchema as RegistryCableSchema } from '@/modules/registry/cable/schema/index'
 import { BoxSchema as RegistryBoxSchema } from '@/modules/registry/box/schema/index'
-import { CustomerSchema as ExtractCustomerSchema } from '@/modules/extract/customer/schema/index'
+import { CableSchema as ExtractCableSchema } from '@/modules/extract/cable/schema/index'
 
-export interface IFilterPropertyUseCase {
+export interface IFilterCableUseCase {
     prepare: (
-        registryProperty: RegistryPropertySchema,
-        registeredBox: RegistryBoxSchema,
-        extractCustomer: ExtractCustomerSchema,
+        registryCable: RegistryCableSchema,
+        registeredBoxA: RegistryBoxSchema,
+        registeredBoxB: RegistryBoxSchema,
+        extractCable: ExtractCableSchema,
     ) => void
-    execute: () => { propertyNeedsUpdate: boolean }
+    execute: () => { cableNeedsUpdate: boolean }
 }
