@@ -21,7 +21,7 @@ export class CreateFlowDataUseCase implements ICreateFlowDataUseCase {
 
             const cableJobs = cables.map((cable) => ({
                 name: `cable-${cable.id}`,
-                queueName: 'cable-queue',
+                queueName: 'loading-cables-queue',
                 data: { cable },
                 opts: queueDefaultOptions,
             }))

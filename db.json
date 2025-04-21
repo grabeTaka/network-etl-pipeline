@@ -4,7 +4,7 @@
             "id": 1,
             "name": "Fiber Route A",
             "capacity": 144,
-            "boxes_connected": [1, 2],
+            "boxes_connected": [10, 12],
             "path": [
                 { "lat": -27.595377, "lng": -48.54805 },
                 { "lat": -27.597712, "lng": -48.547623 },

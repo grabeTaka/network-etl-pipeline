@@ -36,3 +36,7 @@ class ExtractDataJobService {
 }
 
 export const extractDataJob = new ExtractDataJobService()
+
+//TODO FILTRAR BOXES PELO MESMO NOME, SDK DA OZMAP N ACEITA NOME DE BOXES REPETIDOS
+//Verificar se precisamos filtrar customer por algum campo (talvez não)
+//Cables filtrar cables que não possuam um array de boxes connected, é necessário duas boxes para realizar a conexão

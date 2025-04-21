@@ -86,7 +86,6 @@ export class LoadingCustomersOrchestratorUseCase
                 this.extractedCustomerData,
                 registeredBox._id,
             )
-            console.log(transformPropertyDTO)
         }
     }
 }
