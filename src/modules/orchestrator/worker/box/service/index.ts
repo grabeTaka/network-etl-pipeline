@@ -20,6 +20,7 @@ export class BoxWorker implements IBoxWorker {
                         new LoadingBoxesOrchestratorUseCase()
                     loadingBoxesOrchestratorUseCase.prepare(job.data.box)
                     await loadingBoxesOrchestratorUseCase.execute()
+                    console.log('fim box')
                 } catch (error) {
                     console.error(
                         'Erro ao buscar boxes, reprocessando...',

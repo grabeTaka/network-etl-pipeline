@@ -17,10 +17,10 @@ export class CableWorker implements ICableWorker {
                         `Tentativa ${job.attemptsMade + 1} de ${job.opts.attempts} para cable ${job.data.cable.id}`,
                     )
 
-                    const loadingCablesOrchestratorUseCase =
+                    /*const loadingCablesOrchestratorUseCase =
                         new LoadingCablesOrchestratorUseCase()
                     loadingCablesOrchestratorUseCase.prepare(job.data.cable)
-                    await loadingCablesOrchestratorUseCase.execute()
+                    await loadingCablesOrchestratorUseCase.execute()*/
                 } catch (error) {
                     console.error(
                         'Erro ao buscar cables, reprocessando...',

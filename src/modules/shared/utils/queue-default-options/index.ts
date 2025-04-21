@@ -8,5 +8,5 @@ export const queueDefaultOptions = {
             ? Number(process.env.JOB_BACKOFF_DELAY_SECONDS) * 1000
             : 3000,
     },
-    removeOnComplete: true,
+    removeOnComplete: false,
 } as unknown as JobsOptions
