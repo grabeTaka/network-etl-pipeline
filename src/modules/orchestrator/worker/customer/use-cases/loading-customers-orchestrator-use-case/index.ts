@@ -53,7 +53,7 @@ export class LoadingCustomersOrchestratorUseCase
 
         if (!registeredProperty) {
             logger.info(
-                `[PropertyWorker] Starting to process to new property with ID: ${this.job.data.customer.id}`,
+                `[PropertyWorker] Starting to process to new property with ID: ${this.job.data.customer.id}, ${this.job.attemptsMade} of ${this.job.opts.attempts}`,
             )
             const transformCustomerDTO =
                 this.transformPropertyService.transformToCreate(
@@ -83,7 +83,7 @@ export class LoadingCustomersOrchestratorUseCase
         const { propertyNeedsUpdate } = filterPropertyUseCase.execute()
         if (propertyNeedsUpdate) {
             logger.info(
-                `[PropertyWorker] Starting to process to new property with ID: ${this.job.data.customer.id}`,
+                `[PropertyWorker] Starting to process to update property with ID: ${this.job.data.customer.id} , ${this.job.attemptsMade} of ${this.job.opts.attempts}`,
             )
             const transformPropertyDTO =
                 this.transformPropertyService.transformToUpdate(
@@ -101,7 +101,7 @@ export class LoadingCustomersOrchestratorUseCase
                 registeredBox ? registeredBox._id : null,
             )
             logger.info(
-                `[CableWorker] Successfully processed property with ID: ${this.job.data.cable.id}`,
+                `[CableWorker] Successfully updated property with ID: ${this.job.data.cable.id}, , ${this.job.attemptsMade} of ${this.job.opts.attempts}`,
             )
         }
     }

@@ -15,19 +15,20 @@ export class CustomerWorker implements ICustomerWorker {
             'loading-customers-queue',
             async (job: Job) => {
                 try {
+                    console.log(job.attemptsMade)
                     const loadingCustomersOrchestratorUseCase =
                         new LoadingCustomersOrchestratorUseCase()
                     loadingCustomersOrchestratorUseCase.prepare(job)
                     await loadingCustomersOrchestratorUseCase.execute()
                 } catch (error) {
                     if (error instanceof Bottleneck.BottleneckError) {
-                        logger.warn(
+                        logger.error(
                             `[PropertyWorker] Rate limit reached property property with ID: ${job.data.property.id}`,
                         )
+                        throw error
                     }
-
                     logger.error(
-                        `[PropertyWorker] Error processing property with ID: ${job.data.property.id}. Will be retried..., description: ${error.message}`,
+                        `[PropertyWorker] Error processing property with ID: ${job.data.property.id}. Will be retried...`,
                     )
 
                     throw error

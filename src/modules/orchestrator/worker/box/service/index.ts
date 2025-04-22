@@ -21,13 +21,14 @@ export class BoxWorker implements IBoxWorker {
                     await loadingBoxesOrchestratorUseCase.execute()
                 } catch (error) {
                     if (error instanceof Bottleneck.BottleneckError) {
-                        logger.warn(
+                        logger.error(
                             `[BoxWorker] Rate limit reached for box with ID: ${job.data.box.id}`,
                         )
+                        throw error
                     }
 
                     logger.error(
-                        `[BoxWorker] Error processing box with ID: ${job.data.box.id}. Will be retried..., description: ${error.message}`,
+                        `[BoxWorker] Error processing box with ID: ${job.data.box.id}. Will be retried...`,
                     )
 
                     throw error

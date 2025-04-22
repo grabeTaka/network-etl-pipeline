@@ -34,21 +34,28 @@
     "boxes": [
         {
             "id": 1,
-            "name": "Box 1 teste 23/04",
+            "name": "Box 1 teste 25/04",
             "type": "Nap",
             "lat": -27.5976,
             "lng": -48.5476
         },
         {
             "id": 2,
-            "name": "Box 2 teste 23/04",
+            "name": "Box 2 teste 25/04",
             "type": "Nap V2",
             "lat": -27.5977,
             "lng": -48.5475
         },
         {
             "id": 3,
-            "name": "Box 3 teste Gab 23/04",
+            "name": "Box 3 teste Gab 25/04",
+            "type": "Nap",
+            "lat": -27.5978,
+            "lng": -48.5474
+        },
+        {
+            "id": 4,
+            "name": "Box 3 teste Gab 25/04",
             "type": "Nap",
             "lat": -27.5978,
             "lng": -48.5474
@@ -61,27 +68,6 @@
             "name": "John Doee",
             "address": "123 Main Street",
             "box_id": 1
-        },
-        {
-            "id": 3,
-            "code": "CUST-003",
-            "name": "Bob Smith",
-            "address": "789 Sunset Blvd",
-            "box_id": 2
-        },
-        {
-            "id": 4,
-            "code": "CUST-004",
-            "name": "Carlos Silva",
-            "address": "101 Central Park",
-            "box_id": 3
-        },
-        {
-            "id": 5,
-            "code": "CUST-005",
-            "name": "Emma Williams",
-            "address": "202 Greenway Drive",
-            "box_id": 3
         }
     ]
 }

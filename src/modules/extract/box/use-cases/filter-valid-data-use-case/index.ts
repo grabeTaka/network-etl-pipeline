@@ -25,7 +25,6 @@ export class FilterValidDataUseCase implements IFilterValidDataUseCase {
                     logger.warn(
                         `[BoxFilter] Box with ID ${box.id} was skipped because its name "${box.name}" was already added.`,
                     )
-                    //TODO CHECKIT
                     boxNameSet.add(box.name.toUpperCase())
                     return false
                 }

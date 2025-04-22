@@ -42,7 +42,7 @@ export class LoadingBoxesOrchestratorUseCase
 
         if (!registeredBox) {
             logger.info(
-                `[BoxWorker] Starting to process to new box with ID: ${this.job.data.box.id}`,
+                `[BoxWorker] Starting to process to new box with ID: ${this.job.data.box.id}, ${this.job.attemptsMade} of ${this.job.opts.attempts}`,
             )
             const boxType = await this.loadBoxTypeService.createOrFindOne(
                 'code',
@@ -71,7 +71,7 @@ export class LoadingBoxesOrchestratorUseCase
 
         if (boxNeedsUpdate) {
             logger.info(
-                `[BoxWorker] Starting to process to update box with ID: ${this.job.data.box.id}`,
+                `[BoxWorker] Starting to process to update box with ID: ${this.job.data.box.id}, ${this.job.attemptsMade} of ${this.job.opts.attempts}`,
             )
             let boxTypeId = null
             if (boxTypeFieldUpdate) {

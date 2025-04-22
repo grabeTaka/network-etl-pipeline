@@ -21,9 +21,10 @@ export class CableWorker implements ICableWorker {
                     await loadingCablesOrchestratorUseCase.execute()
                 } catch (error) {
                     if (error instanceof Bottleneck.BottleneckError) {
-                        logger.warn(
+                        logger.error(
                             `[CableWorker] Rate limit reached cable cable with ID: ${job.data.cable.id}`,
                         )
+                        throw error
                     }
 
                     logger.error(

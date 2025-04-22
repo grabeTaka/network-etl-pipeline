@@ -24,8 +24,6 @@ export class Errors extends Error {
     }
 }
 
-//TODO Add to shared file the errors
-
 export class LoadBoxTypeIntegration implements ILoadBoxTypeIntegration {
     private sdk: OZMapSDK
     constructor() {

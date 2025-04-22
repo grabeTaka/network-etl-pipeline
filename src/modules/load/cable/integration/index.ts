@@ -28,8 +28,6 @@ export class Errors extends Error {
     }
 }
 
-//TODO Add to shared file the errors
-
 export class LoadCableIntegration implements ILoadCableIntegration {
     private sdk: OZMapSDK
     private projectId: string

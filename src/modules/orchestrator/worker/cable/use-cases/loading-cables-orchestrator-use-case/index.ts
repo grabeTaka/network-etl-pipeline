@@ -88,7 +88,7 @@ export class LoadingCablesOrchestratorUseCase
 
         if (!registeredCable) {
             logger.info(
-                `[CableWorker] Starting to process to new cable with ID: ${this.job.data.cable.id}`,
+                `[CableWorker] Starting to process to new cable with ID: ${this.job.data.cable.id}, ${this.job.attemptsMade} of ${this.job.opts.attempts}`,
             )
             const transformCableDTO =
                 await this.transformCableService.transformToCreate(
@@ -122,7 +122,7 @@ export class LoadingCablesOrchestratorUseCase
 
         if (cableNeedsUpdate) {
             logger.info(
-                `[CableWorker] Starting to process to update cable with ID: ${this.job.data.cable.id}`,
+                `[CableWorker] Starting to process to update cable with ID: ${this.job.data.cable.id}, ${this.job.attemptsMade} of ${this.job.opts.attempts}`,
             )
             const transformCableDTO =
                 await this.transformCableService.transformToUpdate(
@@ -141,7 +141,7 @@ export class LoadingCablesOrchestratorUseCase
                 registeredBoxB._id,
             )
             logger.info(
-                `[CableWorker] Successfully processed cable with ID: ${this.job.data.cable.id}`,
+                `[CableWorker] Successfully updated cable with ID: ${this.job.data.cable.id}`,
             )
         }
     }

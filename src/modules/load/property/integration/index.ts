@@ -28,8 +28,6 @@ export class Errors extends Error {
     }
 }
 
-//TODO Add to shared file the errors
-
 export class LoadPropertyIntegration implements ILoadPropertyIntegration {
     private sdk: OZMapSDK
     private projectId: string
@@ -41,14 +39,16 @@ export class LoadPropertyIntegration implements ILoadPropertyIntegration {
 
     async create(data: CreatePropertyDTO): Promise<Property> {
         data.project = this.projectId
-        return rateLimiter.schedule(async () => this.sdk.property.create(data))
+        console.log('????')
+        return await this.sdk.property.create(data) //rateLimiter.schedule(async () => )
     }
 
     async update(data: UpdatePropertyDTO, id: string): Promise<void> {
         const updatePropertyData: UpdatePropertyDTO = data
 
-        return rateLimiter.schedule(async () =>
-            this.sdk.property.updateById(id, updatePropertyData),
+        return rateLimiter.schedule(
+            async () =>
+                await this.sdk.property.updateById(id, updatePropertyData),
         )
     }
 }
