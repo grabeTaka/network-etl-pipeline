@@ -12,7 +12,7 @@ export class CreatePropertyUseCase implements ICreatePropertyUseCase {
     prepare = (
         extractProperty: ExtractCustomerSchema,
         externalLoadPropertyId: string,
-        boxId: string,
+        boxId: string | null,
     ): void => {
         this.property = {
             externalSourceId: extractProperty.id,

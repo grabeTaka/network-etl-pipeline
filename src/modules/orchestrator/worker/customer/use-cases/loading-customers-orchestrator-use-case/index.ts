@@ -41,10 +41,8 @@ export class LoadingCustomersOrchestratorUseCase
         )
         if (!registeredBox) {
             logger.warn(
-                `[PropertyProcessor] Could not find a registered box for customer. Skipping ${this.extractedCustomerData.id}`,
-                {},
+                `[PropertyProcessor] Could not find a registered box for property ID: ${this.extractedCustomerData.id} and it will be registered without a pre-selected box.`,
             )
-            return
         }
 
         const [registeredProperty] =
@@ -59,7 +57,7 @@ export class LoadingCustomersOrchestratorUseCase
             )
             const transformCustomerDTO =
                 this.transformPropertyService.transformToCreate(
-                    registeredBox.externalLoadId,
+                    registeredBox ? registeredBox.externalLoadId : null,
                     this.extractedCustomerData,
                 )
 
@@ -68,10 +66,10 @@ export class LoadingCustomersOrchestratorUseCase
             await this.registryPropertyService.create(
                 this.extractedCustomerData,
                 createdLoadProperty.id as string,
-                registeredBox._id,
+                registeredBox ? registeredBox._id : null,
             )
             logger.info(
-                `[CableWorker] Successfully processed cable with ID: ${this.job.data.cable.id}`,
+                `[PropertyWorker] Successfully processed property with ID: ${this.job.data.cable.id}`,
             )
             return
         }
@@ -80,7 +78,7 @@ export class LoadingCustomersOrchestratorUseCase
         filterPropertyUseCase.prepare(
             registeredProperty,
             this.extractedCustomerData,
-            registeredBox,
+            registeredBox ? registeredBox : null,
         )
         const { propertyNeedsUpdate } = filterPropertyUseCase.execute()
         if (propertyNeedsUpdate) {
@@ -89,7 +87,7 @@ export class LoadingCustomersOrchestratorUseCase
             )
             const transformPropertyDTO =
                 this.transformPropertyService.transformToUpdate(
-                    registeredBox.externalLoadId,
+                    registeredBox ? registeredBox.externalLoadId : null,
                     this.extractedCustomerData,
                 )
 
@@ -100,10 +98,10 @@ export class LoadingCustomersOrchestratorUseCase
             await this.registryPropertyService.update(
                 registeredProperty._id,
                 this.extractedCustomerData,
-                registeredBox._id,
+                registeredBox ? registeredBox._id : null,
             )
             logger.info(
-                `[CableWorker] Successfully processed cable with ID: ${this.job.data.cable.id}`,
+                `[CableWorker] Successfully processed property with ID: ${this.job.data.cable.id}`,
             )
         }
     }

@@ -27,7 +27,7 @@ export class Property implements PropertySchema {
     @Prop({ required: true, default: () => new ObjectId().toString() })
     externalLoadId!: string
 
-    @Prop({ required: true, default: () => new ObjectId().toString() })
+    @Prop({ required: false, default: () => new ObjectId().toString() })
     boxId!: string
 }
 

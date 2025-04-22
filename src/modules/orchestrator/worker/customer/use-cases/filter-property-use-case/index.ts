@@ -5,7 +5,7 @@ import { CustomerSchema as ExtractedCustomerSchema } from '@/modules/extract/cus
 
 export class FilterPropertyUseCase implements IFilterPropertyUseCase {
     registeredProperty: RegisteredPropertySchema | null
-    registeredBox: RegisteredBoxSchema
+    registeredBox: RegisteredBoxSchema | null
     extractedProperty: ExtractedCustomerSchema
 
     prepare = (
@@ -20,7 +20,8 @@ export class FilterPropertyUseCase implements IFilterPropertyUseCase {
 
     execute = (): { propertyNeedsUpdate: boolean } => {
         if (
-            this.registeredProperty.boxId !== this.registeredBox._id ||
+            (this.registeredBox &&
+                this.registeredProperty.boxId !== this.registeredBox._id) ||
             this.registeredProperty.name !== this.extractedProperty.name ||
             this.registeredProperty.address !== this.extractedProperty.address
         )

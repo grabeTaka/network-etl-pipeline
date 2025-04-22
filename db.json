@@ -4,7 +4,7 @@
             "id": 1,
             "name": "Fiber Route Z",
             "capacity": 144,
-            "boxes_connected": [10, 12],
+            "boxes_connected": [1, 2],
             "path": [
                 { "lat": -27.595377, "lng": -48.54805 },
                 { "lat": -27.597712, "lng": -48.547623 },
@@ -34,21 +34,21 @@
     "boxes": [
         {
             "id": 1,
-            "name": "Box 1 teste 22/04",
+            "name": "Box 1 teste 23/04",
             "type": "Nap",
             "lat": -27.5976,
             "lng": -48.5476
         },
         {
             "id": 2,
-            "name": "Box 2 teste 22/04",
+            "name": "Box 2 teste 23/04",
             "type": "Nap V2",
             "lat": -27.5977,
             "lng": -48.5475
         },
         {
             "id": 3,
-            "name": "Box 3 teste 22/04",
+            "name": "Box 3 teste Gab 23/04",
             "type": "Nap",
             "lat": -27.5978,
             "lng": -48.5474
@@ -60,7 +60,7 @@
             "code": "CUST-001",
             "name": "John Doee",
             "address": "123 Main Street",
-            "box_id": 12
+            "box_id": 1
         },
         {
             "id": 3,

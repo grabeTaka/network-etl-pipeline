@@ -8,10 +8,11 @@ class ExtractDataJobService {
         ? process.env.JOB_REPEAT_EVERY_MINUTES
         : '1'
     constructor() {
+        this.schedule()
         this.init()
     }
 
-    async init(): Promise<void> {
+    async schedule(): Promise<void> {
         cron.schedule(`*/${this.repeatEveryMinutes} * * * *`, async () => {
             logger.info('[Cron] Triggering job execution...')
             try {
@@ -29,6 +30,27 @@ class ExtractDataJobService {
                 })
             }
         })
+    }
+
+    async init(): Promise<void> {
+        logger.info('[Init on demand] Triggering job execution...')
+        console.log(process.env.JOB_REPEAT_EVERY_MINUTES)
+        try {
+            const unifyDataFromExtractUseCase =
+                new UnifyDataFromExtractUseCase()
+            const { boxes, cables, customers } =
+                await unifyDataFromExtractUseCase.execute()
+            const createFlowDataUseCase = new CreateFlowDataUseCase()
+            createFlowDataUseCase.prepare(boxes, customers, cables)
+            await createFlowDataUseCase.execute()
+        } catch (err) {
+            logger.error(
+                '[Init on demand] Failed to fetch from third-party API.',
+                {
+                    error: err,
+                },
+            )
+        }
     }
 }
 

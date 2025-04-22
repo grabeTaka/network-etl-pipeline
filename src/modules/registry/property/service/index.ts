@@ -16,7 +16,7 @@ class RegistryPropertyService implements IRegistryPropertyService {
     create = (
         property: Partial<ExtractCustomerSchema>,
         externalLoadProteryId: string,
-        boxId: string,
+        boxId: string | null,
     ): Promise<PropertySchema> => {
         const useCase = new CreatePropertyUseCase()
         useCase.prepare(property, externalLoadProteryId, boxId)
