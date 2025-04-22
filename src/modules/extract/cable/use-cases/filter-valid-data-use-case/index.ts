@@ -2,6 +2,7 @@ import { CableSchema } from '@/modules/extract/cable/schema'
 
 import { IFilterValidDataUseCase } from '@/modules/extract/box/use-cases/filter-valid-data-use-case/type'
 import { z } from 'zod'
+import { logger } from '@/modules/shared/utils/logger'
 
 export class FilterValidDataUseCase implements IFilterValidDataUseCase {
     private cables: CableSchema[]
@@ -23,8 +24,8 @@ export class FilterValidDataUseCase implements IFilterValidDataUseCase {
                 mustExistsCableSchema.parse(cable.path)
                 return true
             } catch (e) {
-                console.log(
-                    `O cable com o id ${cable.id} não será incluso na sincronização pois contém coordenadas inválidas em seu path`,
+                logger.warn(
+                    `[CableFilter] Skipping cable with id ${cable.id} due to invalid coordinates.`,
                 )
                 return false
             }

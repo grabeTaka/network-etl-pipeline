@@ -1,6 +1,6 @@
-import { CustomerSchema as ExtractCustomerSchema } from '@/modules/extract/customer/schema'
+import { Job } from 'bullmq'
 
 export interface ILoadingCustomersOrchestratorUseCase {
-    prepare(data: ExtractCustomerSchema): void
+    prepare(job: Job): void
     execute(): Promise<void>
 }

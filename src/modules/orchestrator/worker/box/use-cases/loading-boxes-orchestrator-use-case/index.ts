@@ -11,6 +11,8 @@ import { loadBoxService } from '@/modules/load/box/service'
 import registryBoxService from '@/modules/registry/box/service'
 import { sdkInstace } from '@/modules/shared/utils/sdk-instance'
 import { rateLimiter } from '@/modules/shared/utils/rate-limiter'
+import { Job } from 'bullmq'
+import { logger } from '@/modules/shared/utils/logger'
 
 export class LoadingBoxesOrchestratorUseCase
     implements ILoadingBoxesOrchestratorUseCase
@@ -20,6 +22,7 @@ export class LoadingBoxesOrchestratorUseCase
     private loadBoxTypeService: ILoadBoxTypeService
     private transformBoxService: ITransformBoxService
     private loadBoxService: ILoadBoxService
+    private job: Job
 
     constructor() {
         this.registryBoxService = registryBoxService
@@ -28,8 +31,9 @@ export class LoadingBoxesOrchestratorUseCase
         this.loadBoxService = loadBoxService
     }
 
-    prepare(data: ExtractBoxSchema): void {
-        this.extractedBoxData = data
+    prepare(job: Job): void {
+        this.extractedBoxData = job.data.box
+        this.job = job
     }
 
     async execute(): Promise<void> {
@@ -39,6 +43,9 @@ export class LoadingBoxesOrchestratorUseCase
         )
 
         if (!registeredBox) {
+            logger.info(
+                `[BoxWorker] Starting to process to new box with ID: ${this.job.data.box.id}`,
+            )
             const boxType = await this.loadBoxTypeService.createOrFindOne(
                 'code',
                 this.extractedBoxData.type.toUpperCase(),
@@ -53,6 +60,9 @@ export class LoadingBoxesOrchestratorUseCase
                 this.extractedBoxData,
                 createdLoadBox.id as string,
             )
+            logger.info(
+                `[BoxWorker] Successfully processed box with ID: ${this.job.data.box.id}`,
+            )
             return
         }
 
@@ -62,6 +72,9 @@ export class LoadingBoxesOrchestratorUseCase
             filterBoxUseCase.execute()
 
         if (boxNeedsUpdate) {
+            logger.info(
+                `[BoxWorker] Starting to process to update box with ID: ${this.job.data.box.id}`,
+            )
             let boxTypeId = null
             if (boxTypeFieldUpdate) {
                 const boxType = await this.loadBoxTypeService.createOrFindOne(
@@ -84,6 +97,9 @@ export class LoadingBoxesOrchestratorUseCase
             await this.registryBoxService.update(
                 registeredBox._id,
                 this.extractedBoxData,
+            )
+            logger.info(
+                `[BoxWorker] Successfully processed box with ID: ${this.job.data.box.id}`,
             )
         }
     }

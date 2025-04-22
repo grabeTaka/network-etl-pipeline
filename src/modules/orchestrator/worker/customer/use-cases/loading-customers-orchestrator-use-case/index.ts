@@ -9,6 +9,8 @@ import { IRegistryPropertyService } from '@/modules/registry/property/service/ty
 import { transformPropertyService } from '@/modules/transform/property/service'
 import { ITransformPropertyService } from '@/modules/transform/property/service/type'
 import { FilterPropertyUseCase } from '@/modules/orchestrator/worker/customer/use-cases/filter-property-use-case'
+import { Job } from 'bullmq'
+import { logger } from '@/modules/shared/utils/logger'
 
 export class LoadingCustomersOrchestratorUseCase
     implements ILoadingCustomersOrchestratorUseCase
@@ -18,6 +20,7 @@ export class LoadingCustomersOrchestratorUseCase
     private registryBoxService: IRegistryBoxService
     private transformPropertyService: ITransformPropertyService
     private loadPropertyService: ILoadPropertyService
+    private job: Job
 
     constructor() {
         this.registryPropertyService = registryCustomerService
@@ -26,8 +29,9 @@ export class LoadingCustomersOrchestratorUseCase
         this.loadPropertyService = loadPropertyService
     }
 
-    prepare(data: ExtractCustomerSchema): void {
-        this.extractedCustomerData = data
+    prepare(job: Job): void {
+        this.extractedCustomerData = job.data.customer
+        this.job = job
     }
 
     async execute(): Promise<void> {
@@ -36,8 +40,9 @@ export class LoadingCustomersOrchestratorUseCase
             'externalSourceId',
         )
         if (!registeredBox) {
-            console.log(
-                `Não foi possível encontrar a caixa registrada para o customer com o id ${this.extractedCustomerData.id}`,
+            logger.warn(
+                `[PropertyProcessor] Could not find a registered box for customer. Skipping ${this.extractedCustomerData.id}`,
+                {},
             )
             return
         }
@@ -49,6 +54,9 @@ export class LoadingCustomersOrchestratorUseCase
             )
 
         if (!registeredProperty) {
+            logger.info(
+                `[PropertyWorker] Starting to process to new property with ID: ${this.job.data.customer.id}`,
+            )
             const transformCustomerDTO =
                 this.transformPropertyService.transformToCreate(
                     registeredBox.externalLoadId,
@@ -62,7 +70,9 @@ export class LoadingCustomersOrchestratorUseCase
                 createdLoadProperty.id as string,
                 registeredBox._id,
             )
-
+            logger.info(
+                `[CableWorker] Successfully processed cable with ID: ${this.job.data.cable.id}`,
+            )
             return
         }
 
@@ -74,6 +84,9 @@ export class LoadingCustomersOrchestratorUseCase
         )
         const { propertyNeedsUpdate } = filterPropertyUseCase.execute()
         if (propertyNeedsUpdate) {
+            logger.info(
+                `[PropertyWorker] Starting to process to new property with ID: ${this.job.data.customer.id}`,
+            )
             const transformPropertyDTO =
                 this.transformPropertyService.transformToUpdate(
                     registeredBox.externalLoadId,
@@ -88,6 +101,9 @@ export class LoadingCustomersOrchestratorUseCase
                 registeredProperty._id,
                 this.extractedCustomerData,
                 registeredBox._id,
+            )
+            logger.info(
+                `[CableWorker] Successfully processed cable with ID: ${this.job.data.cable.id}`,
             )
         }
     }

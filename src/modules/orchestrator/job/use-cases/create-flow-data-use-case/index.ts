@@ -5,6 +5,7 @@ import { queueDefaultOptions } from '@/modules/shared/utils/queue-default-option
 import { BoxSchema } from '@/modules/extract/box/schema'
 import { CustomerSchema } from '@/modules/extract/customer/schema'
 import { CableSchema } from '@/modules/extract/cable/schema'
+import { logger } from '@/modules/shared/utils/logger'
 
 export class CreateFlowDataUseCase implements ICreateFlowDataUseCase {
     private boxes: BoxSchema[]
@@ -24,42 +25,55 @@ export class CreateFlowDataUseCase implements ICreateFlowDataUseCase {
     execute = async (): Promise<void> => {
         const flowProducer = new FlowProducer({ connection: redisConnection })
 
-        const boxJobs: FlowJob[] = this.boxes.map((box) => ({
-            name: `box-${box.id}`,
-            queueName: 'loading-boxes-queue',
-            data: { box },
-            opts: {
-                ...queueDefaultOptions,
-            },
-        }))
+        logger.info('[Flow Qeue] Starting the creation of flow data.')
 
-        const customerJobs: FlowJob[] = this.customers.map((customer) => ({
-            name: `customer-${customer.id}`,
-            queueName: 'loading-customers-queue',
-            data: { customer },
-            opts: {
-                ...queueDefaultOptions,
-            },
-            children: boxJobs,
-        }))
+        try {
+            const boxJobs: FlowJob[] = this.boxes.map((box) => ({
+                name: `box-${box.id}`,
+                queueName: 'loading-boxes-queue',
+                data: { box },
+                opts: {
+                    ...queueDefaultOptions,
+                },
+            }))
 
-        const cableJobs: FlowJob[] = this.cables.map((cable) => ({
-            name: `cable-${cable.id}`,
-            queueName: 'loading-cables-queue',
-            data: { cable },
-            opts: {
-                ...queueDefaultOptions,
-            },
-            children: customerJobs,
-        }))
+            const customerJobs: FlowJob[] = this.customers.map((customer) => ({
+                name: `customer-${customer.id}`,
+                queueName: 'loading-customers-queue',
+                data: { customer },
+                opts: {
+                    ...queueDefaultOptions,
+                },
+                children: boxJobs,
+            }))
 
-        const flow: FlowJob = {
-            name: 'root',
-            queueName: 'root',
-            data: {},
-            children: cableJobs,
+            const cableJobs: FlowJob[] = this.cables.map((cable) => ({
+                name: `cable-${cable.id}`,
+                queueName: 'loading-cables-queue',
+                data: { cable },
+                opts: {
+                    ...queueDefaultOptions,
+                },
+                children: customerJobs,
+            }))
+
+            const flow: FlowJob = {
+                name: 'root',
+                queueName: 'root',
+                data: {},
+                children: cableJobs,
+            }
+
+            logger.info('[Flow Qeue] Adding flow to the queue...')
+            await flowProducer.add(flow)
+            logger.info(
+                '[Flow Qeue] Flow data creation completed successfully.',
+            )
+        } catch (err) {
+            logger.error('[Flow Qeue] Failed to create flow data.', {
+                error: err,
+            })
+            throw err
         }
-
-        await flowProducer.add(flow)
     }
 }

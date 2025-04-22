@@ -11,6 +11,8 @@ import { IExtractCustomerService } from '@/modules/extract/customer/service/type
 import { extractCableService } from '@/modules/extract/cable/service'
 import { IExtractCableService } from '@/modules/extract/cable/service/type'
 
+import { logger } from '@/modules/shared/utils/logger'
+
 export class UnifyDataFromExtractUseCase
     implements IUnifyDataFromExtractUseCase
 {
@@ -25,14 +27,36 @@ export class UnifyDataFromExtractUseCase
     }
 
     execute = async (): Promise<UnifyResult> => {
-        const boxes = await this.extractBoxService.getAll()
-        const customers = await this.extractCustomerService.getAll()
-        const cables = await this.extractCableService.getAll()
+        try {
+            logger.info('[Extract] Starting data extraction...')
 
-        return {
-            boxes,
-            customers,
-            cables,
+            const boxes = await this.extractBoxService.getAll()
+            logger.info(`[Extract] Finished extracting ${boxes.length} boxes.`)
+
+            // Extração dos customers
+            const customers = await this.extractCustomerService.getAll()
+            logger.info(
+                `[Extract] Finished extracting ${customers.length} customers.`,
+            )
+
+            // Extração dos cables
+            const cables = await this.extractCableService.getAll()
+            logger.info(
+                `[Extract] Finished extracting ${cables.length} cables.`,
+            )
+
+            logger.info(
+                '[UnifyDataFromExtractUseCase] Data extraction completed successfully.',
+            )
+
+            return {
+                boxes,
+                customers,
+                cables,
+            }
+        } catch (err) {
+            logger.error('[Extract] Data extraction failed.', { error: err })
+            throw err
         }
     }
 }

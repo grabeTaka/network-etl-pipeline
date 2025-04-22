@@ -23,13 +23,6 @@ export class UpdateCableUseCase implements IUpdateCableUseCase {
     }
 
     execute = async (): Promise<void> => {
-        console.log(this.value)
-
-        const data = {
-            name: this.value.name,
-            path: this.value.path,
-            boxConnected: [this.boxAId, this.boxBId],
-        }
         await this.cableModel.updateOne({ _id: this.id }, { $set: this.value })
     }
 }

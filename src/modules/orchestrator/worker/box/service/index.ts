@@ -3,6 +3,7 @@ import { redisConnection } from '@/modules/shared/utils/redis-connection/index'
 import { IBoxWorker } from '@/modules/orchestrator/worker/box/service/type'
 import { LoadingBoxesOrchestratorUseCase } from '@/modules/orchestrator/worker/box/use-cases/loading-boxes-orchestrator-use-case'
 import Bottleneck from 'bottleneck'
+import { logger } from '@/modules/shared/utils/logger'
 
 export class BoxWorker implements IBoxWorker {
     constructor() {
@@ -14,23 +15,21 @@ export class BoxWorker implements IBoxWorker {
             'loading-boxes-queue',
             async (job: Job) => {
                 try {
-                    console.log(
-                        `Tentativa ${job.attemptsMade + 1} de ${job.opts.attempts} para box com id ${job.data.box.id}`,
-                    )
                     const loadingBoxesOrchestratorUseCase =
                         new LoadingBoxesOrchestratorUseCase()
-                    loadingBoxesOrchestratorUseCase.prepare(job.data.box)
+                    loadingBoxesOrchestratorUseCase.prepare(job)
                     await loadingBoxesOrchestratorUseCase.execute()
                 } catch (error) {
                     if (error instanceof Bottleneck.BottleneckError) {
-                        console.log('Rate limit atingido!')
+                        logger.warn(
+                            `[BoxWorker] Rate limit reached for box with ID: ${job.data.box.id}`,
+                        )
                     }
 
-                    console.error(
-                        `Erro ao processar boxes, será reprocessado em segundos...`,
+                    logger.error(
+                        `[BoxWorker] Error processing box with ID: ${job.data.box.id}. Will be retried..., description: ${error.message}`,
                     )
-                    console.error('status:', error.status)
-                    console.error('Motivo:', error.data)
+
                     throw error
                 }
             },
@@ -38,5 +37,3 @@ export class BoxWorker implements IBoxWorker {
         )
     }
 }
-
-//TODO não deve reprocessar caso o erro seja 4xx

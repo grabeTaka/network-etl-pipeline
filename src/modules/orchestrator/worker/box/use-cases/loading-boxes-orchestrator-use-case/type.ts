@@ -1,6 +1,6 @@
-import { BoxSchema as ExtractBoxSchema } from '@/modules/extract/box/schema'
+import { Job } from 'bullmq'
 
 export interface ILoadingBoxesOrchestratorUseCase {
-    prepare(data: ExtractBoxSchema): void
+    prepare(job: Job): void
     execute(): Promise<void>
 }

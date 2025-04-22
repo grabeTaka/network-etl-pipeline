@@ -3,6 +3,7 @@ import { redisConnection } from '@/modules/shared/utils/redis-connection/index'
 import { ICustomerWorker } from '@/modules/orchestrator/worker/customer/service/type'
 import { LoadingCustomersOrchestratorUseCase } from '@/modules/orchestrator/worker/customer/use-cases/loading-customers-orchestrator-use-case'
 import Bottleneck from 'bottleneck'
+import { logger } from '@/modules/shared/utils/logger'
 
 export class CustomerWorker implements ICustomerWorker {
     constructor() {
@@ -14,24 +15,21 @@ export class CustomerWorker implements ICustomerWorker {
             'loading-customers-queue',
             async (job: Job) => {
                 try {
-                    console.log(
-                        `Tentativa ${job.attemptsMade + 1} de ${job.opts.attempts} para customer com id ${job.data.customer.id}`,
-                    )
                     const loadingCustomersOrchestratorUseCase =
                         new LoadingCustomersOrchestratorUseCase()
-                    loadingCustomersOrchestratorUseCase.prepare(
-                        job.data.customer,
-                    )
+                    loadingCustomersOrchestratorUseCase.prepare(job)
                     await loadingCustomersOrchestratorUseCase.execute()
                 } catch (error) {
                     if (error instanceof Bottleneck.BottleneckError) {
-                        console.log('Rate limit atingido!')
+                        logger.warn(
+                            `[PropertyWorker] Rate limit reached property property with ID: ${job.data.property.id}`,
+                        )
                     }
-                    console.error(
-                        `Erro ao processar customers, será reprocessado em segundos...`,
+
+                    logger.error(
+                        `[PropertyWorker] Error processing property with ID: ${job.data.property.id}. Will be retried..., description: ${error.message}`,
                     )
-                    console.error('status:', error.status)
-                    console.error('Motivo:', error.data)
+
                     throw error
                 }
             },

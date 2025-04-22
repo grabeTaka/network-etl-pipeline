@@ -1,5 +1,6 @@
 import { BoxSchema } from '@/modules/extract/box/schema/index'
 import { IFilterValidDataUseCase } from '@/modules/extract/box/use-cases/filter-valid-data-use-case/type'
+import { logger } from '@/modules/shared/utils/logger'
 import { z } from 'zod'
 
 export class FilterValidDataUseCase implements IFilterValidDataUseCase {
@@ -21,16 +22,16 @@ export class FilterValidDataUseCase implements IFilterValidDataUseCase {
             try {
                 mustExistsBoxSchema.parse(box)
                 if (boxNameSet.has(box.name.toUpperCase())) {
-                    console.log(
-                        `O box de id ${box.id} não será incluso na sincronização pois o nome da caixa já foi adicionado anteriormente.`,
+                    logger.warn(
+                        `[BoxFilter] Box with ID ${box.id} was skipped because its name "${box.name}" was already added.`,
                     )
                     return false
                 }
 
                 return true
             } catch (e) {
-                console.log(
-                    `O box com o id ${box.id} não será incluso na sincronização pois contém coordenadas inválidas`,
+                logger.warn(
+                    `[BoxFilter] Box with ID ${box.id} was skipped due to invalid coordinates (lat: ${box.lat}, lng: ${box.lng}).`,
                 )
                 return false
             }

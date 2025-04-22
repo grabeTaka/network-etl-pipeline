@@ -13,6 +13,8 @@ import { IRegistryCableService } from '@/modules/registry/cable/service/type'
 import { transformCableService } from '@/modules/transform/cable/service'
 import { ITransformCableService } from '@/modules/transform/cable/service/type'
 import { FilterCableUseCase } from '../filter-property-use-case'
+import { Job } from 'bullmq'
+import { logger } from '@/modules/shared/utils/logger'
 
 export class LoadingCablesOrchestratorUseCase
     implements ILoadingCablesOrchestratorUseCase
@@ -24,6 +26,7 @@ export class LoadingCablesOrchestratorUseCase
     private registryCableService: IRegistryCableService
     private transformCableService: ITransformCableService
     private loadCableService: ILoadCableService
+    private job: Job
 
     constructor() {
         this.loadCableTypeIntegration = loadCableTypeIntegration
@@ -34,8 +37,9 @@ export class LoadingCablesOrchestratorUseCase
         this.loadCableService = loadCableService
     }
 
-    prepare(data: ExtractCableSchema): void {
-        this.extractedCableSchema = data
+    prepare(job: Job): void {
+        this.extractedCableSchema = job.data.cable
+        this.job = job
     }
 
     async execute(): Promise<void> {
@@ -71,6 +75,9 @@ export class LoadingCablesOrchestratorUseCase
         )
 
         if (!registeredBoxA || !registeredBoxB) {
+            logger.warn(
+                `[CableWorker] Skipping process because one or both boxes are not registered.`,
+            )
             return
         }
 
@@ -80,6 +87,9 @@ export class LoadingCablesOrchestratorUseCase
         )
 
         if (!registeredCable) {
+            logger.info(
+                `[CableWorker] Starting to process to new cable with ID: ${this.job.data.cable.id}`,
+            )
             const transformCableDTO =
                 await this.transformCableService.transformToCreate(
                     registeredBoxA.externalLoadId,
@@ -95,6 +105,9 @@ export class LoadingCablesOrchestratorUseCase
                 registeredBoxA._id,
                 registeredBoxB._id,
             )
+            logger.info(
+                `[CableWorker] Successfully processed cable with ID: ${this.job.data.cable.id}`,
+            )
             return
         }
 
@@ -108,6 +121,9 @@ export class LoadingCablesOrchestratorUseCase
         const { cableNeedsUpdate } = filterCableUseCase.execute()
 
         if (cableNeedsUpdate) {
+            logger.info(
+                `[CableWorker] Starting to process to update cable with ID: ${this.job.data.cable.id}`,
+            )
             const transformCableDTO =
                 await this.transformCableService.transformToUpdate(
                     registeredBoxA.externalLoadId,
@@ -123,6 +139,9 @@ export class LoadingCablesOrchestratorUseCase
                 this.extractedCableSchema,
                 registeredBoxA._id,
                 registeredBoxB._id,
+            )
+            logger.info(
+                `[CableWorker] Successfully processed cable with ID: ${this.job.data.cable.id}`,
             )
         }
     }
