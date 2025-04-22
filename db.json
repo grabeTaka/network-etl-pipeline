@@ -1,0 +1,99 @@
+{
+    "cables": [
+        {
+            "id": 1,
+            "name": "Fiber Route Z",
+            "capacity": 144,
+            "boxes_connected": [1, 2],
+            "path": [
+                { "lat": -27.595377, "lng": -48.54805 },
+                { "lat": -27.597712, "lng": -48.547623 },
+                { "lat": -27.59934, "lng": -48.54718 },
+                { "lat": -27.601126, "lng": -48.546673 }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Fiber Route B",
+            "capacity": 72,
+            "boxes_connected": [11],
+            "path": [
+                { "lat": -11127.601126, "lng": -48.546673 },
+                { "lat": -27.602954, "lng": -48.546218 },
+                { "lat": -27.604785, "lng": -48.545678 }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Fiber Route Zzz",
+            "capacity": 144,
+            "boxes_connected": [1, 2],
+            "path": [
+                { "lat": -20.595377, "lng": -48.54805 },
+                { "lat": -27.597712, "lng": -48.547623 },
+                { "lat": -27.59934, "lng": -48.54718 },
+                { "lat": -27.601126, "lng": -48.546673 }
+            ]
+        }
+    ],
+    "drop_cables": [
+        { "id": 1, "name": "Drop Cable 1", "box_id": 1, "customer_id": 1 },
+        { "id": 2, "name": "Drop Cable 2", "box_id": 2, "customer_id": 2 },
+        { "id": 3, "name": "Drop Cable 3", "box_id": 2, "customer_id": 3 },
+        { "id": 4, "name": "Drop Cable 4", "box_id": 3, "customer_id": 4 },
+        { "id": 5, "name": "Drop Cable 5", "box_id": 3, "customer_id": 5 }
+    ],
+    "boxes": [
+        {
+            "id": 1,
+            "name": "Box 1 teste 3111/04",
+            "type": "Nap V3",
+            "lat": -27.5976,
+            "lng": -48.5476
+        },
+        {
+            "id": 10,
+            "name": "Box 1 teste 31111/04",
+            "type": "Nap V3",
+            "lat": -27.5976,
+            "lng": -48.5476
+        },
+        {
+            "id": 2,
+            "name": "Box 2 teste 30/04",
+            "type": "Nap V2",
+            "lat": -27.5977,
+            "lng": -48.5475
+        },
+        {
+            "id": 3,
+            "name": "Box 3 teste Gab 25/04",
+            "type": "Nap",
+            "lat": -27.5978,
+            "lng": -48.5474
+        },
+        {
+            "id": 4,
+            "name": "Box 3 teste Gab 25/04",
+            "type": "Nap",
+            "lat": -27.5978,
+            "lng": -48.5474
+        }
+    ],
+    "customers": [
+        {
+            "id": 1,
+            "code": "CUST-001",
+            "name": "John Doee",
+            "address": "123 Main Street",
+            "box_id": 1
+        },
+        {
+            "id": 2,
+            "code": "CUST-ddd",
+            "name": "John teste",
+            "address": "123 Main Street teste",
+            "box_id": 1
+        }
+    ]
+}
