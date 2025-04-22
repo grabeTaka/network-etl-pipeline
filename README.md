@@ -31,7 +31,6 @@
   DB_NAME=ozmap_isp
   APPLICATION_PORT=3000
   APPLICATION_HOST=localhost
-  RATE_LIMITER_TIME=1200
   JOB_MAX_ATTEMPTS=5
   JOB_BACKOFF_DELAY_SECONDS=60
   JOB_REPEAT_EVERY_MINUTES=50
@@ -128,17 +127,25 @@
 ├── shared/        → utilitários, logger, configs
   </code></pre>
 
- 
+<p> <strong>Módulo extract</strong>: Irá realizar as consultas no json-server, também é responsável por realizar validações iniciais, como por exemplo tratar dados duplicados, dados com coordenadas inválidas ou com campos obrigatórios ausentes.</p>
+<p> <strong>Módulo transform</strong>: Irá realizar a transformação dos dados para o DTO da ozmap, seja para cadastrar ou atualizar dados. </p>
+<p> <strong>Módulo load</strong>: Irá na sua grande maioria função realizar cadastros na base da ozmap utilizando seu sdk, em alguns casos também irá buscar alguns dados da base da ozmap.</p>
+<p> <strong>Módulo registry</strong>: Irá armazenar os dados sincronizados com a ozmap no banco mongoDb, isso é utíl para evitar requisições desnecessárias ao sdk da ozmap que possui um rate limit configurado. </p>
+<p> <strong>Módulo orchestrator</strong>: Irá orquestrar todos os dados, desde fazer requisições de extração, carregamento, tratamento e registro. </p>
+<p> <strong>Módulo shared</strong>: São pastas utilitárias que são compartilhadas entre os modulos. </p>
 
 
 
 
 
-  <h2>📌 Observações</h2>
+  <h2>📌 Diagrama </h2>
+<center>
+![image](https://github.com/user-attachments/assets/3c8545b7-5176-4306-a58e-9af0e9d8dd8a)</center>
+
   <ul>
+    <li>Jobs são orquestrados com dependências e retries automáticos via BullMQ, utilizando conceitos de DLQ.</li>
     <li>O sistema respeita limites de requisições usando <code>Bottleneck</code>.</li>
-    <li>Jobs são orquestrados com dependências e retries automáticos via BullMQ.</li>
-    <li>A aplicação inclui comandos de shutdown graceful para encerrar workers corretamente.</li>
+    <li>O sistema possui um banco de dados para auxiliar na manutenção dos dados, utilizando conceitos de CDC.</li>
   </ul>
 
 
