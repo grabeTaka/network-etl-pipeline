@@ -139,7 +139,7 @@
 
 
   <h2>📌 Diagrama </h2>
-![image](https://github.com/user-attachments/assets/4001ccfb-8424-4054-a820-c42fc896a9ac)
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/128423774/436308034-4001ccfb-8424-4054-a820-c42fc896a9ac.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250422%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250422T235641Z&X-Amz-Expires=300&X-Amz-Signature=84afd0ff3ef7ade96c8b3db31ecb2fd913bd5b0bb4d0a075a69f72f121fb51b5&X-Amz-SignedHeaders=host">
 
 
   <ul>
