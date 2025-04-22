@@ -62,7 +62,27 @@
   <p>A aplicação estará disponível por padrão em <code>http://localhost:${APPLICATION_PORT}</code>.</p>
   <p>O json server estará disponível por padrão em <code>http://json-server:4000</code>.</p>
   <p> <strong>Importante</strong>: Altere o arquivo db.json conforme necessidade para gerar mais dados mocados, mas lembre-se sempre que alterar o arquivo vc deverá reiniciar a aplicação com docker-compose up</p>
+
   <br>
+  <h2>🧪 Healthcheck</h2>
+  <p> Para verificar se sua aplicação está rodando sem problemas, basta acessar a rota abaixo: </p>
+  <pre><code>GET /healthcheck</code></pre>
+  <p>Resposta:</p>
+  <pre><code>{
+  "status": "ok",
+  "message": "API is running",
+  "timestamp": "..."
+}</code></pre>
+
+<br>
+  <h2>✅ Testes</h2>
+  <p>O projeto utiliza <strong>Mocha</strong>, <strong>Chai</strong> e <strong>Sinon</strong> para testes unitários:</p>
+  <pre><code>npm run test </code></pre>
+
+  
+
+
+  
   <h2>🧱 Estrutura de Pastas</h2>
   <pre><code>modules/
 ├── extract/       → leitura de dados (ex: boxes, customers, cables)
@@ -75,19 +95,8 @@
 
  
 
-  <h2>✅ Testes</h2>
-  <p>O projeto utiliza <strong>Mocha</strong>, <strong>Chai</strong> e <strong>Sinon</strong> para testes unitários:</p>
-  <pre><code>npm run test
-  </code></pre>
 
-  <h2>🧪 Healthcheck</h2>
-  <pre><code>GET /healthcheck</code></pre>
-  <p>Resposta:</p>
-  <pre><code>{
-  "status": "ok",
-  "message": "API is running",
-  "timestamp": "..."
-}</code></pre>
+
 
 
   <h2>📌 Observações</h2>
