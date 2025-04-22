@@ -74,11 +74,15 @@
   "timestamp": "..."
 }</code></pre>
 
-<br>
+  <br>
   <h2>✅ Testes</h2>
   <p>O projeto utiliza <strong>Mocha</strong>, <strong>Chai</strong> e <strong>Sinon</strong> para testes unitários:</p>
   <pre><code>npm run test </code></pre>
 
+
+  <br>
+  <h2>📖 Documentação adicional</h2>
+  <p><em>Em breve...</em> (adicione aqui futuras documentações de endpoints, exemplos de payload, etc.)</p>
   
 
 
@@ -106,7 +110,6 @@
     <li>A aplicação inclui comandos de shutdown graceful para encerrar workers corretamente.</li>
   </ul>
 
-  <h2>📖 Documentação adicional</h2>
-  <p><em>Em breve...</em> (adicione aqui futuras documentações de endpoints, exemplos de payload, etc.)</p>
+
 </body>
 </html>
