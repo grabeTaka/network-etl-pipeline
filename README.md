@@ -80,9 +80,40 @@
   <pre><code>npm run test </code></pre>
 
 
-  <br>
-  <h2>📖 Documentação adicional</h2>
-  <p><em>Em breve...</em> (adicione aqui futuras documentações de endpoints, exemplos de payload, etc.)</p>
+<h2>📖 Documentação adicional</h2>
+
+<p>A aplicação inclui um cron job que realiza a sincronização automática dos dados do <code>json-server</code> em intervalos regulares, definidos por uma variável de ambiente. Além disso, o usuário pode realizar sincronizações manuais através das seguintes rotas:</p>
+
+<h3>Rotas de sincronização manual:</h3>
+
+<ul>
+  <li><strong>Sincronização Completa</strong><br>
+    Realiza uma sincronização completa de todos os dados.<br>
+    <code>POST</code> para:  
+    <pre>http://localhost:3000/api/manual-flow/full-sync</pre>
+  </li>
+
+  <li><strong>Sincronização de Boxes</strong><br>
+    Sincroniza os dados de um box específico, identificado pelo <code>id</code>.<br>
+    <code>POST</code> para:  
+    <pre>http://localhost:3000/api/manual-flow/sync-boxes/:id</pre>
+  </li>
+
+  <li><strong>Sincronização de Propriedades</strong><br>
+    Sincroniza os dados de uma propriedade específica, identificada pelo <code>id</code>.<br>
+    <code>POST</code> para:  
+    <pre>http://localhost:3000/api/manual-flow/sync-properties/:id</pre>
+  </li>
+
+  <li><strong>Sincronização de Cabos</strong><br>
+    Sincroniza os dados de um cabo específico, identificado pelo <code>id</code>.<br>
+    <code>POST</code> para:  
+    <pre>http://localhost:3000/api/manual-flow/sync-cables/:id</pre>
+  </li>
+</ul>
+
+<p>Essas rotas permitem que o usuário tenha controle total sobre as sincronizações, seja de maneira automática ou manual, conforme a necessidade.</p>
+
   
 
 
