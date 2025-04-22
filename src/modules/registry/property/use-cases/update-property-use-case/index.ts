@@ -14,10 +14,6 @@ export class UpdatePropertyUseCase implements IUpdatePropertyUseCase {
         value: Partial<PropertySchema>,
         boxId: string,
     ): void => {
-        if (!mongoose.Types.ObjectId.isValid(id)) {
-            //TODO ADD WINSTON HERE
-        }
-
         this.id = new mongoose.Types.ObjectId(id)
         this.value = value
         this.boxId = boxId

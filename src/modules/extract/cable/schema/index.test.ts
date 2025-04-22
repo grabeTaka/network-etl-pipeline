@@ -1,6 +1,6 @@
 import { expect } from 'chai'
-import { cableSchema } from '@/modules/extract/cable/schema' // Aponte para o seu schema
-import { CableSchema } from '@/modules/extract/cable/schema' // Tipo
+import { cableSchema } from '@/modules/extract/cable/schema'
+import { CableSchema } from '@/modules/extract/cable/schema'
 
 describe('CableSchema Validation', () => {
     it('should validate valid cable schema', () => {

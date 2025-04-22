@@ -1,5 +1,5 @@
 import { BoxSchema as ExtractBoxSchema } from '@/modules/extract/box/schema'
-import { BoxType, CreateBoxDTO } from '@ozmap/ozmap-sdk'
+import { CreateBoxDTO } from '@ozmap/ozmap-sdk'
 import { ITransformToCreateDataUseCase } from '@/modules/transform/box/use-cases/transform-to-create-data-use-case/type'
 
 export class TransformToCreateDataUseCase
@@ -7,7 +7,6 @@ export class TransformToCreateDataUseCase
 {
     private boxTypeId: string
     private box: ExtractBoxSchema
-    private projectId: string
 
     prepare(boxTypeId: string, box: ExtractBoxSchema): void {
         this.box = box

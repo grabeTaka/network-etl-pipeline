@@ -9,15 +9,13 @@ describe('LoadCreateBoxUseCase', () => {
     let createStub: sinon.SinonStub
 
     beforeEach(() => {
-        // Criando o stub apenas para o método create
         createStub = sinon.stub(loadBoxIntegration, 'create')
 
-        // Inicializando o caso de uso
         loadCreateBoxUseCase = new LoadCreateBoxUseCase()
     })
 
     afterEach(() => {
-        sinon.restore() // Restaura os stubs após cada teste
+        sinon.restore()
     })
 
     it('should throw an error when create box fails', async () => {
@@ -43,23 +41,19 @@ describe('LoadCreateBoxUseCase', () => {
             default_reserve: 50,
         }
 
-        // Simulando erro no método create
         const error = new Error('Failed to create box')
         createStub.rejects(error)
 
-        // Preparando os dados
         loadCreateBoxUseCase.prepare(createBoxData)
 
         try {
             await loadCreateBoxUseCase.execute()
             expect.fail('Expected method to throw an error')
         } catch (err) {
-            // Verificando se o erro foi lançado
             expect(err).to.be.an('error')
             expect(err.message).to.equal('Failed to create box')
         }
 
-        // Verificando se o método create foi chamado
         sinon.assert.calledOnce(createStub)
     })
 })

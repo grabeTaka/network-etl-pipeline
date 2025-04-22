@@ -15,7 +15,7 @@ describe('FindByFilterUseCase', () => {
     })
 
     afterEach(() => {
-        sinon.restore() // Limpa os stubs após os testes
+        sinon.restore()
     })
 
     it('should find a box type by filter successfully', async () => {
