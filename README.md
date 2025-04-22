@@ -20,7 +20,7 @@
   <h2>🔧 Pré-requisitos</h2>
   <p>
     Antes de iniciar o projeto, certifique-se de que possui os seguintes pré-requisitos configurados corretamente no seu ambiente:
-    Também é recomendado possuir uma base de dados limpa na OZMAP, pois alguns campos como por exemplo name da box é um valor único
+    <strong>Também é recomendado possuir uma base de dados limpa na OZMAP, pois alguns campos como por exemplo name da box é um valor único</strong>
   </p>
 
   <h2>Variáveis de Ambiente</h2>
