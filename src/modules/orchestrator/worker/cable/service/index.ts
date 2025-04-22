@@ -14,7 +14,7 @@ export class CableWorker implements ICableWorker {
             async (job: Job) => {
                 try {
                     console.log(
-                        `Tentativa ${job.attemptsMade + 1} de ${job.opts.attempts} para cable ${job.data.cable.id}`,
+                        `Tentativa ${job.attemptsMade + 1} de ${job.opts.attempts} para cable com id ${job.data.cable.id}`,
                     )
 
                     /*const loadingCablesOrchestratorUseCase =
@@ -23,9 +23,10 @@ export class CableWorker implements ICableWorker {
                     await loadingCablesOrchestratorUseCase.execute()*/
                 } catch (error) {
                     console.error(
-                        'Erro ao buscar cables, reprocessando...',
-                        error,
+                        `Erro ao processar customers, será reprocessado em segundos...`,
                     )
+                    console.error('status:', error.status)
+                    console.error('Motivo:', error.data)
                     throw error
                 }
             },

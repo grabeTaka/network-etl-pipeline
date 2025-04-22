@@ -1,6 +1,5 @@
 import {
     IUnifyDataFromExtractUseCase,
-    UnifiedBoxData,
     UnifyResult,
 } from '@/modules/orchestrator/job/use-cases/unify-data-from-extract-use-case/type'
 import { extractBoxService } from '@/modules/extract/box/service'
@@ -30,62 +29,10 @@ export class UnifyDataFromExtractUseCase
         const customers = await this.extractCustomerService.getAll()
         const cables = await this.extractCableService.getAll()
 
-        const boxesEnriched: UnifiedBoxData[] = boxes
-            .map((box) => {
-                const boxCustomers = customers.filter(
-                    (c) => +c.box_id === +box.id,
-                )
-
-                const boxCables = cables.filter((cable) => {
-                    const isBoxConnected = cable.boxes_connected.includes(
-                        box.id,
-                    )
-                    const isCustomerConnected = boxCustomers.some((customer) =>
-                        cable.boxes_connected.includes(customer.box_id),
-                    )
-                    return isBoxConnected || isCustomerConnected
-                })
-
-                if (boxCustomers.length || boxCables.length)
-                    return {
-                        box,
-                        customers: boxCustomers,
-                        cables: boxCables,
-                    }
-                return null
-            })
-            .filter((box) => box !== null)
-
-        const associatedCustomerIds = new Set(
-            boxesEnriched.flatMap((b) => b.customers.map((c) => c.id)),
-        )
-
-        const associatedCableIds = new Set(
-            boxesEnriched.flatMap((b) => b.cables.map((c) => c.id)),
-        )
-
-        const unlinkedCustomers = customers.filter(
-            (c) => !associatedCustomerIds.has(c.id),
-        )
-        const unlinkedCables = cables.filter(
-            (c) => !associatedCableIds.has(c.id),
-        )
-
-        const unlinkedBoxes = boxes.filter(
-            (box) =>
-                !boxesEnriched.some(
-                    (enrichedBox) =>
-                        enrichedBox.box.id === box.id &&
-                        (enrichedBox.customers.length > 0 ||
-                            enrichedBox.cables.length > 0),
-                ),
-        )
-
         return {
-            boxesEnriched,
-            unlinkedCustomers,
-            unlinkedCables,
-            unlinkedBoxes,
+            boxes,
+            customers,
+            cables,
         }
     }
 }

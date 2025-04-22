@@ -33,18 +33,284 @@
     ],
     "boxes": [
         {
+            "id": 1,
+            "name": "Box 1 teste 22/04",
+            "type": "Nap",
+            "lat": -27.5976,
+            "lng": -48.5476
+        },
+        {
+            "id": 2,
+            "name": "Box 2 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.5977,
+            "lng": -48.5475
+        },
+        {
+            "id": 3,
+            "name": "Box 3 teste 22/04",
+            "type": "Nap",
+            "lat": -27.5978,
+            "lng": -48.5474
+        },
+        {
+            "id": 4,
+            "name": "Box 4 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.5979,
+            "lng": -48.5473
+        },
+        {
+            "id": 5,
+            "name": "Box 5 teste 22/04",
+            "type": "Nap",
+            "lat": -27.598,
+            "lng": -48.5472
+        },
+        {
+            "id": 6,
+            "name": "Box 6 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.5981,
+            "lng": -48.5471
+        },
+        {
+            "id": 7,
+            "name": "Box 7 teste 22/04",
+            "type": "Nap",
+            "lat": -27.5982,
+            "lng": -48.547
+        },
+        {
+            "id": 8,
+            "name": "Box 8 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.5983,
+            "lng": -48.5469
+        },
+        {
+            "id": 9,
+            "name": "Box 9 teste 22/04",
+            "type": "Nap",
+            "lat": -27.5984,
+            "lng": -48.5468
+        },
+        {
             "id": 10,
             "name": "Box 10 teste 22/04",
             "type": "Nap V2",
-            "lat": -27.59771,
-            "lng": -48.547624
+            "lat": -27.5985,
+            "lng": -48.5467
+        },
+        {
+            "id": 11,
+            "name": "Box 11 teste 22/04",
+            "type": "Nap",
+            "lat": -27.5986,
+            "lng": -48.5466
         },
         {
             "id": 12,
             "name": "Box 12 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.5987,
+            "lng": -48.5465
+        },
+        {
+            "id": 13,
+            "name": "Box 13 teste 22/04",
             "type": "Nap",
-            "lat": -27.597711,
-            "lng": -48.547624
+            "lat": -27.5988,
+            "lng": -48.5464
+        },
+        {
+            "id": 14,
+            "name": "Box 14 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.5989,
+            "lng": -48.5463
+        },
+        {
+            "id": 15,
+            "name": "Box 15 teste 22/04",
+            "type": "Nap",
+            "lat": -27.599,
+            "lng": -48.5462
+        },
+        {
+            "id": 16,
+            "name": "Box 16 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.5991,
+            "lng": -48.5461
+        },
+        {
+            "id": 17,
+            "name": "Box 17 teste 22/04",
+            "type": "Nap",
+            "lat": -27.5992,
+            "lng": -48.546
+        },
+        {
+            "id": 18,
+            "name": "Box 18 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.5993,
+            "lng": -48.5459
+        },
+        {
+            "id": 19,
+            "name": "Box 19 teste 22/04",
+            "type": "Nap",
+            "lat": -27.5994,
+            "lng": -48.5458
+        },
+        {
+            "id": 20,
+            "name": "Box 20 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.5995,
+            "lng": -48.5457
+        },
+        {
+            "id": 21,
+            "name": "Box 21 teste 22/04",
+            "type": "Nap",
+            "lat": -27.5996,
+            "lng": -48.5456
+        },
+        {
+            "id": 22,
+            "name": "Box 22 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.5997,
+            "lng": -48.5455
+        },
+        {
+            "id": 23,
+            "name": "Box 23 teste 22/04",
+            "type": "Nap",
+            "lat": -27.5998,
+            "lng": -48.5454
+        },
+        {
+            "id": 24,
+            "name": "Box 24 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.5999,
+            "lng": -48.5453
+        },
+        {
+            "id": 25,
+            "name": "Box 25 teste 22/04",
+            "type": "Nap",
+            "lat": -27.6,
+            "lng": -48.5452
+        },
+        {
+            "id": 26,
+            "name": "Box 26 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.6001,
+            "lng": -48.5451
+        },
+        {
+            "id": 27,
+            "name": "Box 27 teste 22/04",
+            "type": "Nap",
+            "lat": -27.6002,
+            "lng": -48.545
+        },
+        {
+            "id": 28,
+            "name": "Box 28 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.6003,
+            "lng": -48.5449
+        },
+        {
+            "id": 29,
+            "name": "Box 29 teste 22/04",
+            "type": "Nap",
+            "lat": -27.6004,
+            "lng": -48.5448
+        },
+        {
+            "id": 30,
+            "name": "Box 30 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.6005,
+            "lng": -48.5447
+        },
+        {
+            "id": 31,
+            "name": "Box 31 teste 22/04",
+            "type": "Nap",
+            "lat": -27.6006,
+            "lng": -48.5446
+        },
+        {
+            "id": 32,
+            "name": "Box 32 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.6007,
+            "lng": -48.5445
+        },
+        {
+            "id": 33,
+            "name": "Box 33 teste 22/04",
+            "type": "Nap",
+            "lat": -27.6008,
+            "lng": -48.5444
+        },
+        {
+            "id": 34,
+            "name": "Box 34 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.6009,
+            "lng": -48.5443
+        },
+        {
+            "id": 35,
+            "name": "Box 35 teste 22/04",
+            "type": "Nap",
+            "lat": -27.601,
+            "lng": -48.5442
+        },
+        {
+            "id": 36,
+            "name": "Box 36 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.6011,
+            "lng": -48.5441
+        },
+        {
+            "id": 37,
+            "name": "Box 37 teste 22/04",
+            "type": "Nap",
+            "lat": -27.6012,
+            "lng": -48.544
+        },
+        {
+            "id": 38,
+            "name": "Box 38 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.6013,
+            "lng": -48.5439
+        },
+        {
+            "id": 39,
+            "name": "Box 39 teste 22/04",
+            "type": "Nap",
+            "lat": -27.6014,
+            "lng": -48.5438
+        },
+        {
+            "id": 40,
+            "name": "Box 40 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.6015,
+            "lng": -48.5437
         }
     ],
     "customers": [

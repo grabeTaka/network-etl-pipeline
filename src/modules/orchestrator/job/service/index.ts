@@ -18,12 +18,12 @@ class ExtractDataJobService {
             try {
                 const unifyDataFromExtractUseCase =
                     new UnifyDataFromExtractUseCase()
-                const { boxesEnriched, unlinkedCustomers, unlinkedCables } =
+                const { boxes, cables, customers } =
                     await unifyDataFromExtractUseCase.execute()
 
                 console.log('Fluxo de jobs iniciado!')
                 const createFlowDataUseCase = new CreateFlowDataUseCase()
-                createFlowDataUseCase.prepare(boxesEnriched)
+                createFlowDataUseCase.prepare(boxes, customers, cables)
                 await createFlowDataUseCase.execute()
 
                 const sdk = sdkInstace.getSdkInstance()

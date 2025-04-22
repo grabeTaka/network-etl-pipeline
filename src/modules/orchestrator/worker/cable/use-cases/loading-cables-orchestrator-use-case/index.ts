@@ -44,6 +44,8 @@ export class LoadingCablesOrchestratorUseCase
             'code',
         )
 
+        console.log(cableType)
+
         if (!cableType) {
             let fiberProfile =
                 await this.loadFiberProfileIntegration.findByFilter(
