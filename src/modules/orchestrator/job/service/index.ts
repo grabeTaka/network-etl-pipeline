@@ -1,7 +1,6 @@
 import cron from 'node-cron'
 import { UnifyDataFromExtractUseCase } from '../use-cases/unify-data-from-extract-use-case'
 import { CreateFlowDataUseCase } from '../use-cases/create-flow-data-use-case'
-import { sdkInstace } from '@/modules/shared/utils/sdk-instance'
 
 class ExtractDataJobService {
     private repeatEveryMinutes: string = process.env.JOB_REPEAT_EVERY_MINUTES
@@ -25,10 +24,6 @@ class ExtractDataJobService {
                 const createFlowDataUseCase = new CreateFlowDataUseCase()
                 createFlowDataUseCase.prepare(boxes, customers, cables)
                 await createFlowDataUseCase.execute()
-
-                const sdk = sdkInstace.getSdkInstance()
-
-                //console.log(await sdk.property.findById('6807162039fb4dbf45a4ce9e'))
             } catch (err) {
                 console.error('[cron] Falha ao buscar da API terceira.', err)
             }

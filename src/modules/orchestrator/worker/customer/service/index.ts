@@ -2,6 +2,7 @@ import { Worker, Job } from 'bullmq'
 import { redisConnection } from '@/modules/shared/utils/redis-connection/index'
 import { ICustomerWorker } from '@/modules/orchestrator/worker/customer/service/type'
 import { LoadingCustomersOrchestratorUseCase } from '@/modules/orchestrator/worker/customer/use-cases/loading-customers-orchestrator-use-case'
+import Bottleneck from 'bottleneck'
 
 export class CustomerWorker implements ICustomerWorker {
     constructor() {
@@ -23,6 +24,9 @@ export class CustomerWorker implements ICustomerWorker {
                     )
                     await loadingCustomersOrchestratorUseCase.execute()
                 } catch (error) {
+                    if (error instanceof Bottleneck.BottleneckError) {
+                        console.log('Rate limit atingido!')
+                    }
                     console.error(
                         `Erro ao processar customers, será reprocessado em segundos...`,
                     )

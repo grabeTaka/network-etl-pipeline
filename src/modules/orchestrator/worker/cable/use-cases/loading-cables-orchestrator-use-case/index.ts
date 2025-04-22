@@ -44,8 +44,6 @@ export class LoadingCablesOrchestratorUseCase
             'code',
         )
 
-        console.log(cableType)
-
         if (!cableType) {
             let fiberProfile =
                 await this.loadFiberProfileIntegration.findByFilter(
@@ -80,6 +78,7 @@ export class LoadingCablesOrchestratorUseCase
             this.extractedCableSchema.id,
             'externalSourceId',
         )
+
         if (!registeredCable) {
             const transformCableDTO =
                 await this.transformCableService.transformToCreate(
@@ -115,18 +114,16 @@ export class LoadingCablesOrchestratorUseCase
                     registeredBoxB.externalLoadId,
                     this.extractedCableSchema,
                 )
-            const updateLoadCable = await this.loadCableService.update(
+            await this.loadCableService.update(
                 transformCableDTO,
                 registeredCable.externalLoadId,
             )
             await this.registryCableService.update(
                 registeredCable._id,
-                updateLoadCable,
+                this.extractedCableSchema,
                 registeredBoxA._id,
                 registeredBoxB._id,
             )
         }
     }
 }
-
-//TODO try to change cableType for already registered

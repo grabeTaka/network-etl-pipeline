@@ -2,6 +2,7 @@ import { Worker, Job } from 'bullmq'
 import { redisConnection } from '@/modules/shared/utils/redis-connection/index'
 import { IBoxWorker } from '@/modules/orchestrator/worker/box/service/type'
 import { LoadingBoxesOrchestratorUseCase } from '@/modules/orchestrator/worker/box/use-cases/loading-boxes-orchestrator-use-case'
+import Bottleneck from 'bottleneck'
 
 export class BoxWorker implements IBoxWorker {
     constructor() {
@@ -21,6 +22,10 @@ export class BoxWorker implements IBoxWorker {
                     loadingBoxesOrchestratorUseCase.prepare(job.data.box)
                     await loadingBoxesOrchestratorUseCase.execute()
                 } catch (error) {
+                    if (error instanceof Bottleneck.BottleneckError) {
+                        console.log('Rate limit atingido!')
+                    }
+
                     console.error(
                         `Erro ao processar boxes, será reprocessado em segundos...`,
                     )
@@ -35,4 +40,3 @@ export class BoxWorker implements IBoxWorker {
 }
 
 //TODO não deve reprocessar caso o erro seja 4xx
-//TODO iremos adicionar mais um worker que irá sincronizar os boxes que não possuem cliente associados esse poderá executar ações concorrentes

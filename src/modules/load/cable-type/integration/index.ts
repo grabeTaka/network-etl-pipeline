@@ -1,6 +1,7 @@
 import { ILoadCableTypeIntegration } from './type'
 import OZMapSDK, { CableType, FilterOperator } from '@ozmap/ozmap-sdk'
 import { sdkInstace } from '@/modules/shared/utils/sdk-instance'
+import { rateLimiter } from '@/modules/shared/utils/rate-limiter'
 
 export class Errors extends Error {
     public code: number
@@ -53,16 +54,18 @@ export class LoadCableTypeIntegration implements ILoadCableTypeIntegration {
         value: string | number,
         key: string,
     ): Promise<CableType> {
-        this.sdk.cableStub
-        return await this.sdk.cableType.findOne({
-            filter: [
-                {
-                    property: key,
-                    operator: FilterOperator.EQUAL,
-                    value: value,
-                },
-            ],
-        })
+        return rateLimiter.schedule(
+            async () =>
+                await this.sdk.cableType.findOne({
+                    filter: [
+                        {
+                            property: key,
+                            operator: FilterOperator.EQUAL,
+                            value: value,
+                        },
+                    ],
+                }),
+        )
     }
 }
 

@@ -1,6 +1,7 @@
 import { ILoadBoxIntegration } from '@/modules/load/box/integration/type'
 import OZMapSDK, { Box, CreateBoxDTO, UpdateBoxDTO } from '@ozmap/ozmap-sdk'
 import { sdkInstace } from '@/modules/shared/utils/sdk-instance'
+import { rateLimiter } from '@/modules/shared/utils/rate-limiter'
 
 export class Errors extends Error {
     public code: number
@@ -23,8 +24,6 @@ export class Errors extends Error {
     }
 }
 
-//TODO Add to shared file the errors
-
 export class LoadBoxIntegration implements ILoadBoxIntegration {
     private sdk: OZMapSDK
     private projectId: string
@@ -33,20 +32,19 @@ export class LoadBoxIntegration implements ILoadBoxIntegration {
         this.sdk = sdkInstace.getSdkInstance()
         this.projectId = sdkInstace.getProjectId()
     }
-    findByFilter(value: string | number, key: string): Promise<Box> {
-        throw new Error('Method not implemented.')
-    }
 
-    // TODO ADICIONAR PROJECT PARA VERIFICAR HIERARQUIA
     create(data: CreateBoxDTO): Promise<Box> {
-        return this.sdk.box.create({
-            project: this.projectId,
-            coords: data.coords,
-            hierarchyLevel: 0,
-            boxType: data.boxType as string,
-            implanted: false,
-            name: data.name,
-        })
+        return rateLimiter.schedule(
+            async () =>
+                await this.sdk.box.create({
+                    project: this.projectId,
+                    coords: data.coords,
+                    hierarchyLevel: 0,
+                    boxType: data.boxType as string,
+                    implanted: false,
+                    name: data.name,
+                }),
+        )
     }
 
     async update(data: UpdateBoxDTO, id: string): Promise<void> {
@@ -58,7 +56,9 @@ export class LoadBoxIntegration implements ILoadBoxIntegration {
             name: data.name,
         }
 
-        return this.sdk.box.updateById(id, updateBoxData)
+        return rateLimiter.schedule(
+            async () => await this.sdk.box.updateById(id, updateBoxData),
+        )
     }
 }
 

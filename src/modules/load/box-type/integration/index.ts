@@ -1,6 +1,7 @@
 import { ILoadBoxTypeIntegration } from './type'
 import OZMapSDK, { BoxType, FilterOperator } from '@ozmap/ozmap-sdk'
 import { sdkInstace } from '@/modules/shared/utils/sdk-instance'
+import { rateLimiter } from '@/modules/shared/utils/rate-limiter'
 
 export class Errors extends Error {
     public code: number
@@ -31,36 +32,42 @@ export class LoadBoxTypeIntegration implements ILoadBoxTypeIntegration {
         this.sdk = sdkInstace.getSdkInstance()
     }
     create(boxTypeCode: string): Promise<BoxType> {
-        return this.sdk.boxType.create({
-            code: boxTypeCode,
-            default_reserve: 0,
-            config: {
-                base: {
-                    color: '#1F2937',
-                },
-                regular: {
-                    fillColor: '#3B82F6',
-                },
-                not_implanted: {
-                    fillColor: '#F87171',
-                },
-                draft: {
-                    fillColor: '#FBBF24',
-                },
-            },
-        })
+        return rateLimiter.schedule(
+            async () =>
+                await this.sdk.boxType.create({
+                    code: boxTypeCode,
+                    default_reserve: 0,
+                    config: {
+                        base: {
+                            color: '#1F2937',
+                        },
+                        regular: {
+                            fillColor: '#3B82F6',
+                        },
+                        not_implanted: {
+                            fillColor: '#F87171',
+                        },
+                        draft: {
+                            fillColor: '#FBBF24',
+                        },
+                    },
+                }),
+        )
     }
 
     async findByFilter(value: string | number, key: string): Promise<BoxType> {
-        return await this.sdk.boxType.findOne({
-            filter: [
-                {
-                    property: key,
-                    operator: FilterOperator.EQUAL,
-                    value: value,
-                },
-            ],
-        })
+        return rateLimiter.schedule(
+            async () =>
+                await this.sdk.boxType.findOne({
+                    filter: [
+                        {
+                            property: key,
+                            operator: FilterOperator.EQUAL,
+                            value: value,
+                        },
+                    ],
+                }),
+        )
     }
 }
 

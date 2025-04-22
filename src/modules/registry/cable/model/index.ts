@@ -24,8 +24,8 @@ export class Cable implements CableSchema {
     @Prop({ required: true })
     path!: Array<{ lat: number; lng: number }>
 
-    @Prop({ required: true, type: () => [Number] })
-    coordinates: [number, number]
+    @Prop({ required: true, type: () => [String] })
+    boxConnected: [string, string]
 }
 
 export const cableModel = getModelForClass(Cable)

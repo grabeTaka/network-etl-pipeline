@@ -5,6 +5,7 @@ import OZMapSDK, {
     UpdateCableDTO,
 } from '@ozmap/ozmap-sdk'
 import { sdkInstace } from '@/modules/shared/utils/sdk-instance'
+import { rateLimiter } from '@/modules/shared/utils/rate-limiter'
 
 export class Errors extends Error {
     public code: number
@@ -37,17 +38,18 @@ export class LoadCableIntegration implements ILoadCableIntegration {
         this.sdk = sdkInstace.getSdkInstance()
         this.projectId = sdkInstace.getProjectId()
     }
-    findByFilter(value: string | number, key: string): Promise<Cable> {
-        throw new Error('Method not implemented.')
-    }
 
     create(data: CreateCableDTO): Promise<Cable> {
         data.project = this.projectId
-        return this.sdk.cable.create(data)
+        return rateLimiter.schedule(
+            async () => await this.sdk.cable.create(data),
+        )
     }
 
     async update(data: UpdateCableDTO, id: string): Promise<void> {
-        return this.sdk.cable.updateById(id, data)
+        return rateLimiter.schedule(
+            async () => await this.sdk.cable.updateById(id, data),
+        )
     }
 }
 

@@ -1,6 +1,7 @@
 import { ILoadFiberProfileIntegration } from './type'
 import OZMapSDK, { FiberProfile, FilterOperator } from '@ozmap/ozmap-sdk'
 import { sdkInstace } from '@/modules/shared/utils/sdk-instance'
+import { rateLimiter } from '@/modules/shared/utils/rate-limiter'
 
 export class Errors extends Error {
     public code: number
@@ -42,15 +43,18 @@ export class LoadFiberProfileIntegration
         value: string | number,
         key: string,
     ): Promise<FiberProfile> {
-        return await this.sdk.fiberProfile.findOne({
-            filter: [
-                {
-                    property: key,
-                    operator: FilterOperator.EQUAL,
-                    value: value,
-                },
-            ],
-        })
+        return rateLimiter.schedule(
+            async () =>
+                await this.sdk.fiberProfile.findOne({
+                    filter: [
+                        {
+                            property: key,
+                            operator: FilterOperator.EQUAL,
+                            value: value,
+                        },
+                    ],
+                }),
+        )
     }
 }
 

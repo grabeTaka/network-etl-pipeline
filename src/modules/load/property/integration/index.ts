@@ -5,6 +5,7 @@ import OZMapSDK, {
     UpdatePropertyDTO,
 } from '@ozmap/ozmap-sdk'
 import { sdkInstace } from '@/modules/shared/utils/sdk-instance'
+import { rateLimiter } from '@/modules/shared/utils/rate-limiter'
 
 export class Errors extends Error {
     public code: number
@@ -37,19 +38,18 @@ export class LoadPropertyIntegration implements ILoadPropertyIntegration {
         this.sdk = sdkInstace.getSdkInstance()
         this.projectId = sdkInstace.getProjectId()
     }
-    findByFilter(value: string | number, key: string): Promise<Property> {
-        throw new Error('Method not implemented.')
-    }
 
     async create(data: CreatePropertyDTO): Promise<Property> {
         data.project = this.projectId
-        return this.sdk.property.create(data)
+        return rateLimiter.schedule(async () => this.sdk.property.create(data))
     }
 
     async update(data: UpdatePropertyDTO, id: string): Promise<void> {
         const updatePropertyData: UpdatePropertyDTO = data
 
-        return this.sdk.property.updateById(id, updatePropertyData)
+        return rateLimiter.schedule(async () =>
+            this.sdk.property.updateById(id, updatePropertyData),
+        )
     }
 }
 
