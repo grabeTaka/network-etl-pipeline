@@ -1,4 +1,4 @@
-import { BoxType, CableType } from '@ozmap/ozmap-sdk'
+import { CableType } from '@ozmap/ozmap-sdk'
 import { ICreateCableTypeUseCase } from '@/modules/load/cable-type/use-cases/create-cable-type-use-case/type'
 import { ILoadCableTypeIntegration } from '@/modules/load/cable-type/integration/type'
 import { loadCableTypeIntegration } from '@/modules/load/cable-type/integration'
