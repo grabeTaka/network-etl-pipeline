@@ -15,21 +15,25 @@ export class FilterValidDataUseCase implements IFilterValidDataUseCase {
             lng: z.number().min(-180).max(180),
         })
 
+        const boxNameSet = new Set<string>()
+
         this.boxes = this.boxes.filter((box) => {
             try {
                 mustExistsBoxSchema.parse(box)
+                if (boxNameSet.has(box.name)) {
+                    console.log(`O box de id ${box.id} não será incluso na sincronização pois o nome da caixa já foi adicionado anteriormente.`)
+                    return false
+                }
+
+                boxNameSet.add(box.name)
+
                 return true
             } catch (e) {
+                console.log(`O box com o id ${box.id} não será incluso na sincronização pois contém coordenadas inválidas`)
                 return false
             }
         })
 
-        return this.boxes.filter(
-            (value, index, self) =>
-                index ===
-                self.findIndex(
-                    (t) => t.lat === value.lat && t.lng === value.lng,
-                ),
-        )
+        return this.boxes
     }
 }

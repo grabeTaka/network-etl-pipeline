@@ -16,7 +16,7 @@
             "id": 2,
             "name": "Fiber Route B",
             "capacity": 72,
-            "boxes_connected": [3],
+            "boxes_connected": [11],
             "path": [
                 { "lat": -27.601126, "lng": -48.546673 },
                 { "lat": -27.602954, "lng": -48.546218 },
@@ -37,6 +37,20 @@
             "name": "Box 10 teste 20/04",
             "type": "Nap",
             "lat": -27.597712,
+            "lng": -48.547624
+        },
+        {
+            "id": 12,
+            "name": "Box 10 teste 20/04",
+            "type": "Nap ",
+            "lat": -27.597711,
+            "lng": -48.547624
+        },
+        {
+            "id": 11,
+            "name": "Box 11 teste 20/04",
+            "type": "Nap",
+            "lat": -127.597711,
             "lng": -48.547624
         }
     ],

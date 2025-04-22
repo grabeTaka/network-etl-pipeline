@@ -41,12 +41,14 @@ export class UnifyDataFromExtractUseCase
                 return isBoxConnected || isCustomerConnected
             })
 
-            return {
-                box,
-                customers: boxCustomers,
-                cables: boxCables,
-            }
-        })
+            if (boxCustomers.length || boxCables.length)
+                return {
+                    box,
+                    customers: boxCustomers,
+                    cables: boxCables,
+                }
+            return null
+        }).filter((box) => box !== null)
 
         const associatedCustomerIds = new Set(
             boxesEnriched.flatMap((b) => b.customers.map((c) => c.id)),
@@ -63,10 +65,20 @@ export class UnifyDataFromExtractUseCase
             (c) => !associatedCableIds.has(c.id),
         )
 
+        const unlinkedBoxes = boxes.filter(
+            (box) =>
+                !boxesEnriched.some(
+                    (enrichedBox) =>
+                        enrichedBox.box.id === box.id &&
+                        (enrichedBox.customers.length > 0 || enrichedBox.cables.length > 0),
+                ),
+        )
+        
         return {
             boxesEnriched,
             unlinkedCustomers,
             unlinkedCables,
+            unlinkedBoxes
         }
     }
 }

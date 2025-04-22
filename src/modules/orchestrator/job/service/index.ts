@@ -17,17 +17,17 @@ class ExtractDataJobService {
             console.log('[cron] Disparando requisição...')
 
             try {
-                //TODO Check if we can use query params in json server to filter box and customers
                 const unifyDataFromExtractUseCase =
                     new UnifyDataFromExtractUseCase()
                 const { boxesEnriched, unlinkedCustomers, unlinkedCables } =
                     await unifyDataFromExtractUseCase.execute()
 
+                console.log('Fluxo de jobs iniciado!')
                 const createFlowDataUseCase = new CreateFlowDataUseCase()
                 createFlowDataUseCase.prepare(boxesEnriched)
                 await createFlowDataUseCase.execute()
 
-                console.log('Fluxo de jobs iniciado!')
+                
             } catch (err) {
                 console.error('[cron] Falha ao buscar da API terceira.', err)
             }

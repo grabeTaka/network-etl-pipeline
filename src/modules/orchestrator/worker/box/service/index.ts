@@ -16,10 +16,10 @@ export class BoxWorker implements IBoxWorker {
                     console.log(
                         `Tentativa ${job.attemptsMade + 1} de ${job.opts.attempts} para box ${job.data.box.id}`,
                     )
-                    const loadingBoxesOrchestratorUseCase =
+                    /*const loadingBoxesOrchestratorUseCase =
                         new LoadingBoxesOrchestratorUseCase()
                     loadingBoxesOrchestratorUseCase.prepare(job.data.box)
-                    await loadingBoxesOrchestratorUseCase.execute()
+                    await loadingBoxesOrchestratorUseCase.execute()*/
                     console.log('fim box')
                 } catch (error) {
                     console.error(

@@ -16,12 +16,12 @@ export class CustomerWorker implements ICustomerWorker {
                     console.log(
                         `Tentativa ${job.attemptsMade + 1} de ${job.opts.attempts} para customer ${job.data.customer.id}`,
                     )
-                    const loadingCustomersOrchestratorUseCase =
+                    /*const loadingCustomersOrchestratorUseCase =
                         new LoadingCustomersOrchestratorUseCase()
                     loadingCustomersOrchestratorUseCase.prepare(
                         job.data.customer,
                     )
-                    await loadingCustomersOrchestratorUseCase.execute()
+                    await loadingCustomersOrchestratorUseCase.execute()*/
                 } catch (error) {
                     console.error(
                         'Erro ao buscar customers, reprocessando...',
