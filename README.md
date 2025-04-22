@@ -139,8 +139,7 @@
 
 
   <h2>📌 Diagrama </h2>
-<center>
-![image](https://github.com/user-attachments/assets/3c8545b7-5176-4306-a58e-9af0e9d8dd8a)</center>
+![image](https://github.com/user-attachments/assets/3c8545b7-5176-4306-a58e-9af0e9d8dd8a)
 
   <ul>
     <li>Jobs são orquestrados com dependências e retries automáticos via BullMQ, utilizando conceitos de DLQ.</li>
