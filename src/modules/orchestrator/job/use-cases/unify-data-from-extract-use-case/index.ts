@@ -33,13 +33,11 @@ export class UnifyDataFromExtractUseCase
             const boxes = await this.extractBoxService.getAll()
             logger.info(`[Extract] Finished extracting ${boxes.length} boxes.`)
 
-            // Extração dos customers
             const customers = await this.extractCustomerService.getAll()
             logger.info(
                 `[Extract] Finished extracting ${customers.length} customers.`,
             )
 
-            // Extração dos cables
             const cables = await this.extractCableService.getAll()
             logger.info(
                 `[Extract] Finished extracting ${cables.length} cables.`,

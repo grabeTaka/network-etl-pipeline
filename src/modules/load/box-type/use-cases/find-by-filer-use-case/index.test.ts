@@ -9,7 +9,6 @@ describe('FindByFilterUseCase', () => {
     let findByFilterStub: sinon.SinonStub
 
     beforeEach(() => {
-        // Cria stub para o método findByFilter do integration
         findByFilterStub = sinon.stub(loadBoxTypeIntegration, 'findByFilter')
         useCase = new FindByFilterUseCase()
     })
