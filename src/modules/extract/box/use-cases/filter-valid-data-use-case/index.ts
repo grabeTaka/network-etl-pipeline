@@ -20,7 +20,7 @@ export class FilterValidDataUseCase implements IFilterValidDataUseCase {
         this.boxes = this.boxes.filter((box) => {
             try {
                 mustExistsBoxSchema.parse(box)
-                if (boxNameSet.has(box.name)) {
+                if (boxNameSet.has(box.name.toUpperCase())) {
                     console.log(
                         `O box de id ${box.id} não será incluso na sincronização pois o nome da caixa já foi adicionado anteriormente.`,
                     )

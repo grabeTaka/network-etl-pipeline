@@ -34,16 +34,9 @@
     "boxes": [
         {
             "id": 10,
-            "name": "Box 10 teste 20/04",
-            "type": "Nap",
-            "lat": -27.597712,
-            "lng": -48.547624
-        },
-        {
-            "id": 12,
-            "name": "Box 10 teste 20/04",
-            "type": "Nap ",
-            "lat": -27.597711,
+            "name": "Box 10 teste 22/04",
+            "type": "Nap V2",
+            "lat": -27.59771,
             "lng": -48.547624
         },
         {
