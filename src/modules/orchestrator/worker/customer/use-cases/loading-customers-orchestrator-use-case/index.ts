@@ -36,8 +36,12 @@ export class LoadingCustomersOrchestratorUseCase
             'externalSourceId',
         )
         if (!registeredBox) {
+            console.log(
+                `Não foi possível encontrar a caixa registrada para o customer com o id ${this.extractedCustomerData.id}`,
+            )
             return
         }
+
         const [registeredProperty] =
             await this.registryPropertyService.findByFilter(
                 this.extractedCustomerData.id,
@@ -69,7 +73,6 @@ export class LoadingCustomersOrchestratorUseCase
             registeredBox,
         )
         const { propertyNeedsUpdate } = filterPropertyUseCase.execute()
-
         if (propertyNeedsUpdate) {
             const transformPropertyDTO =
                 this.transformPropertyService.transformToUpdate(

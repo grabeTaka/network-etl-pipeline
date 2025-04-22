@@ -2,7 +2,6 @@ import { Worker, Job } from 'bullmq'
 import { redisConnection } from '@/modules/shared/utils/redis-connection/index'
 import { IBoxWorker } from '@/modules/orchestrator/worker/box/service/type'
 import { LoadingBoxesOrchestratorUseCase } from '@/modules/orchestrator/worker/box/use-cases/loading-boxes-orchestrator-use-case'
-import { NonRetryableError } from '@/modules/shared/utils/non-retryable-error'
 
 export class BoxWorker implements IBoxWorker {
     constructor() {

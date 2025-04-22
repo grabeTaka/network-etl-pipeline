@@ -28,7 +28,7 @@ class ExtractDataJobService {
 
                 const sdk = sdkInstace.getSdkInstance()
 
-                console.log(await sdk.box.findById('6806f1cc39fb4dbf45a49221'))
+                //console.log(await sdk.property.findById('6807162039fb4dbf45a4ce9e'))
             } catch (err) {
                 console.error('[cron] Falha ao buscar da API terceira.', err)
             }

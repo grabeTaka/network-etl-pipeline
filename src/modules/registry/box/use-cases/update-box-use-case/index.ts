@@ -15,8 +15,6 @@ export class UpdateBoxUseCase implements IUpdateBoxUseCase {
     }
 
     execute = async (): Promise<void> => {
-        console.log(this.value)
-        console.log(this.id)
         const data = {
             name: this.value.name,
             typeName: this.value.type,

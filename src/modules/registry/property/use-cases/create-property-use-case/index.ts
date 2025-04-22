@@ -20,6 +20,7 @@ export class CreatePropertyUseCase implements ICreatePropertyUseCase {
             name: extractProperty.name,
             boxId: boxId,
             code: extractProperty.code,
+            address: extractProperty.address,
         }
     }
 

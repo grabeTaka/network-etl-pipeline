@@ -36,7 +36,6 @@ export class LoadingBoxesOrchestratorUseCase
             'externalSourceId',
         )
 
-        console.log(this.extractedBoxData.type)
         if (!registeredBox) {
             const boxType = await this.loadBoxTypeService.createOrFindOne(
                 'code',
@@ -67,8 +66,6 @@ export class LoadingBoxesOrchestratorUseCase
                     'code',
                     this.extractedBoxData.type.toUpperCase(),
                 )
-                console.log('boxType', boxType.id)
-
                 boxTypeId = boxType.id
             }
 

@@ -40,10 +40,10 @@
             "lng": -48.547624
         },
         {
-            "id": 11,
-            "name": "Box 11 teste 20/04",
+            "id": 12,
+            "name": "Box 12 teste 22/04",
             "type": "Nap",
-            "lat": -127.597711,
+            "lat": -27.597711,
             "lng": -48.547624
         }
     ],
@@ -51,9 +51,9 @@
         {
             "id": 1,
             "code": "CUST-001",
-            "name": "John Doe",
+            "name": "John Doee",
             "address": "123 Main Street",
-            "box_id": 10
+            "box_id": 12
         },
         {
             "id": 3,

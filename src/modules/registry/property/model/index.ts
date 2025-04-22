@@ -19,6 +19,9 @@ export class Property implements PropertySchema {
     code!: string
 
     @Prop({ required: true })
+    address!: string
+
+    @Prop({ required: true })
     externalSourceId!: number
 
     @Prop({ required: true, default: () => new ObjectId().toString() })

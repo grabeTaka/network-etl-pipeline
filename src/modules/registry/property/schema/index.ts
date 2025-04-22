@@ -6,6 +6,7 @@ export const propertySchema = z.object({
     externalSourceId: z.number().min(1),
     externalLoadId: z.string().min(1),
     name: z.string().min(1).max(255),
+    address: z.string().min(1).max(255),
     code: z.string().min(1).max(255),
     boxId: z.string().min(1).max(255),
 })

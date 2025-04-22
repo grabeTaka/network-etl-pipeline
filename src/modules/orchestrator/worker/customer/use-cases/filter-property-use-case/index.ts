@@ -20,9 +20,9 @@ export class FilterPropertyUseCase implements IFilterPropertyUseCase {
 
     execute = (): { propertyNeedsUpdate: boolean } => {
         if (
-            this.registeredProperty.boxId !==
-                this.registeredBox.externalLoadId ||
-            this.registeredProperty.name !== this.extractedProperty.name
+            this.registeredProperty.boxId !== this.registeredBox._id ||
+            this.registeredProperty.name !== this.extractedProperty.name ||
+            this.registeredProperty.address !== this.extractedProperty.address
         )
             return { propertyNeedsUpdate: true }
 
