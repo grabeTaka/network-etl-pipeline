@@ -41,7 +41,7 @@ export class LoadingCustomersOrchestratorUseCase
         )
         if (!registeredBox) {
             logger.warn(
-                `[PropertyProcessor] Could not find a registered box for property ID: ${this.extractedCustomerData.id} and it will be registered without a pre-selected box.`,
+                `[PropertyWorker] Could not find a registered box for property ID: ${this.extractedCustomerData.id} and it will be registered without a pre-selected box.`,
             )
         }
 
@@ -53,7 +53,7 @@ export class LoadingCustomersOrchestratorUseCase
 
         if (!registeredProperty) {
             logger.info(
-                `[PropertyWorker] Starting to process to new property with ID: ${this.job.data.customer.id}, ${this.job.attemptsMade} of ${this.job.opts.attempts}`,
+                `[PropertyWorker] Starting to process to new property with ID: ${this.job.data.customer.id}, ${this.job.attemptsMade + 1} of ${this.job.opts.attempts}`,
             )
             const transformCustomerDTO =
                 this.transformPropertyService.transformToCreate(
@@ -83,7 +83,7 @@ export class LoadingCustomersOrchestratorUseCase
         const { propertyNeedsUpdate } = filterPropertyUseCase.execute()
         if (propertyNeedsUpdate) {
             logger.info(
-                `[PropertyWorker] Starting to process to update property with ID: ${this.job.data.customer.id} , ${this.job.attemptsMade} of ${this.job.opts.attempts}`,
+                `[PropertyWorker] Starting to process to update property with ID: ${this.job.data.customer.id} , ${this.job.attemptsMade + 1} of ${this.job.opts.attempts}`,
             )
             const transformPropertyDTO =
                 this.transformPropertyService.transformToUpdate(
@@ -101,8 +101,13 @@ export class LoadingCustomersOrchestratorUseCase
                 registeredBox ? registeredBox._id : null,
             )
             logger.info(
-                `[CableWorker] Successfully updated property with ID: ${this.job.data.cable.id}, , ${this.job.attemptsMade} of ${this.job.opts.attempts}`,
+                `[PropertyWorker] Successfully updated property with ID: ${this.job.data.cable.id}, , ${this.job.attemptsMade} of ${this.job.opts.attempts}`,
             )
         }
+
+        if (registeredProperty && !propertyNeedsUpdate)
+            logger.info(
+                `[PropertyWorker] Successfully processed property with ID: ${this.job.data.customer.id}, but no action was taken`,
+            )
     }
 }

@@ -9,6 +9,8 @@ import express from 'express'
 import config from '@/config/database/index'
 import '@/modules/orchestrator/job/service'
 import { WorkerOrchestrator } from '@/modules/orchestrator/worker/worker-orchestrator'
+import { errorHandler } from '@/middleware/index'
+import manualFlowRoutes from '@/modules/orchestrator/manual-flow/routes/index'
 
 const app = express()
 
@@ -26,6 +28,9 @@ async function startServer() {
             timestamp: new Date(),
         })
     })
+
+    app.use('/api/manual-flow', manualFlowRoutes)
+    app.use(errorHandler)
 
     app.listen(3000, () => {
         console.log(`Server is running on port 3000 🚀`)

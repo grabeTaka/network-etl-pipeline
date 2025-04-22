@@ -39,13 +39,13 @@ export class LoadPropertyIntegration implements ILoadPropertyIntegration {
 
     async create(data: CreatePropertyDTO): Promise<Property> {
         data.project = this.projectId
-        console.log('????')
-        return await this.sdk.property.create(data) //rateLimiter.schedule(async () => )
+        return rateLimiter.schedule(
+            async () => await this.sdk.property.create(data),
+        )
     }
 
     async update(data: UpdatePropertyDTO, id: string): Promise<void> {
         const updatePropertyData: UpdatePropertyDTO = data
-
         return rateLimiter.schedule(
             async () =>
                 await this.sdk.property.updateById(id, updatePropertyData),

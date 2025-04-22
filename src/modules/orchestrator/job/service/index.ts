@@ -9,7 +9,7 @@ class ExtractDataJobService {
         : '1'
     constructor() {
         this.schedule()
-        this.init()
+        //this.init()
     }
 
     async schedule(): Promise<void> {

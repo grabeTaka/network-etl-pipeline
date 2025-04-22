@@ -23,7 +23,9 @@ export class FilterPropertyUseCase implements IFilterPropertyUseCase {
             (this.registeredBox &&
                 this.registeredProperty.boxId !== this.registeredBox._id) ||
             this.registeredProperty.name !== this.extractedProperty.name ||
-            this.registeredProperty.address !== this.extractedProperty.address
+            this.registeredProperty.address !==
+                this.extractedProperty.address ||
+            this.registeredProperty.code !== this.extractedProperty.code
         )
             return { propertyNeedsUpdate: true }
 

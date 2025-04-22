@@ -15,7 +15,6 @@ export class CustomerWorker implements ICustomerWorker {
             'loading-customers-queue',
             async (job: Job) => {
                 try {
-                    console.log(job.attemptsMade)
                     const loadingCustomersOrchestratorUseCase =
                         new LoadingCustomersOrchestratorUseCase()
                     loadingCustomersOrchestratorUseCase.prepare(job)

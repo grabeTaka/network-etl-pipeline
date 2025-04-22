@@ -38,6 +38,10 @@ export class ExtractCableIntegration implements IExtractCableIntegration {
             },
         )
     }
+    async findOne(id: number): Promise<CableSchema> {
+        const response = await this.api.get(`/cables/${id}`)
+        return response.data
+    }
 
     getAll = async (): Promise<CableSchema[]> => {
         const response = await this.api.get('/cables')

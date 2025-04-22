@@ -40,6 +40,10 @@ export class ExtractCustomerIntegratrion
             },
         )
     }
+    async findOne(id: number): Promise<CustomerSchema> {
+        const response = await this.api(`/customers/${id}`)
+        return response.data
+    }
 
     getAll = async (): Promise<CustomerSchema[]> => {
         const response = await this.api.get('/customers')

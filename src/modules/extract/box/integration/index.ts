@@ -38,6 +38,10 @@ export class ExtractBoxIntegration implements IExtractBoxIntegration {
             },
         )
     }
+    async findOne(id: number): Promise<BoxSchema> {
+        const response = await this.api.get(`boxes/${id}`)
+        return response.data
+    }
 
     getAll = async (): Promise<BoxSchema[]> => {
         const response = await this.api.get('/boxes')
