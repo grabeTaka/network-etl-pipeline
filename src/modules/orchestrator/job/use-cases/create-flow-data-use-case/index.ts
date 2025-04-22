@@ -12,7 +12,7 @@ export class CreateFlowDataUseCase implements ICreateFlowDataUseCase {
     }
 
     execute = async (): Promise<void> => {
-        const currentTime = new Date().getTime()        
+        const currentTime = new Date().getTime()
         for (const { box, customers, cables } of this.boxesEnriched) {
             const customerJobs = customers.map((customer) => ({
                 name: `customer-${customer.id}`,

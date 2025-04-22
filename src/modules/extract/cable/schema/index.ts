@@ -7,8 +7,8 @@ export const cableSchema = z.object({
     boxes_connected: z.tuple([z.number(), z.number()]),
     path: z.array(
         z.object({
-            lat: z.number(),
-            lng: z.number(),
+            lat: z.number().min(-90).max(90),
+            lng: z.number().min(-180).max(180),
         }),
     ),
 })

@@ -12,7 +12,7 @@ export type UnifyResult = {
     boxesEnriched: UnifiedBoxData[]
     unlinkedCustomers: CustomerSchema[]
     unlinkedCables: CableSchema[]
-    unlinkedBoxes: BoxSchema[] 
+    unlinkedBoxes: BoxSchema[]
 }
 
 export interface IUnifyDataFromExtractUseCase {

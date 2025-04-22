@@ -21,15 +21,17 @@ export class FilterValidDataUseCase implements IFilterValidDataUseCase {
             try {
                 mustExistsBoxSchema.parse(box)
                 if (boxNameSet.has(box.name)) {
-                    console.log(`O box de id ${box.id} não será incluso na sincronização pois o nome da caixa já foi adicionado anteriormente.`)
+                    console.log(
+                        `O box de id ${box.id} não será incluso na sincronização pois o nome da caixa já foi adicionado anteriormente.`,
+                    )
                     return false
                 }
 
-                boxNameSet.add(box.name)
-
                 return true
             } catch (e) {
-                console.log(`O box com o id ${box.id} não será incluso na sincronização pois contém coordenadas inválidas`)
+                console.log(
+                    `O box com o id ${box.id} não será incluso na sincronização pois contém coordenadas inválidas`,
+                )
                 return false
             }
         })

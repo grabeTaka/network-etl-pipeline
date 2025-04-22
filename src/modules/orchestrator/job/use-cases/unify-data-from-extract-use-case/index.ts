@@ -30,25 +30,31 @@ export class UnifyDataFromExtractUseCase
         const customers = await this.extractCustomerService.getAll()
         const cables = await this.extractCableService.getAll()
 
-        const boxesEnriched: UnifiedBoxData[] = boxes.map((box) => {
-            const boxCustomers = customers.filter((c) => +c.box_id === +box.id)
-
-            const boxCables = cables.filter((cable) => {
-                const isBoxConnected = cable.boxes_connected.includes(box.id)
-                const isCustomerConnected = boxCustomers.some((customer) =>
-                    cable.boxes_connected.includes(customer.box_id),
+        const boxesEnriched: UnifiedBoxData[] = boxes
+            .map((box) => {
+                const boxCustomers = customers.filter(
+                    (c) => +c.box_id === +box.id,
                 )
-                return isBoxConnected || isCustomerConnected
-            })
 
-            if (boxCustomers.length || boxCables.length)
-                return {
-                    box,
-                    customers: boxCustomers,
-                    cables: boxCables,
-                }
-            return null
-        }).filter((box) => box !== null)
+                const boxCables = cables.filter((cable) => {
+                    const isBoxConnected = cable.boxes_connected.includes(
+                        box.id,
+                    )
+                    const isCustomerConnected = boxCustomers.some((customer) =>
+                        cable.boxes_connected.includes(customer.box_id),
+                    )
+                    return isBoxConnected || isCustomerConnected
+                })
+
+                if (boxCustomers.length || boxCables.length)
+                    return {
+                        box,
+                        customers: boxCustomers,
+                        cables: boxCables,
+                    }
+                return null
+            })
+            .filter((box) => box !== null)
 
         const associatedCustomerIds = new Set(
             boxesEnriched.flatMap((b) => b.customers.map((c) => c.id)),
@@ -70,15 +76,16 @@ export class UnifyDataFromExtractUseCase
                 !boxesEnriched.some(
                     (enrichedBox) =>
                         enrichedBox.box.id === box.id &&
-                        (enrichedBox.customers.length > 0 || enrichedBox.cables.length > 0),
+                        (enrichedBox.customers.length > 0 ||
+                            enrichedBox.cables.length > 0),
                 ),
         )
-        
+
         return {
             boxesEnriched,
             unlinkedCustomers,
             unlinkedCables,
-            unlinkedBoxes
+            unlinkedBoxes,
         }
     }
 }
