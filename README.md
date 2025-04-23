@@ -79,7 +79,6 @@
   <p>O projeto utiliza <strong>Mocha</strong>, <strong>Chai</strong> e <strong>Sinon</strong> para testes unitários:</p>
   <pre><code>npm run test </code></pre>
 
-
 <h2>📖 Documentação adicional</h2>
 
 <p>A aplicação inclui um cron job que realiza a sincronização automática dos dados do <code>json-server</code> em intervalos regulares, definidos por uma variável de ambiente. Além disso, o usuário pode realizar sincronizações manuais através das seguintes rotas:</p>
@@ -114,10 +113,6 @@
 
 <p>Essas rotas permitem que o usuário tenha controle total sobre as sincronizações, seja de maneira automática ou manual, conforme a necessidade.</p>
 
-  
-
-
-  
   <h2>🧱 Estrutura de Pastas</h2>
   <pre><code>modules/
 ├── extract/       → leitura de dados (ex: boxes, customers, cables)
@@ -135,20 +130,14 @@
 <p> <strong>Módulo orchestrator</strong>: Irá orquestrar todos os dados, desde fazer requisições de extração, carregamento, tratamento e registro. </p>
 <p> <strong>Módulo shared</strong>: São pastas utilitárias que são compartilhadas entre os modulos. </p>
 
-
-
-
-
   <h2>📌 Diagrama </h2>
 <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/128423774/436308034-4001ccfb-8424-4054-a820-c42fc896a9ac.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250422%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250422T235641Z&X-Amz-Expires=300&X-Amz-Signature=84afd0ff3ef7ade96c8b3db31ecb2fd913bd5b0bb4d0a075a69f72f121fb51b5&X-Amz-SignedHeaders=host">
-
 
   <ul>
     <li>Jobs são orquestrados com dependências e retries automáticos via BullMQ, utilizando conceitos de DLQ.</li>
     <li>O sistema respeita limites de requisições usando <code>Bottleneck</code>.</li>
     <li>O sistema possui um banco de dados para auxiliar na manutenção dos dados, utilizando conceitos de CDC.</li>
   </ul>
-
 
 </body>
 </html>

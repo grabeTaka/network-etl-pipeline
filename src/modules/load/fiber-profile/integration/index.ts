@@ -32,11 +32,13 @@ export class LoadFiberProfileIntegration
         this.sdk = sdkInstace.getSdkInstance()
     }
     create(): Promise<FiberProfile> {
-        return this.sdk.fiberProfile.create({
-            name: 'G.652D',
-            fibers: [],
-            tubes: [],
-        })
+        return rateLimiter.schedule(async () =>
+            this.sdk.fiberProfile.create({
+                name: 'G.652D',
+                fibers: [],
+                tubes: [],
+            }),
+        )
     }
 
     async findByFilter(

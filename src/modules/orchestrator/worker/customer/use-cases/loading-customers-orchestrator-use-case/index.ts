@@ -104,10 +104,5 @@ export class LoadingCustomersOrchestratorUseCase
                 `[PropertyWorker] Successfully updated property with ID: ${this.job.data.cable.id}, , ${this.job.attemptsMade} of ${this.job.opts.attempts}`,
             )
         }
-
-        if (registeredProperty && !propertyNeedsUpdate)
-            logger.info(
-                `[PropertyWorker] Successfully processed property with ID: ${this.job.data.customer.id}, but no action was taken`,
-            )
     }
 }

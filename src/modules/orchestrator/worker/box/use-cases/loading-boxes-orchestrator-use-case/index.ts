@@ -100,10 +100,5 @@ export class LoadingBoxesOrchestratorUseCase
                 `[BoxWorker] Successfully processed box with ID: ${this.job.data.box.id}`,
             )
         }
-
-        if (registeredBox && !boxNeedsUpdate)
-            logger.info(
-                `[BoxWorker] Successfully processed box with ID: ${this.job.data.box.id}, but no action was taken`,
-            )
     }
 }

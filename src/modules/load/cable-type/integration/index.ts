@@ -30,24 +30,26 @@ export class LoadCableTypeIntegration implements ILoadCableTypeIntegration {
         this.sdk = sdkInstace.getSdkInstance()
     }
     create(fiberProfileId: string): Promise<CableType> {
-        return this.sdk.cableType.create({
-            code: '1L6F',
-            default_level: 1,
-            config: {
-                regular: {
-                    color: '#0000FF',
-                    weight: 2,
+        return rateLimiter.schedule(async () =>
+            this.sdk.cableType.create({
+                code: '1L6F',
+                default_level: 1,
+                config: {
+                    regular: {
+                        color: '#0000FF',
+                        weight: 2,
+                    },
+                    not_implanted: {
+                        color: '#FF0000',
+                        weight: 1,
+                    },
                 },
-                not_implanted: {
-                    color: '#FF0000',
-                    weight: 1,
-                },
-            },
-            fiberProfile: fiberProfileId,
-            fiberNumber: 6,
-            looseNumber: 1,
-            base_loss: 0.4,
-        })
+                fiberProfile: fiberProfileId,
+                fiberNumber: 6,
+                looseNumber: 1,
+                base_loss: 0.4,
+            }),
+        )
     }
 
     async findByFilter(

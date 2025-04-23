@@ -144,10 +144,5 @@ export class LoadingCablesOrchestratorUseCase
                 `[CableWorker] Successfully updated cable with ID: ${this.job.data.cable.id}`,
             )
         }
-
-        if (registeredCable && !cableNeedsUpdate)
-            logger.info(
-                `[CableWorker] Successfully processed cable with ID: ${this.job.data.cable.id}, but no action was taken`,
-            )
     }
 }

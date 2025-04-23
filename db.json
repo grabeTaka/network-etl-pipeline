@@ -2,37 +2,202 @@
     "cables": [
         {
             "id": 1,
-            "name": "Fiber Route Z",
+            "name": "Fiber Route A",
             "capacity": 144,
             "boxes_connected": [1, 2],
             "path": [
-                { "lat": -27.595377, "lng": -48.54805 },
-                { "lat": -27.597712, "lng": -48.547623 },
-                { "lat": -27.59934, "lng": -48.54718 },
-                { "lat": -27.601126, "lng": -48.546673 }
+                { "lat": -27.5953, "lng": -48.548 },
+                { "lat": -27.5963, "lng": -48.5475 }
             ]
         },
         {
             "id": 2,
             "name": "Fiber Route B",
-            "capacity": 72,
-            "boxes_connected": [11],
+            "capacity": 96,
+            "boxes_connected": [3, 4],
             "path": [
-                { "lat": -11127.601126, "lng": -48.546673 },
-                { "lat": -27.602954, "lng": -48.546218 },
-                { "lat": -27.604785, "lng": -48.545678 }
+                { "lat": -27.5965, "lng": -48.5478 },
+                { "lat": -27.5975, "lng": -48.5472 }
             ]
         },
         {
             "id": 3,
-            "name": "Fiber Route Zzz",
-            "capacity": 144,
-            "boxes_connected": [1, 2],
+            "name": "Fiber Route C",
+            "capacity": 288,
+            "boxes_connected": [5, 6],
             "path": [
-                { "lat": -20.595377, "lng": -48.54805 },
-                { "lat": -27.597712, "lng": -48.547623 },
-                { "lat": -27.59934, "lng": -48.54718 },
-                { "lat": -27.601126, "lng": -48.546673 }
+                { "lat": -27.5977, "lng": -48.5471 },
+                { "lat": -27.5986, "lng": -48.5469 }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Fiber Route D",
+            "capacity": 144,
+            "boxes_connected": [7, 8],
+            "path": [
+                { "lat": -27.5989, "lng": -48.5468 },
+                { "lat": -27.5998, "lng": -48.5465 }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Fiber Route E",
+            "capacity": 96,
+            "boxes_connected": [9, 10],
+            "path": [
+                { "lat": -27.6001, "lng": -48.5463 },
+                { "lat": -27.601, "lng": -48.5458 }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Fiber Route F",
+            "capacity": 72,
+            "boxes_connected": [11, 12],
+            "path": [
+                { "lat": -27.6013, "lng": -48.5456 },
+                { "lat": -27.6021, "lng": -48.5452 }
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Fiber Route G",
+            "capacity": 48,
+            "boxes_connected": [13, 14],
+            "path": [
+                { "lat": -27.6024, "lng": -48.545 },
+                { "lat": -27.6033, "lng": -48.5447 }
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Fiber Route H",
+            "capacity": 144,
+            "boxes_connected": [15, 16],
+            "path": [
+                { "lat": -27.6036, "lng": -48.5444 },
+                { "lat": -27.6045, "lng": -48.544 }
+            ]
+        },
+        {
+            "id": 9,
+            "name": "Fiber Route I",
+            "capacity": 96,
+            "boxes_connected": [17, 18],
+            "path": [
+                { "lat": -27.6048, "lng": -48.5436 },
+                { "lat": -27.6056, "lng": -48.5432 }
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Fiber Route J",
+            "capacity": 288,
+            "boxes_connected": [19, 20],
+            "path": [
+                { "lat": -27.6059, "lng": -48.5429 },
+                { "lat": -27.6067, "lng": -48.5424 }
+            ]
+        },
+        {
+            "id": 11,
+            "name": "Fiber Route K",
+            "capacity": 72,
+            "boxes_connected": [21, 22],
+            "path": [
+                { "lat": -27.607, "lng": -48.5421 },
+                { "lat": -27.6078, "lng": -48.5418 }
+            ]
+        },
+        {
+            "id": 12,
+            "name": "Fiber Route L",
+            "capacity": 144,
+            "boxes_connected": [23, 24],
+            "path": [
+                { "lat": -27.6081, "lng": -48.5415 },
+                { "lat": -27.609, "lng": -48.5412 }
+            ]
+        },
+        {
+            "id": 13,
+            "name": "Fiber Route M",
+            "capacity": 96,
+            "boxes_connected": [25, 26],
+            "path": [
+                { "lat": -27.6093, "lng": -48.5409 },
+                { "lat": -27.6101, "lng": -48.5406 }
+            ]
+        },
+        {
+            "id": 14,
+            "name": "Fiber Route N",
+            "capacity": 48,
+            "boxes_connected": [27, 28],
+            "path": [
+                { "lat": -27.6104, "lng": -48.5403 },
+                { "lat": -27.6112, "lng": -48.54 }
+            ]
+        },
+        {
+            "id": 15,
+            "name": "Fiber Route O",
+            "capacity": 288,
+            "boxes_connected": [29, 30],
+            "path": [
+                { "lat": -27.6115, "lng": -48.5397 },
+                { "lat": -27.6123, "lng": -48.5394 }
+            ]
+        },
+        {
+            "id": 16,
+            "name": "Fiber Route P",
+            "capacity": 144,
+            "boxes_connected": [31, 32],
+            "path": [
+                { "lat": -27.6126, "lng": -48.5391 },
+                { "lat": -27.6134, "lng": -48.5388 }
+            ]
+        },
+        {
+            "id": 17,
+            "name": "Fiber Route Q",
+            "capacity": 96,
+            "boxes_connected": [33, 34],
+            "path": [
+                { "lat": -27.6137, "lng": -48.5385 },
+                { "lat": -27.6145, "lng": -48.5382 }
+            ]
+        },
+        {
+            "id": 18,
+            "name": "Fiber Route R",
+            "capacity": 72,
+            "boxes_connected": [35, 36],
+            "path": [
+                { "lat": -27.6148, "lng": -48.5379 },
+                { "lat": -27.6156, "lng": -48.5376 }
+            ]
+        },
+        {
+            "id": 19,
+            "name": "Fiber Route S",
+            "capacity": 48,
+            "boxes_connected": [37, 38],
+            "path": [
+                { "lat": -27.6159, "lng": -48.5373 },
+                { "lat": -27.6167, "lng": -48.537 }
+            ]
+        },
+        {
+            "id": 20,
+            "name": "Fiber Route T",
+            "capacity": 144,
+            "boxes_connected": [39, 40],
+            "path": [
+                { "lat": -27.617, "lng": -48.5367 },
+                { "lat": -27.6178, "lng": -48.5364 }
             ]
         }
     ],
@@ -46,54 +211,985 @@
     "boxes": [
         {
             "id": 1,
-            "name": "Box 1 teste 3111/04",
+            "name": "Box - 1 - 20230101120100",
             "type": "Nap V3",
-            "lat": -27.5976,
-            "lng": -48.5476
-        },
-        {
-            "id": 10,
-            "name": "Box 1 teste 31111/04",
-            "type": "Nap V3",
-            "lat": -27.5976,
-            "lng": -48.5476
+            "lat": -27.597955,
+            "lng": -48.549598
         },
         {
             "id": 2,
-            "name": "Box 2 teste 30/04",
-            "type": "Nap V2",
-            "lat": -27.5977,
-            "lng": -48.5475
+            "name": "Box - 2 - 20230101120200",
+            "type": "Nap V1",
+            "lat": -27.596291,
+            "lng": -48.553119
         },
         {
             "id": 3,
-            "name": "Box 3 teste Gab 25/04",
-            "type": "Nap",
-            "lat": -27.5978,
-            "lng": -48.5474
+            "name": "Box - 3 - 20230101120300",
+            "type": "Nap V2",
+            "lat": -27.599818,
+            "lng": -48.539655
         },
         {
             "id": 4,
-            "name": "Box 3 teste Gab 25/04",
-            "type": "Nap",
-            "lat": -27.5978,
-            "lng": -48.5474
+            "name": "Box - 4 - 20230101120400",
+            "type": "Nap V1",
+            "lat": -27.604409,
+            "lng": -48.551286
+        },
+        {
+            "id": 5,
+            "name": "Box - 5 - 20230101120500",
+            "type": "Nap V1",
+            "lat": -27.600751,
+            "lng": -48.543731
+        },
+        {
+            "id": 6,
+            "name": "Box - 6 - 20230101120600",
+            "type": "Nap V3",
+            "lat": -27.596393,
+            "lng": -48.54408
+        },
+        {
+            "id": 7,
+            "name": "Box - 7 - 20230101120700",
+            "type": "Nap V3",
+            "lat": -27.600651,
+            "lng": -48.552293
+        },
+        {
+            "id": 8,
+            "name": "Box - 8 - 20230101120800",
+            "type": "Nap V2",
+            "lat": -27.598287,
+            "lng": -48.548759
+        },
+        {
+            "id": 9,
+            "name": "Box - 9 - 20230101120900",
+            "type": "Nap V2",
+            "lat": -27.591524,
+            "lng": -48.544119
+        },
+        {
+            "id": 10,
+            "name": "Box - 10 - 20230101121000",
+            "type": "Nap V1",
+            "lat": -27.597209,
+            "lng": -48.54906
+        },
+        {
+            "id": 11,
+            "name": "Box - 11 - 20230101121100",
+            "type": "Nap V3",
+            "lat": -27.606385,
+            "lng": -48.554845
+        },
+        {
+            "id": 12,
+            "name": "Box - 12 - 20230101121200",
+            "type": "Nap V1",
+            "lat": -27.60494,
+            "lng": -48.554259
+        },
+        {
+            "id": 13,
+            "name": "Box - 13 - 20230101121300",
+            "type": "Nap V2",
+            "lat": -27.594769,
+            "lng": -48.537306
+        },
+        {
+            "id": 14,
+            "name": "Box - 14 - 20230101121400",
+            "type": "Nap V2",
+            "lat": -27.593549,
+            "lng": -48.538981
+        },
+        {
+            "id": 15,
+            "name": "Box - 15 - 20230101121500",
+            "type": "Nap V3",
+            "lat": -27.594174,
+            "lng": -48.553962
+        },
+        {
+            "id": 16,
+            "name": "Box - 16 - 20230101121600",
+            "type": "Nap V1",
+            "lat": -27.590211,
+            "lng": -48.538743
+        },
+        {
+            "id": 17,
+            "name": "Box - 17 - 20230101121700",
+            "type": "Nap V3",
+            "lat": -27.603384,
+            "lng": -48.546452
+        },
+        {
+            "id": 18,
+            "name": "Box - 18 - 20230101121800",
+            "type": "Nap V2",
+            "lat": -27.596185,
+            "lng": -48.543763
+        },
+        {
+            "id": 19,
+            "name": "Box - 19 - 20230101121900",
+            "type": "Nap V2",
+            "lat": -27.605365,
+            "lng": -48.539983
+        },
+        {
+            "id": 20,
+            "name": "Box - 20 - 20230101122000",
+            "type": "Nap V2",
+            "lat": -27.599022,
+            "lng": -48.551501
+        },
+        {
+            "id": 21,
+            "name": "Box - 21 - 20230101122100",
+            "type": "Nap V3",
+            "lat": -27.597693,
+            "lng": -48.551998
+        },
+        {
+            "id": 22,
+            "name": "Box - 22 - 20230101122200",
+            "type": "Nap V2",
+            "lat": -27.604037,
+            "lng": -48.543632
+        },
+        {
+            "id": 23,
+            "name": "Box - 23 - 20230101122300",
+            "type": "Nap V3",
+            "lat": -27.600009,
+            "lng": -48.556281
+        },
+        {
+            "id": 24,
+            "name": "Box - 24 - 20230101122400",
+            "type": "Nap V3",
+            "lat": -27.595893,
+            "lng": -48.542253
+        },
+        {
+            "id": 25,
+            "name": "Box - 25 - 20230101122500",
+            "type": "Nap V3",
+            "lat": -27.597528,
+            "lng": -48.53821
+        },
+        {
+            "id": 26,
+            "name": "Box - 26 - 20230101122600",
+            "type": "Nap V1",
+            "lat": -27.600084,
+            "lng": -48.548019
+        },
+        {
+            "id": 27,
+            "name": "Box - 27 - 20230101122700",
+            "type": "Nap V1",
+            "lat": -27.606458,
+            "lng": -48.541226
+        },
+        {
+            "id": 28,
+            "name": "Box - 28 - 20230101122800",
+            "type": "Nap V2",
+            "lat": -27.595468,
+            "lng": -48.546079
+        },
+        {
+            "id": 29,
+            "name": "Box - 29 - 20230101122900",
+            "type": "Nap V1",
+            "lat": -27.591066,
+            "lng": -48.54381
+        },
+        {
+            "id": 30,
+            "name": "Box - 30 - 20230101123000",
+            "type": "Nap V1",
+            "lat": -27.60497,
+            "lng": -48.544026
+        },
+        {
+            "id": 31,
+            "name": "Box - 31 - 20230101123100",
+            "type": "Nap V3",
+            "lat": -27.604236,
+            "lng": -48.538438
+        },
+        {
+            "id": 32,
+            "name": "Box - 32 - 20230101123200",
+            "type": "Nap V2",
+            "lat": -27.604584,
+            "lng": -48.556259
+        },
+        {
+            "id": 33,
+            "name": "Box - 33 - 20230101123300",
+            "type": "Nap V2",
+            "lat": -27.595211,
+            "lng": -48.555713
+        },
+        {
+            "id": 34,
+            "name": "Box - 34 - 20230101123400",
+            "type": "Nap V2",
+            "lat": -27.603265,
+            "lng": -48.539903
+        },
+        {
+            "id": 35,
+            "name": "Box - 35 - 20230101123500",
+            "type": "Nap V1",
+            "lat": -27.601179,
+            "lng": -48.549405
+        },
+        {
+            "id": 36,
+            "name": "Box - 36 - 20230101123600",
+            "type": "Nap V3",
+            "lat": -27.606814,
+            "lng": -48.552278
+        },
+        {
+            "id": 37,
+            "name": "Box - 37 - 20230101123700",
+            "type": "Nap V2",
+            "lat": -27.597008,
+            "lng": -48.552909
+        },
+        {
+            "id": 38,
+            "name": "Box - 38 - 20230101123800",
+            "type": "Nap V1",
+            "lat": -27.60486,
+            "lng": -48.551095
+        },
+        {
+            "id": 39,
+            "name": "Box - 39 - 20230101123900",
+            "type": "Nap V2",
+            "lat": -27.588236,
+            "lng": -48.54923
+        },
+        {
+            "id": 40,
+            "name": "Box - 40 - 20230101124000",
+            "type": "Nap V3",
+            "lat": -27.601904,
+            "lng": -48.538171
+        },
+        {
+            "id": 41,
+            "name": "Box - 41 - 20230101124100",
+            "type": "Nap V2",
+            "lat": -27.596131,
+            "lng": -48.539959
+        },
+        {
+            "id": 42,
+            "name": "Box - 42 - 20230101124200",
+            "type": "Nap V2",
+            "lat": -27.596983,
+            "lng": -48.547091
+        },
+        {
+            "id": 43,
+            "name": "Box - 43 - 20230101124300",
+            "type": "Nap V2",
+            "lat": -27.602424,
+            "lng": -48.538098
+        },
+        {
+            "id": 44,
+            "name": "Box - 44 - 20230101124400",
+            "type": "Nap V3",
+            "lat": -27.601489,
+            "lng": -48.542864
+        },
+        {
+            "id": 45,
+            "name": "Box - 45 - 20230101124500",
+            "type": "Nap V2",
+            "lat": -27.591764,
+            "lng": -48.539302
+        },
+        {
+            "id": 46,
+            "name": "Box - 46 - 20230101124600",
+            "type": "Nap V2",
+            "lat": -27.605873,
+            "lng": -48.547409
+        },
+        {
+            "id": 47,
+            "name": "Box - 47 - 20230101124700",
+            "type": "Nap V1",
+            "lat": -27.590585,
+            "lng": -48.538107
+        },
+        {
+            "id": 48,
+            "name": "Box - 48 - 20230101124800",
+            "type": "Nap V3",
+            "lat": -27.606612,
+            "lng": -48.556562
+        },
+        {
+            "id": 49,
+            "name": "Box - 49 - 20230101124900",
+            "type": "Nap V3",
+            "lat": -27.601502,
+            "lng": -48.543478
+        },
+        {
+            "id": 50,
+            "name": "Box - 50 - 20230101125000",
+            "type": "Nap V1",
+            "lat": -27.593531,
+            "lng": -48.547462
+        },
+        {
+            "id": 51,
+            "name": "Box - 51 - 20230101125100",
+            "type": "Nap V3",
+            "lat": -27.587386,
+            "lng": -48.544849
+        },
+        {
+            "id": 52,
+            "name": "Box - 52 - 20230101125200",
+            "type": "Nap V3",
+            "lat": -27.595916,
+            "lng": -48.549554
+        },
+        {
+            "id": 53,
+            "name": "Box - 53 - 20230101125300",
+            "type": "Nap V1",
+            "lat": -27.606072,
+            "lng": -48.538714
+        },
+        {
+            "id": 54,
+            "name": "Box - 54 - 20230101125400",
+            "type": "Nap V3",
+            "lat": -27.606917,
+            "lng": -48.548577
+        },
+        {
+            "id": 55,
+            "name": "Box - 55 - 20230101125500",
+            "type": "Nap V2",
+            "lat": -27.595023,
+            "lng": -48.548864
+        },
+        {
+            "id": 56,
+            "name": "Box - 56 - 20230101125600",
+            "type": "Nap V1",
+            "lat": -27.603605,
+            "lng": -48.541615
+        },
+        {
+            "id": 57,
+            "name": "Box - 57 - 20230101125700",
+            "type": "Nap V2",
+            "lat": -27.598638,
+            "lng": -48.54107
+        },
+        {
+            "id": 58,
+            "name": "Box - 58 - 20230101125800",
+            "type": "Nap V2",
+            "lat": -27.595821,
+            "lng": -48.55083
+        },
+        {
+            "id": 59,
+            "name": "Box - 59 - 20230101125900",
+            "type": "Nap V1",
+            "lat": -27.592109,
+            "lng": -48.552109
+        },
+        {
+            "id": 60,
+            "name": "Box - 60 - 20230101130000",
+            "type": "Nap V2",
+            "lat": -27.594394,
+            "lng": -48.546315
+        },
+        {
+            "id": 61,
+            "name": "Box - 61 - 20230101130100",
+            "type": "Nap V2",
+            "lat": -27.602788,
+            "lng": -48.553345
+        },
+        {
+            "id": 62,
+            "name": "Box - 62 - 20230101130200",
+            "type": "Nap V2",
+            "lat": -27.589017,
+            "lng": -48.550309
+        },
+        {
+            "id": 63,
+            "name": "Box - 63 - 20230101130300",
+            "type": "Nap V2",
+            "lat": -27.599591,
+            "lng": -48.545117
+        },
+        {
+            "id": 64,
+            "name": "Box - 64 - 20230101130400",
+            "type": "Nap V1",
+            "lat": -27.5972,
+            "lng": -48.553757
+        },
+        {
+            "id": 65,
+            "name": "Box - 65 - 20230101130500",
+            "type": "Nap V1",
+            "lat": -27.593367,
+            "lng": -48.551129
+        },
+        {
+            "id": 66,
+            "name": "Box - 66 - 20230101130600",
+            "type": "Nap V1",
+            "lat": -27.603027,
+            "lng": -48.556964
+        },
+        {
+            "id": 67,
+            "name": "Box - 67 - 20230101130700",
+            "type": "Nap V1",
+            "lat": -27.594436,
+            "lng": -48.539198
+        },
+        {
+            "id": 68,
+            "name": "Box - 68 - 20230101130800",
+            "type": "Nap V1",
+            "lat": -27.594943,
+            "lng": -48.549632
+        },
+        {
+            "id": 69,
+            "name": "Box - 69 - 20230101130900",
+            "type": "Nap V1",
+            "lat": -27.599713,
+            "lng": -48.540489
+        },
+        {
+            "id": 70,
+            "name": "Box - 70 - 20230101131000",
+            "type": "Nap V1",
+            "lat": -27.605517,
+            "lng": -48.555085
+        },
+        {
+            "id": 71,
+            "name": "Box - 71 - 20230101131100",
+            "type": "Nap V1",
+            "lat": -27.605248,
+            "lng": -48.537996
+        },
+        {
+            "id": 72,
+            "name": "Box - 72 - 20230101131200",
+            "type": "Nap V2",
+            "lat": -27.600457,
+            "lng": -48.554245
+        },
+        {
+            "id": 73,
+            "name": "Box - 73 - 20230101131300",
+            "type": "Nap V2",
+            "lat": -27.594664,
+            "lng": -48.553369
+        },
+        {
+            "id": 74,
+            "name": "Box - 74 - 20230101131400",
+            "type": "Nap V1",
+            "lat": -27.588952,
+            "lng": -48.5535
+        },
+        {
+            "id": 75,
+            "name": "Box - 75 - 20230101131500",
+            "type": "Nap V3",
+            "lat": -27.606462,
+            "lng": -48.556548
+        },
+        {
+            "id": 76,
+            "name": "Box - 76 - 20230101131600",
+            "type": "Nap V1",
+            "lat": -27.603263,
+            "lng": -48.545228
+        },
+        {
+            "id": 77,
+            "name": "Box - 77 - 20230101131700",
+            "type": "Nap V2",
+            "lat": -27.603822,
+            "lng": -48.537886
+        },
+        {
+            "id": 78,
+            "name": "Box - 78 - 20230101131800",
+            "type": "Nap V3",
+            "lat": -27.602081,
+            "lng": -48.539419
+        },
+        {
+            "id": 79,
+            "name": "Box - 79 - 20230101131900",
+            "type": "Nap V3",
+            "lat": -27.605731,
+            "lng": -48.548656
+        },
+        {
+            "id": 80,
+            "name": "Box - 80 - 20230101132000",
+            "type": "Nap V3",
+            "lat": -27.597038,
+            "lng": -48.546601
+        },
+        {
+            "id": 81,
+            "name": "Box - 81 - 20230101132100",
+            "type": "Nap V3",
+            "lat": -27.594473,
+            "lng": -48.550415
+        },
+        {
+            "id": 82,
+            "name": "Box - 82 - 20230101132200",
+            "type": "Nap V2",
+            "lat": -27.589547,
+            "lng": -48.551389
+        },
+        {
+            "id": 83,
+            "name": "Box - 83 - 20230101132300",
+            "type": "Nap V1",
+            "lat": -27.590317,
+            "lng": -48.540041
+        },
+        {
+            "id": 84,
+            "name": "Box - 84 - 20230101132400",
+            "type": "Nap V3",
+            "lat": -27.598196,
+            "lng": -48.543224
+        },
+        {
+            "id": 85,
+            "name": "Box - 85 - 20230101132500",
+            "type": "Nap V1",
+            "lat": -27.600838,
+            "lng": -48.548405
+        },
+        {
+            "id": 86,
+            "name": "Box - 86 - 20230101132600",
+            "type": "Nap V1",
+            "lat": -27.593005,
+            "lng": -48.549393
+        },
+        {
+            "id": 87,
+            "name": "Box - 87 - 20230101132700",
+            "type": "Nap V1",
+            "lat": -27.604076,
+            "lng": -48.540015
+        },
+        {
+            "id": 88,
+            "name": "Box - 88 - 20230101132800",
+            "type": "Nap V2",
+            "lat": -27.602708,
+            "lng": -48.53899
+        },
+        {
+            "id": 89,
+            "name": "Box - 89 - 20230101132900",
+            "type": "Nap V2",
+            "lat": -27.587548,
+            "lng": -48.543243
+        },
+        {
+            "id": 90,
+            "name": "Box - 90 - 20230101133000",
+            "type": "Nap V1",
+            "lat": -27.594355,
+            "lng": -48.555482
+        },
+        {
+            "id": 91,
+            "name": "Box - 91 - 20230101133100",
+            "type": "Nap V2",
+            "lat": -27.606015,
+            "lng": -48.537787
+        },
+        {
+            "id": 92,
+            "name": "Box - 92 - 20230101133200",
+            "type": "Nap V1",
+            "lat": -27.603717,
+            "lng": -48.548487
+        },
+        {
+            "id": 93,
+            "name": "Box - 93 - 20230101133300",
+            "type": "Nap V3",
+            "lat": -27.603205,
+            "lng": -48.540382
+        },
+        {
+            "id": 94,
+            "name": "Box - 94 - 20230101133400",
+            "type": "Nap V3",
+            "lat": -27.592012,
+            "lng": -48.541158
+        },
+        {
+            "id": 95,
+            "name": "Box - 95 - 20230101133500",
+            "type": "Nap V1",
+            "lat": -27.59253,
+            "lng": -48.54021
+        },
+        {
+            "id": 96,
+            "name": "Box - 96 - 20230101133600",
+            "type": "Nap V3",
+            "lat": -27.592449,
+            "lng": -48.545667
+        },
+        {
+            "id": 97,
+            "name": "Box - 97 - 20230101133700",
+            "type": "Nap V2",
+            "lat": -27.601418,
+            "lng": -48.553983
+        },
+        {
+            "id": 98,
+            "name": "Box - 98 - 20230101133800",
+            "type": "Nap V2",
+            "lat": -27.601343,
+            "lng": -48.542514
+        },
+        {
+            "id": 99,
+            "name": "Box - 99 - 20230101133900",
+            "type": "Nap V2",
+            "lat": -27.595208,
+            "lng": -48.540871
+        },
+        {
+            "id": 100,
+            "name": "Box - 100 - 20230101134000",
+            "type": "Nap V3",
+            "lat": -27.598251,
+            "lng": -48.552335
         }
     ],
     "customers": [
         {
             "id": 1,
             "code": "CUST-001",
-            "name": "John Doee",
-            "address": "123 Main Street",
-            "box_id": 1
+            "name": "Alice Mendes",
+            "address": "Rua do Sol, 968",
+            "box_id": 53
         },
         {
             "id": 2,
-            "code": "CUST-ddd",
-            "name": "John teste",
-            "address": "123 Main Street teste",
-            "box_id": 1
+            "code": "CUST-002",
+            "name": "Bruno Costa",
+            "address": "Rua Aurora, 887",
+            "box_id": 64
+        },
+        {
+            "id": 3,
+            "code": "CUST-003",
+            "name": "Carlos Silva",
+            "address": "Rua do Sol, 228",
+            "box_id": 63
+        },
+        {
+            "id": 4,
+            "code": "CUST-004",
+            "name": "Daniela Rocha",
+            "address": "Rua Central, 740",
+            "box_id": 80
+        },
+        {
+            "id": 5,
+            "code": "CUST-005",
+            "name": "Eduardo Lima",
+            "address": "Rua do Sol, 585",
+            "box_id": 35
+        },
+        {
+            "id": 6,
+            "code": "CUST-006",
+            "name": "Fernanda Souza",
+            "address": "Rua das Flores, 900",
+            "box_id": 29
+        },
+        {
+            "id": 7,
+            "code": "CUST-007",
+            "name": "Gabriel Martins",
+            "address": "Rua das Palmeiras, 838",
+            "box_id": 10
+        },
+        {
+            "id": 8,
+            "code": "CUST-008",
+            "name": "Helena Carvalho",
+            "address": "Rua Aurora, 970",
+            "box_id": 100
+        },
+        {
+            "id": 9,
+            "code": "CUST-009",
+            "name": "Igor Fernandes",
+            "address": "Rua Aurora, 472",
+            "box_id": 8
+        },
+        {
+            "id": 10,
+            "code": "CUST-010",
+            "name": "Juliana Ribeiro",
+            "address": "Rua Central, 251",
+            "box_id": 79
+        },
+        {
+            "id": 11,
+            "code": "CUST-011",
+            "name": "Kleber Moraes",
+            "address": "Rua das Palmeiras, 799",
+            "box_id": 46
+        },
+        {
+            "id": 12,
+            "code": "CUST-012",
+            "name": "Laura Nascimento",
+            "address": "Rua das Flores, 912",
+            "box_id": 6
+        },
+        {
+            "id": 13,
+            "code": "CUST-013",
+            "name": "Marcelo Vieira",
+            "address": "Rua do Sol, 695",
+            "box_id": 38
+        },
+        {
+            "id": 14,
+            "code": "CUST-014",
+            "name": "Nat\u00e1lia Pinto",
+            "address": "Rua Central, 309",
+            "box_id": 88
+        },
+        {
+            "id": 15,
+            "code": "CUST-015",
+            "name": "Ot\u00e1vio Cardoso",
+            "address": "Rua das Flores, 912",
+            "box_id": 11
+        },
+        {
+            "id": 16,
+            "code": "CUST-016",
+            "name": "Paula Almeida",
+            "address": "Rua do Sol, 909",
+            "box_id": 61
+        },
+        {
+            "id": 17,
+            "code": "CUST-017",
+            "name": "Rafael Torres",
+            "address": "Rua das Flores, 490",
+            "box_id": 63
+        },
+        {
+            "id": 18,
+            "code": "CUST-018",
+            "name": "Sabrina Lopes",
+            "address": "Rua das Flores, 920",
+            "box_id": 11
+        },
+        {
+            "id": 19,
+            "code": "CUST-019",
+            "name": "Tiago Barbosa",
+            "address": "Rua das Flores, 475",
+            "box_id": 86
+        },
+        {
+            "id": 20,
+            "code": "CUST-020",
+            "name": "Viviane Andrade",
+            "address": "Rua do Sol, 649",
+            "box_id": 7
+        },
+        {
+            "id": 21,
+            "code": "CUST-021",
+            "name": "Wesley Castro",
+            "address": "Rua das Palmeiras, 850",
+            "box_id": 33
+        },
+        {
+            "id": 22,
+            "code": "CUST-022",
+            "name": "Ximena Duarte",
+            "address": "Rua Central, 870",
+            "box_id": 72
+        },
+        {
+            "id": 23,
+            "code": "CUST-023",
+            "name": "Yuri Camargo",
+            "address": "Rua do Sol, 868",
+            "box_id": 4
+        },
+        {
+            "id": 24,
+            "code": "CUST-024",
+            "name": "Zuleica Pontes",
+            "address": "Rua das Palmeiras, 877",
+            "box_id": 14
+        },
+        {
+            "id": 25,
+            "code": "CUST-025",
+            "name": "Antonio Braga",
+            "address": "Rua do Sol, 731",
+            "box_id": 21
+        },
+        {
+            "id": 26,
+            "code": "CUST-026",
+            "name": "Beatriz Ramos",
+            "address": "Rua das Palmeiras, 616",
+            "box_id": 31
+        },
+        {
+            "id": 27,
+            "code": "CUST-027",
+            "name": "C\u00e9sar Oliveira",
+            "address": "Rua Aurora, 510",
+            "box_id": 61
+        },
+        {
+            "id": 28,
+            "code": "CUST-028",
+            "name": "Diana Sales",
+            "address": "Rua Central, 500",
+            "box_id": 57
+        },
+        {
+            "id": 29,
+            "code": "CUST-029",
+            "name": "Elisa Moreira",
+            "address": "Rua das Palmeiras, 342",
+            "box_id": 24
+        },
+        {
+            "id": 30,
+            "code": "CUST-030",
+            "name": "Felipe Tavares",
+            "address": "Rua Central, 358",
+            "box_id": 71
+        },
+        {
+            "id": 31,
+            "code": "CUST-031",
+            "name": "Glaucia Ramos",
+            "address": "Rua do Sol, 399",
+            "box_id": 38
+        },
+        {
+            "id": 32,
+            "code": "CUST-032",
+            "name": "Hugo Leite",
+            "address": "Rua Central, 302",
+            "box_id": 41
+        },
+        {
+            "id": 33,
+            "code": "CUST-033",
+            "name": "Isadora Dias",
+            "address": "Rua Aurora, 468",
+            "box_id": 42
+        },
+        {
+            "id": 34,
+            "code": "CUST-034",
+            "name": "Jo\u00e3o Henrique",
+            "address": "Rua das Flores, 830",
+            "box_id": 9
+        },
+        {
+            "id": 35,
+            "code": "CUST-035",
+            "name": "Karen Freitas",
+            "address": "Rua das Palmeiras, 557",
+            "box_id": 27
+        },
+        {
+            "id": 36,
+            "code": "CUST-036",
+            "name": "Lucas Gon\u00e7alves",
+            "address": "Rua das Flores, 243",
+            "box_id": 23
+        },
+        {
+            "id": 37,
+            "code": "CUST-037",
+            "name": "Marina Teixeira",
+            "address": "Rua das Palmeiras, 309",
+            "box_id": 53
+        },
+        {
+            "id": 38,
+            "code": "CUST-038",
+            "name": "Nicolas Antunes",
+            "address": "Rua das Flores, 887",
+            "box_id": 76
+        },
+        {
+            "id": 39,
+            "code": "CUST-039",
+            "name": "Ol\u00edvia Bastos",
+            "address": "Rua Aurora, 649",
+            "box_id": 93
+        },
+        {
+            "id": 40,
+            "code": "CUST-040",
+            "name": "Pedro Cunha",
+            "address": "Rua Aurora, 768",
+            "box_id": 9
         }
     ]
 }
