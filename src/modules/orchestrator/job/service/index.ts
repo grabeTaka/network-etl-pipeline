@@ -9,7 +9,6 @@ class ExtractDataJobService {
         : '1'
     constructor() {
         this.schedule()
-        //this.init()
     }
 
     async schedule(): Promise<void> {
@@ -34,7 +33,6 @@ class ExtractDataJobService {
 
     async init(): Promise<void> {
         logger.info('[Init on demand] Triggering job execution...')
-        console.log(process.env.JOB_REPEAT_EVERY_MINUTES)
         try {
             const unifyDataFromExtractUseCase =
                 new UnifyDataFromExtractUseCase()

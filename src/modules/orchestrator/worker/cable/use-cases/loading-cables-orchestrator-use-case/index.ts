@@ -144,5 +144,6 @@ export class LoadingCablesOrchestratorUseCase
                 `[CableWorker] Successfully updated cable with ID: ${this.job.data.cable.id}`,
             )
         }
+
     }
 }
