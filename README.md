@@ -57,7 +57,7 @@
   <br>
   <h2>🐳 Como rodar com Docker</h2>
   <p>Recomendamos fortemente que execute o projeto com docker para evitar dependencias extras, como json-server, redis:</p>
-  <pre><code>docker compose build && docker compose up  </code></pre>
+  <pre><code>docker compose up  </code></pre>
   
   <p>A aplicação estará disponível por padrão em <code>http://localhost:${APPLICATION_PORT}</code>.</p>
   <p>O json server estará disponível por padrão em <code>http://json-server:4000</code>.</p>
